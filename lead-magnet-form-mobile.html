@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>Lead Magnet Form — 390px Mobile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: #f0f0f4;
+      width: 390px;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    /* ─── Card ─── */
+    .lm-card {
+      background: #cfecfc;
+      border: 3px solid #fff;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 16px 24px;
+      width: 100%;
+    }
+
+    /* ─── Poster: horizontal banner ─── */
+    .lm-poster {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #adadad;
+      box-shadow: 6px 8px 14px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    .lm-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+
+    /* ─── Form ─── */
+    .lm-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lm-form__title {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 26px;
+      color: #312d48;
+    }
+
+    .lm-form__subtitle {
+      font-size: 14px;
+      line-height: 18px;
+      color: rgba(49, 45, 72, 0.55);
+      margin-top: 4px;
+    }
+
+    /* ─── Inputs ─── */
+    .lm-input {
+      display: block;
+      width: 100%;
+      height: 48px;
+      background: #fff;
+      border: 1px solid rgba(113, 108, 144, 0.35);
+      border-radius: 100px;
+      padding: 0 18px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 15px;
+      color: #312d48;
+      outline: none;
+    }
+
+    .lm-input::placeholder {
+      color: #a29fb2;
+    }
+
+    .lm-input:focus {
+      border-color: rgba(113, 108, 144, 0.7);
+    }
+
+    /* ─── Button ─── */
+    .lm-btn {
+      display: block;
+      width: 100%;
+      height: 52px;
+      background: #312d48;
+      border: none;
+      border-radius: 100px;
+      font-family: 'Rubik', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    /* ─── Agreement ─── */
+    .lm-agreement {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lm-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .lm-checkbox {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border: 1.5px solid rgba(113, 108, 144, 0.5);
+      border-radius: 4px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .lm-checkbox:checked {
+      background: #312d48;
+      border-color: #312d48;
+    }
+
+    .lm-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 1px;
+      width: 8px;
+      height: 5px;
+      border-left: 1.5px solid #fff;
+      border-bottom: 1.5px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .lm-checkbox-label {
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: -0.14px;
+      color: #312d48;
+    }
+
+    .lm-legal {
+      font-size: 13px;
+      line-height: 16px;
+      letter-spacing: -0.14px;
+      color: rgba(49, 45, 72, 0.65);
+    }
+  </style>
+</head>
+<body>
+
+<div class="lm-card">
+
+  <!-- Poster image (горизонтальная полоса на мобильном) -->
+  <div class="lm-poster">
+    <img
+      src="https://www.figma.com/api/mcp/asset/ade763af-3544-4d7d-ad2a-0e830ea14e37"
+      alt="Исследование программ лояльности 2025"
+    />
+  </div>
+
+  <!-- Form -->
+  <div class="lm-form">
+
+    <div>
+      <p class="lm-form__title">Исследование программ лояльности 2025</p>
+      <p class="lm-form__subtitle">Оставьте контакты — пришлём PDF с результатами на почту</p>
+    </div>
+
+    <!-- Каждый инпут на отдельной строке (на десктопе было 2 в ряд) -->
+    <input class="lm-input" type="text"  placeholder="Имя" />
+    <input class="lm-input" type="text"  placeholder="Компания" />
+    <input class="lm-input" type="tel"   placeholder="Телефон" />
+    <input class="lm-input" type="email" placeholder="Email" />
+
+    <button class="lm-btn" type="button">Скачать исследование</button>
+
+    <div class="lm-agreement">
+      <label class="lm-checkbox-row">
+        <input class="lm-checkbox" type="checkbox" />
+        <span class="lm-checkbox-label">Соглашаюсь на получение рекламы</span>
+      </label>
+      <p class="lm-legal">
+        Оставляя заявку, вы соглашаетесь на обработку персональных данных
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
