@@ -16,6 +16,19 @@ HTML/CSS/JS-прототип для показа дизайна клиенту. 
 npx http-server -p 8080 .
 ```
 
+## Публикация на GitHub Pages
+
+Включается один раз владельцем репозитория:
+**Settings → Pages → Build and deployment → Source: `Deploy from a branch`**,
+ветка `claude/maxma-website-prototype-lywv3c`, папка `/ (root)` → *Save*.
+
+После этого каждый пуш в эту ветку пересобирает страницу автоматически,
+адрес будет `https://serezhaok.github.io/Maxma/`.
+
+Все пути в разметке относительные, поэтому проект корректно работает из
+подпапки `/Maxma/`. Файл `.nojekyll` в корне нужен, чтобы Pages отдавали
+файлы как есть и не прогоняли их через Jekyll.
+
 ## Структура
 
 ```
