@@ -7,19 +7,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0&display=block" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="stage" id="stage">
-
-  <!-- ============ HEADER · 2956:17161 ============ -->
+<!-- ============ HEADER · 2956:17161 — fixed for the whole scroll ============ -->
+<div class="hdr-bar">
   <header class="hdr" data-node="2956:17161">
     <div class="hdr__left">
-      <a class="hdr__logo ph ph--svg" href="#" data-img="assets/img/logo-maxma.svg" aria-label="MAXMA"></a>
+      <a class="hdr__logo ph ph--svg" href="#" data-asset="logo-maxma" aria-label="MAXMA"></a>
       <nav class="hdr__nav">
-        <a href="#platform">Продукт</a>
-        <a href="#platform">Тарифы</a>
-        <a href="#blog">Блог</a>
+        <span>Продукт</span>
+        <span>Тарифы</span>
+        <span>Блог</span>
       </nav>
     </div>
     <div class="hdr__right">
@@ -30,6 +30,9 @@
       </div>
     </div>
   </header>
+</div>
+
+<div class="stage" id="stage">
 
   <!-- ============ HERO ============ -->
   <div class="hero-bg" data-node="2929:17118"></div>
@@ -44,8 +47,8 @@
 
   <div class="hero-badge" data-node="2929:17126">
     <span class="hero-badge__avatars">
-      <span class="ph ph--round hero-badge__av hero-badge__av--back" data-img="assets/img/avatar-manager-back.png"></span>
-      <span class="ph ph--round hero-badge__av" data-img="assets/img/avatar-manager.png"></span>
+      <span class="ph ph--round hero-badge__av hero-badge__av--back" data-asset="avatar-manager-back"></span>
+      <span class="ph ph--round hero-badge__av" data-asset="avatar-manager"></span>
     </span>
     <span class="hero-badge__text">Персональный аккаунт‑менеджер</span>
   </div>
@@ -53,42 +56,42 @@
   <span class="zero-code zero-code--sm" data-node="2929:17140">Zero-CODE</span>
 
   <div class="hero-feat hero-feat--1" data-node="2929:17132">
-    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 2 4.4 13.4h5.5L8.9 22l9-11.6h-5.6L13.2 2Z" fill="none" stroke="#190928" stroke-width="1.3" stroke-linejoin="round"/></svg>
+    <span class="ms ms--24" aria-hidden="true">bolt</span>
     <span>Интеграция за 30 дней</span>
   </div>
 
   <div class="hero-feat hero-feat--2" data-node="2929:17136">
-    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2 20.2 7v10L12 21.8 3.8 17V7L12 2.2Z" fill="none" stroke="#190928" stroke-width="1.3" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#190928" stroke-width="1.3"/></svg>
+    <span class="ms ms--24" aria-hidden="true">token</span>
     <span>Запуск без кода и долгих обучений</span>
   </div>
 
-  <div class="hero-shot ph" data-node="2929:17119" data-img="assets/img/hero-dashboard.png"></div>
+  <div class="hero-shot ph" data-node="2929:17119" data-asset="hero-dashboard"></div>
 
   <!-- ============ CLIENTS ============ -->
   <h2 class="sec-title clients-title" data-node="2968:17281">Нам доверяют бренды, <span class="muted">которые вы знаете</span></h2>
 
   <div class="marquee" data-node="2968:17317">
     <div class="marquee__track" id="marqueeTrack">
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-01.svg"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-02.png"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-03.svg"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-04.png"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-05.svg"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-06.svg"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-07.svg"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-08.svg"></span>
-      <span class="marquee__item ph ph--logo marquee__item--hidden" data-img="assets/img/client-09.png"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-10.svg"></span>
-      <span class="marquee__item ph ph--logo" data-img="assets/img/client-11.png"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-01"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-02"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-03"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-04"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-05"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-06"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-07"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-08"></span>
+      <span class="marquee__item ph ph--logo marquee__item--hidden" data-asset="client-09"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-10"></span>
+      <span class="marquee__item ph ph--logo" data-asset="client-11"></span>
     </div>
   </div>
 
   <!-- ============ STATS ============ -->
   <p class="stat-line stat-line--1" data-node="2976:17444">Компании с MAXMA достигают <span class="grad">+21% повторных покупок</span> и в среднем <span class="grad">рост выручки на 12.7%</span></p>
-  <svg class="stat-arrow stat-arrow--1" viewBox="0 0 47 27" data-node="2976:17454" aria-hidden="true"><path d="M18 18.5 26.5 10M20 9.5h7.5v7.5" stroke="#190928" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="stat-arrow stat-arrow--1" data-node="2976:17454"><span class="ms ms--20" aria-hidden="true">arrow_outward</span></span>
 
   <p class="stat-line stat-line--2" data-node="2976:17447">Клиенты отмечают рост <span class="grad">эффективности CRM маркетинга на 25%</span> при <span class="grad">снижении расходов до 250%</span></p>
-  <svg class="stat-arrow stat-arrow--2" viewBox="0 0 47 27" data-node="2976:17462" aria-hidden="true"><path d="M18 18.5 26.5 10M20 9.5h7.5v7.5" stroke="#190928" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="stat-arrow stat-arrow--2" data-node="2976:17462"><span class="ms ms--20" aria-hidden="true">arrow_outward</span></span>
 
   <!-- ============ CASES ============ -->
   <div class="pill-tabs cases-tabs" data-node="2968:17303" role="tablist">
@@ -105,9 +108,9 @@
         <span class="blob blob--1"></span>
         <span class="blob blob--2"></span>
         <span class="blob blob--3"></span>
-        <div class="case__photo ph" data-img="assets/img/case-01-person.png"></div>
+        <div class="case__photo ph" data-asset="case-01-person"></div>
         <div class="case__meta">
-          <span class="case__logo ph ph--svg" data-img="assets/img/case-01-logo.svg"></span>
+          <span class="case__logo ph ph--svg" data-asset="case-01-logo"></span>
           <span class="case__scope">Фэшн-ритейл, 14 точек</span>
         </div>
         <p class="case__title">Первая сеть универмагов российских дизайнеров:<br>1000+ участников за месяц.</p>
@@ -123,7 +126,7 @@
 
       <article class="case case--flat" data-node="2968:17399">
         <div class="case__meta case__meta--narrow">
-          <span class="case__logo case__logo--sm ph" data-img="assets/img/case-03-logo.png"></span>
+          <span class="case__logo case__logo--sm ph" data-asset="case-03-logo"></span>
           <span class="case__scope case__scope--ink">Федеральная сеть</span>
         </div>
         <p class="bignum bignum--abs">+30%</p>
@@ -132,14 +135,14 @@
       </article>
 
       <article class="case case--ghost" data-node="2968:17407"></article>
-      <article class="case case--ghost2 ph" data-node="2968:17408" data-img="assets/img/case-05-bg.png"></article>
+      <article class="case case--ghost2 ph" data-node="2968:17408" data-asset="case-05-bg"></article>
 
     </div>
   </div>
 
   <div class="cases-nav" data-node="2968:17409">
-    <button class="navbtn" id="casesPrev" aria-label="Назад"><svg viewBox="0 0 6 12" aria-hidden="true"><path d="M5 1 1 6l4 5" fill="none" stroke="#190928" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <button class="navbtn" id="casesNext" aria-label="Вперёд"><svg viewBox="0 0 6 12" aria-hidden="true"><path d="M1 1l4 5-4 5" fill="none" stroke="#190928" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="navbtn" id="casesPrev" aria-label="Назад"><span class="ms ms--24" aria-hidden="true">chevron_left</span></button>
+    <button class="navbtn" id="casesNext" aria-label="Вперёд"><span class="ms ms--24" aria-hidden="true">chevron_right</span></button>
   </div>
 
   <!-- ============ PLATFORM ============ -->
@@ -149,17 +152,12 @@
   </div>
 
   <div class="stage-tabs" data-node="2916:16822" role="tablist">
-    <button class="stab is-active" role="tab" aria-selected="true" data-slide="0">
-      <span>Сбор данных</span>
-      <span class="stab__dot">
-        <svg viewBox="0 -960 960 960" aria-hidden="true"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-40h560q17 0 28.5-11.5T800-200v-560q0-17-11.5-28.5T760-800H200q-17 0-28.5 11.5T160-760v560q0 17 11.5 28.5T200-160Zm60-100h440L558-450 448-310l-78-100-110 150ZM160-160v-640 640Z"/></svg>
-      </span>
-    </button>
-    <button class="stab" role="tab" aria-selected="false" data-slide="1"><span>Запуск коммуникации</span></button>
-    <button class="stab" role="tab" aria-selected="false" data-slide="2"><span>Удержание</span></button>
-    <button class="stab" role="tab" aria-selected="false" data-slide="3"><span>Развитие Е-commerce</span></button>
-    <button class="stab" role="tab" aria-selected="false" data-slide="4"><span>Привлечение клиентов</span></button>
-    <button class="stab" role="tab" aria-selected="false" data-slide="5"><span>Аналитика</span></button>
+    <button class="stab is-active" role="tab" aria-selected="true" data-slide="0"><span>Сбор данных</span><span class="stab__dot"><span class="ms ms--24" aria-hidden="true">photo_auto_merge</span></span></button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="1"><span>Запуск коммуникации</span><span class="stab__dot"><span class="ms ms--24" aria-hidden="true">photo_auto_merge</span></span></button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="2"><span>Удержание</span><span class="stab__dot"><span class="ms ms--24" aria-hidden="true">photo_auto_merge</span></span></button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="3"><span>Развитие Е-commerce</span><span class="stab__dot"><span class="ms ms--24" aria-hidden="true">photo_auto_merge</span></span></button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="4"><span>Привлечение клиентов</span><span class="stab__dot"><span class="ms ms--24" aria-hidden="true">photo_auto_merge</span></span></button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="5"><span>Аналитика</span><span class="stab__dot"><span class="ms ms--24" aria-hidden="true">photo_auto_merge</span></span></button>
   </div>
 
   <article class="pcard pcard--1" data-node="2916:16807">
@@ -173,16 +171,16 @@
     </div>
     <a class="btn btn--grad pcard__cta" href="#">Подробнее о модуле</a>
     <div class="browser browser--1" data-node="2916:16810">
-      <div class="browser__side ph" data-img="assets/img/platform-01-sidebar.png"></div>
-      <div class="browser__screen ph" data-img="assets/img/platform-01-screen.png"></div>
+      <div class="browser__side ph" data-asset="platform-01-sidebar"></div>
+      <div class="browser__screen ph" data-asset="platform-01-screen"></div>
     </div>
   </article>
 
   <article class="pcard pcard--2" data-node="2916:16814">
     <div class="pcard__wash pcard__wash--2"></div>
     <div class="browser browser--2" data-node="2916:16816">
-      <div class="browser__side ph" data-img="assets/img/platform-02-sidebar.png"></div>
-      <div class="browser__screen ph" data-img="assets/img/platform-02-screen.png"></div>
+      <div class="browser__side ph" data-asset="platform-02-sidebar"></div>
+      <div class="browser__screen ph" data-asset="platform-02-screen"></div>
     </div>
     <div class="stat-chip" data-node="2916:16819">
       <p class="stat-chip__num">×1,8</p>
@@ -197,12 +195,12 @@
   <div class="why-bg" data-node="2916:16730"></div>
 
   <div class="sticker" data-node="2916:16908">
-    <div class="sticker__inner ph" data-img="assets/img/why-visual.png"></div>
+    <div class="sticker__inner ph" data-asset="why-visual"></div>
   </div>
 
   <div class="why-list" data-node="2916:16910">
     <div class="why-list__lead">
-      <svg class="ico ico--32" viewBox="0 -960 960 960" aria-hidden="true"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-40h560q17 0 28.5-11.5T800-200v-560q0-17-11.5-28.5T760-800H200q-17 0-28.5 11.5T160-760v560q0 17 11.5 28.5T200-160Zm120-120h80v-80h-80v80Zm160 0h80v-80h-80v80Zm-160-160h80v-80h-80v80Zm160 0h80v-80h-80v80Zm160 0h80v-80h-80v80ZM320-600h80v-80h-80v80Zm160 0h80v-80h-80v80Zm160 0h80v-80h-80v80Z"/></svg>
+      <span class="ms ms--32" aria-hidden="true">gradient</span>
       <p class="why-list__title">Прозрачный старт</p>
       <p class="why-list__desc">Без скрытых условий, сложных тарифов и неожиданных доплат.</p>
     </div>
@@ -230,7 +228,7 @@
     </div>
 
     <div class="bento__card bento__card--sec" data-node="2916:16733">
-      <svg class="ico ico--64" viewBox="0 -960 960 960" aria-hidden="true"><path d="M480-82q-135-38-227.5-160.5T160-516v-227l320-119 320 119v227q0 151-92.5 273.5T480-82Zm0-42q116-38 194-142.5T752-516v-198l-272-101-272 101v198q0 125 78 229.5T480-124Zm0-356Z"/></svg>
+      <span class="ms ms--64" aria-hidden="true">security</span>
       <p class="bento__lead bento__lead--center">152-ФЗ и безопасное хранение даных</p>
     </div>
 
@@ -264,7 +262,7 @@
 
   <article class="tile tile--articles" data-node="2916:16927">
     <div class="tile__inner">
-      <span class="tile__ill ph ph--svg" data-img="assets/img/ill-laptop-arrow.svg" style="--ill:112px"></span>
+      <span class="tile__ill ph ph--svg" data-asset="ill-laptop-arrow" style="--ill:112px"></span>
       <p class="tile__title">Статьи</p>
       <p class="tile__desc">Разборы реальных кейсов, новых механик и лучших практик CRM-маркетинга.</p>
     </div>
@@ -272,14 +270,14 @@
 
   <article class="tile tile--academy" data-node="2916:16932">
     <div class="tile__inner">
-      <span class="tile__ill ph ph--svg" data-img="assets/img/ill-auto-stories.svg" style="--ill:120px"></span>
+      <span class="tile__ill ph ph--svg" data-asset="ill-auto-stories" style="--ill:120px"></span>
       <p class="tile__title">Академия</p>
       <p class="tile__desc">Бесплатный курс по CRM-маркетингу — от базовых принципов до сложных механик.</p>
     </div>
   </article>
 
   <article class="tile tile--kb" data-node="2916:16938">
-    <span class="tile__ill ph ph--svg" data-img="assets/img/ill-knowledge.svg" style="--ill:93px;--ill-h:90px"></span>
+    <span class="tile__ill ph ph--svg" data-asset="ill-knowledge" style="--ill:93px;--ill-h:90px"></span>
     <p class="tile__title">База знаний</p>
     <p class="tile__desc">Подробные инструкции и лучшие практики работы с платформой.</p>
   </article>
@@ -306,19 +304,19 @@
       </div>
     </form>
 
-    <div class="lead__visual ph" data-node="2916:16966" data-img="assets/img/lead-visual.png"></div>
+    <div class="lead__visual ph" data-node="2916:16966" data-asset="lead-visual"></div>
   </section>
 
   <!-- ============ FOOTER · 2916:17020 ============ -->
   <footer class="ftr" data-node="2916:17020">
-    <span class="ftr__logo ph ph--svg" data-img="assets/img/logo-maxma-white.svg"></span>
+    <span class="ftr__logo ph ph--svg" data-asset="logo-maxma-white"></span>
 
     <div class="ftr__contacts">
       <a class="ftr__contact" href="tel:+74999384980">+7 (499) 938 49 80</a>
       <a class="ftr__contact" href="mailto:hello@maxma.com">hello@maxma.com</a>
       <div class="ftr__social">
-        <span class="ftr__soc ph ph--svg" data-img="assets/img/soc-telegram.svg" style="--sw:24px;--sh:22px"></span>
-        <span class="ftr__soc ph ph--svg" data-img="assets/img/soc-vc.svg" style="--sw:84px;--sh:32px"></span>
+        <span class="ftr__soc ph ph--svg" data-asset="soc-telegram" style="--sw:24px;--sh:22px"></span>
+        <span class="ftr__soc ph ph--svg" data-asset="soc-vc" style="--sw:84px;--sh:32px"></span>
       </div>
     </div>
 

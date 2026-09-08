@@ -6,20 +6,110 @@
 
   /* ---------------------------------------------------------------
      Asset slots.
-     Every image box keeps its exact Figma geometry. If the export is
-     present in assets/img/ it is painted in; if not, the slot stays a
-     neutral placeholder instead of a broken image. See ASSETS.md.
+
+     A slot names the asset, not the file: data-asset="hero-dashboard".
+     The loader tries the extensions below and uses whichever one is
+     actually in assets/img/, so an export saved as .svg where .png was
+     expected still lands — and a .webm/.mp4 becomes a looping video
+     instead of a still. Nothing found: the slot keeps its designed
+     geometry as a neutral placeholder. See ASSETS.md.
      --------------------------------------------------------------- */
-  function hydrateAssets() {
-    document.querySelectorAll('.ph[data-img]').forEach(function (el) {
-      var src = el.getAttribute('data-img');
+  var DIR = 'assets/img/';
+  var IMAGE_EXT = ['svg', 'png', 'webp', 'jpg', 'jpeg'];
+  var VIDEO_EXT = ['webm', 'mp4'];
+
+  function probeImage(url) {
+    return new Promise(function (resolve) {
       var probe = new Image();
-      probe.onload = function () {
-        el.style.setProperty('--src', 'url("' + src + '")');
-        el.classList.add('is-loaded');
-      };
-      probe.src = src;
+      probe.onload = function () { resolve(true); };
+      probe.onerror = function () { resolve(false); };
+      probe.src = url;
     });
+  }
+
+  function probeVideo(url) {
+    return new Promise(function (resolve) {
+      var probe = document.createElement('video');
+      probe.muted = true;
+      probe.preload = 'metadata';
+      probe.onloadeddata = probe.onloadedmetadata = function () { resolve(true); };
+      probe.onerror = function () { resolve(false); };
+      probe.src = url;
+    });
+  }
+
+  function mountVideo(el, url) {
+    var video = document.createElement('video');
+    video.src = url;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('aria-hidden', 'true');
+    el.classList.add('is-video');
+    el.appendChild(video);
+    // Autoplay can still be refused; a muted inline video normally isn't.
+    var started = video.play();
+    if (started && started.catch) started.catch(function () {});
+  }
+
+  async function hydrateAsset(el) {
+    var name = el.getAttribute('data-asset');
+    for (var i = 0; i < IMAGE_EXT.length; i++) {
+      var url = DIR + name + '.' + IMAGE_EXT[i];
+      if (await probeImage(url)) {
+        // Absolute: the property is read inside css/styles.css, and a
+        // relative URL there would resolve against css/, not the page.
+        el.style.setProperty('--src', 'url("' + new URL(url, document.baseURI).href + '")');
+        el.classList.add('is-loaded');
+        return;
+      }
+    }
+    for (var k = 0; k < VIDEO_EXT.length; k++) {
+      var vurl = DIR + name + '.' + VIDEO_EXT[k];
+      if (await probeVideo(vurl)) { mountVideo(el, vurl); return; }
+    }
+  }
+
+  function hydrateAssets() {
+    document.querySelectorAll('.ph[data-asset]').forEach(hydrateAsset);
+  }
+
+  /* ---------------------------------------------------------------
+     Icon font. The ligatures would otherwise show as the words
+     "bolt", "token", ... if Google Fonts is unreachable.
+     --------------------------------------------------------------- */
+  function revealIcons() {
+    if (!document.fonts) return;
+    document.fonts.load('300 24px "Material Symbols Outlined"', 'bolt').then(function (faces) {
+      if (faces && faces.length) document.documentElement.classList.add('fonts-ready');
+    }).catch(function () {});
+  }
+
+  /* ---------------------------------------------------------------
+     First screen: as you scroll it, the gradient card grows into a
+     full-bleed background and the dashboard scales up by 15%.
+     --------------------------------------------------------------- */
+  function bindHeroScroll() {
+    var stage = document.getElementById('stage');
+    if (!stage) return;
+    var RUN = 700; // px of scroll the expansion takes
+    var ticking = false;
+
+    function apply() {
+      ticking = false;
+      var p = Math.min(1, Math.max(0, window.pageYOffset / RUN));
+      stage.style.setProperty('--hero-p', p.toFixed(4));
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(apply);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    apply();
   }
 
   /* ---------------------------------------------------------------
@@ -155,6 +245,8 @@
   document.addEventListener('DOMContentLoaded', function () {
     bindMarquee();
     hydrateAssets();
+    revealIcons();
+    bindHeroScroll();
     bindTabs('.cases-tabs', '.pill', 'is-active', function (i, item) {
       toast('Фильтр: ' + item.textContent.trim());
     });

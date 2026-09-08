@@ -59,8 +59,10 @@ hr{border:0;margin:0}
   border-radius:inherit;
 }
 .ph.is-loaded{background-image:var(--src);background-color:transparent}
+.ph.is-video{background:none}
+.ph video{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
 .ph--svg,.ph--logo{background:none}
-.ph--svg.is-loaded,.ph--logo.is-loaded{background-image:var(--src);background-size:contain}
+.ph--svg.is-loaded,.ph--logo.is-loaded{background-image:var(--src);background-size:contain;background-repeat:no-repeat;background-position:center}
 .ph--svg:not(.is-loaded),.ph--logo:not(.is-loaded){
   background:rgba(25,9,40,.06);border-radius:4px;
 }
@@ -68,10 +70,23 @@ hr{border:0;margin:0}
 
 .case--hero .ph:not(.is-loaded){background:rgba(255,255,255,.07)}
 
-/* ---------- icons ---------- */
-.ico{width:24px;height:24px;fill:var(--ink);flex:none}
-.ico--32{width:32px;height:32px}
-.ico--64{width:64px;height:64px}
+/* ---------- icons · Google Material Symbols Outlined, wght 300 ---------- */
+.ms{
+  font-family:"Material Symbols Outlined";font-weight:normal;font-style:normal;
+  line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;
+  direction:ltr;display:inline-block;flex:none;color:var(--ink);
+  -webkit-font-feature-settings:"liga";font-feature-settings:"liga";
+  -webkit-font-smoothing:antialiased;
+  font-variation-settings:"FILL" 0,"wght" 300,"GRAD" 0,"opsz" 24;
+}
+/* Until the icon font is there the ligature would render as the word
+   "bolt"/"token"/... — keep the glyphs hidden rather than show that. */
+.ms{visibility:hidden}
+.fonts-ready .ms{visibility:visible}
+.ms--20{font-size:20px;width:20px;height:20px;font-variation-settings:"FILL" 0,"wght" 300,"GRAD" 0,"opsz" 20}
+.ms--24{font-size:24px;width:24px;height:24px}
+.ms--32{font-size:32px;width:32px;height:32px}
+.ms--64{font-size:64px;width:64px;height:64px;font-variation-settings:"FILL" 0,"wght" 300,"GRAD" 0,"opsz" 40}
 
 /* ---------- shared type ---------- */
 .sec-title{
@@ -129,12 +144,14 @@ hr{border:0;margin:0}
 /* =====================================================================
    HEADER · 2956:17161
    ===================================================================== */
-.hdr{left:1px;top:18px;width:1439px;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:60}
+/* Fixed for the whole scroll, on a plain white band. */
+.hdr-bar{position:fixed;top:0;left:0;width:100%;height:84px;background:#fff;z-index:100}
+.hdr{position:relative;width:1440px;height:48px;margin:0 auto;top:18px;display:flex;align-items:center;justify-content:space-between;padding:0 21px}
+/* Продукт / Тарифы / Блог are not links yet. */
+.hdr__nav span{font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);white-space:nowrap;cursor:default}
 .hdr__left{display:flex;align-items:center;gap:30px}
 .hdr__logo{width:129px;height:38px}
 .hdr__nav{display:flex;align-items:center;gap:32px;height:38px;padding:12px 20px;border-radius:4px}
-.hdr__nav a{font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);white-space:nowrap;transition:opacity .18s}
-.hdr__nav a:hover{opacity:.6}
 .hdr__right{display:flex;align-items:center;gap:32px;height:48px}
 .hdr__phone{font-size:15px;line-height:24px;letter-spacing:-.15px;white-space:nowrap}
 .hdr__actions{display:flex;align-items:center;gap:8px;height:48px;padding:12px 0;border-radius:4px}
@@ -142,7 +159,16 @@ hr{border:0;margin:0}
 /* =====================================================================
    HERO
    ===================================================================== */
-.hero-bg{left:21px;top:84px;width:1398px;height:1004px;border-radius:20px;background:linear-gradient(0deg,#d0f6f1 0%,#dae2fc 100%);opacity:.6}
+/* --hero-p goes 0 -> 1 over the first screen of scrolling (js/main.js):
+   the rounded gradient card grows into a full-bleed background. */
+.hero-bg{
+  left:calc(21px * (1 - var(--hero-p,0)));
+  top:84px;
+  width:calc(1398px + 42px * var(--hero-p,0));
+  height:calc(1004px + 488px * var(--hero-p,0));
+  border-radius:calc(20px * (1 - var(--hero-p,0)));
+  background:linear-gradient(0deg,#d0f6f1 0%,#dae2fc 100%);opacity:.6;
+}
 
 .hero-copy{left:281px;top:259px;width:878px;display:flex;flex-direction:column;align-items:center;gap:48px}
 .hero-copy__head{display:flex;flex-direction:column;align-items:center;gap:27px;width:100%}
@@ -166,7 +192,12 @@ hr{border:0;margin:0}
 .hero-feat--1{left:454px;top:663px;width:201px;height:24px}
 .hero-feat--2{left:698px;top:663px;width:288px;height:24px}
 
-.hero-shot{left:167px;top:727px;width:1106px;height:737.982px;border-radius:12px}
+/* ...and the dashboard grows 15% along with it. */
+.hero-shot{
+  left:167px;top:727px;width:1106px;height:737.982px;border-radius:12px;overflow:hidden;
+  transform:scale(calc(1 + .15 * var(--hero-p,0)));transform-origin:50% 0;
+}
+.hero-shot video{width:100%;height:100%;object-fit:contain;object-position:top center;display:block}
 
 /* =====================================================================
    CLIENTS · 2968:17281 / 2968:17317
@@ -187,7 +218,8 @@ hr{border:0;margin:0}
 .stat-line{font-weight:500;font-size:30px;line-height:1.24;color:var(--ink)}
 .stat-line--1{left:256px;top:1955px;width:544px}
 .stat-line--2{left:728px;top:2189px;width:575px}
-.stat-arrow{width:46.495px;height:26.495px;overflow:visible}
+.stat-arrow{width:46.495px;height:26.495px}
+.stat-arrow .ms{position:absolute;left:13.25px;top:3.25px}
 .stat-arrow--1{left:808px;top:2031px}
 .stat-arrow--2{left:879px;top:2303px}
 
@@ -231,7 +263,7 @@ hr{border:0;margin:0}
 .cases-nav{left:654px;top:3184px;width:132px;height:42px;display:flex;align-items:center;gap:8px}
 .navbtn{width:62px;height:42px;display:flex;align-items:center;justify-content:center;border:1px solid var(--ink-20);border-radius:24px;transition:background .18s,border-color .18s}
 .navbtn:hover{background:var(--surface);border-color:var(--ink-40)}
-.navbtn svg{width:6px;height:12px}
+.navbtn .ms{font-size:20px;width:20px;height:20px}
 .navbtn:disabled{opacity:.35;cursor:default}
 
 /* =====================================================================
@@ -245,8 +277,8 @@ hr{border:0;margin:0}
 .stab{height:44px;padding:8px 24px;border-radius:60px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;line-height:24px;letter-spacing:-.14px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
 .stab:hover{opacity:.9}
 .stab.is-active{background:var(--surface);opacity:1;font-weight:500;padding:8px 4px 8px 24px}
-.stab__dot{width:36px;height:36px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#dfe3fb 0%,#cdf3f2 100%)}
-.stab__dot svg{width:24px;height:24px;fill:var(--ink)}
+.stab__dot{display:none;width:36px;height:36px;flex:none;border-radius:50%;align-items:center;justify-content:center;background:linear-gradient(135deg,#dfe3fb 0%,#cdf3f2 100%)}
+.stab.is-active .stab__dot{display:flex}
 
 .pcard{background:#fff;border:1px solid var(--hairline);border-radius:24px;overflow:hidden;height:602px}
 .pcard--1{left:256px;top:3560px;width:1046px}
