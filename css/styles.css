@@ -212,11 +212,14 @@ hr{border:0;margin:0}
 
 /* ...and the dashboard grows 15% along with it. */
 .hero-shot{
-  left:167px;top:727px;width:1106px;height:737.982px;border-radius:12px;overflow:hidden;
+  /* Box follows the recording's own ratio (1346x780) rather than the 1106x738
+     of the still it replaced — otherwise `contain` left ~97px empty below it. */
+  left:167px;top:727px;width:1106px;aspect-ratio:1346/780;
+  border-radius:12px;overflow:hidden;
   box-shadow:0 22px 54px rgba(25,9,40,.13);
   transform:scale(calc(1 + .15 * var(--hero-p,0)));transform-origin:50% 0;
 }
-.hero-shot video{width:100%;height:100%;object-fit:contain;object-position:top center;display:block}
+.hero-shot video{width:100%;height:100%;object-fit:cover;display:block}
 
 /* =====================================================================
    CLIENTS · 2968:17281 / 2968:17317
