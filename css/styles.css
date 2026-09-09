@@ -313,31 +313,9 @@ hr{border:0;margin:0}
 
 .pcards{left:256px;top:3720px;width:1184px;height:602px;overflow:hidden}
 .pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
-.pcard{position:relative;flex:none;width:1046px;height:602px;background:#fff;border:1px solid var(--hairline);border-radius:24px;overflow:hidden}
-.pcard__wash{position:absolute;left:-1px;top:-1px;width:1046px;height:602px;border-radius:22px}
-.pcard--1 .pcard__wash{background:linear-gradient(0deg,#edf9ff 0%,#e1c9ff 100%)}
-.pcard--2 .pcard__wash{background:linear-gradient(180deg,#7f9eb2 0%,#f8f9fb 100%)}
-.pcard--3 .pcard__wash{background:linear-gradient(0deg,#fff5f8 0%,#ffd9e6 100%)}
-.pcard--4 .pcard__wash{background:linear-gradient(0deg,#f2fbff 0%,#bfe6ff 100%)}
-.pcard--5 .pcard__wash{background:linear-gradient(0deg,#fffaf0 0%,#ffe2b8 100%)}
-.pcard--6 .pcard__wash{background:linear-gradient(0deg,#f4fffa 0%,#c6f2e2 100%)}
-.pcard .zero-code{position:absolute;left:39px;top:92px}
-.pcard__title{position:absolute;left:39px;top:152px;width:355px;font-weight:500;font-size:30px;line-height:1.2;letter-spacing:-.6px;color:var(--ink)}
-.pcard__list{position:absolute;left:39px;top:279px;width:355px;font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.32px;color:var(--ink);opacity:.8}
-.pcard__list p+p{margin-top:10px}
-.pcard__cta{position:absolute;left:39px;top:494px;width:243px}
-
-.browser{position:absolute;background:#eaf4f6;overflow:hidden}
-.browser--1{left:475px;top:92px;width:670.433px;height:548px;border-radius:11.095px;box-shadow:0 25.077px 32.452px rgba(0,0,0,.25)}
-.browser--1 .browser__side{position:absolute;left:.019px;top:6.401px;width:111.241px;height:314.452px}
-.browser--1 .browser__screen{position:absolute;left:111px;top:7px;width:526px;height:526px;border:.876px solid #dbe7e9;border-radius:8.759px;background-color:#fff}
-.browser--2,.browser--3,.browser--4,.browser--5,.browser--6{left:475px;top:92px;width:670.433px;height:548px;border-radius:11.095px;box-shadow:0 25.077px 32.452px rgba(0,0,0,.25)}
-.browser--2 .browser__side,.browser--3 .browser__side,.browser--4 .browser__side,.browser--5 .browser__side,.browser--6 .browser__side{position:absolute;left:.019px;top:6.401px;width:111.241px;height:314.452px}
-.browser--2 .browser__screen,.browser--3 .browser__screen,.browser--4 .browser__screen,.browser--5 .browser__screen,.browser--6 .browser__screen{position:absolute;left:111px;top:7px;width:526px;height:526px;border:.876px solid #dbe7e9;border-radius:8.759px;background-color:#fff}
-
-.stat-chip{position:absolute;right:9px;bottom:9px;width:214px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:8px;padding:30px 16px;background:#fff;border:1px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 0 var(--ink);color:var(--ink)}
-.stat-chip__num{font-weight:500;font-size:34px;line-height:normal;white-space:nowrap}
-.stat-chip__cap{font-size:16px;line-height:22px;opacity:.6;width:100%}
+/* Each segment is one 1046x602 artwork — gradient, copy and button are all
+   baked into the image, so the card is just the picture. */
+.pcard{position:relative;flex:none;width:1046px;height:602px;border-radius:24px;overflow:hidden;border:1px solid var(--hairline)}
 
 /* =====================================================================
    WHY / BENTO
