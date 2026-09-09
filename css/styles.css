@@ -51,7 +51,7 @@ hr{border:0;margin:0}
 /* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
    (the hero gradient at 1520) paints past the frame edge, and wider screens
    just show white to either side. */
-.stage{position:relative;width:1440px;height:12993px;margin:0 auto;background:#fff}
+.stage{position:relative;width:1440px;height:12223px;margin:0 auto;background:#fff}
 .stage>*{position:absolute}
 
 /* ---------- asset placeholders ----------
