@@ -215,6 +215,7 @@
     var pin = document.getElementById('whyPin');
     if (!pin) return;
     var steps = Array.prototype.slice.call(pin.querySelectorAll('.why-step'));
+    var cards = Array.prototype.slice.call(pin.querySelectorAll('.why-card'));
     if (!steps.length) return;
     var ticking = false, current = -1;
 
@@ -231,6 +232,13 @@
       if (i === current) return;
       current = i;
       steps.forEach(function (step, k) { step.classList.toggle('is-active', k === i); });
+      // Keep the card stack in step: everything before has flown off, the
+      // active one is on top, and only the one right behind it shows.
+      cards.forEach(function (card, k) {
+        card.classList.toggle('is-gone', k < i);
+        card.classList.toggle('is-current', k === i);
+        card.classList.toggle('is-next', k === i + 1);
+      });
     }
     function onScroll() {
       if (ticking) return;
