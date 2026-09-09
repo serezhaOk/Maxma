@@ -215,7 +215,7 @@ hr{border:0;margin:0}
   /* Box follows the recording's own ratio (1346x780) rather than the 1106x738
      of the still it replaced — otherwise `contain` left ~97px empty below it. */
   left:167px;top:727px;width:1106px;aspect-ratio:1346/780;
-  border-radius:12px;overflow:hidden;
+  border:6px solid var(--ink);border-radius:12px;overflow:hidden;
   box-shadow:0 22px 54px rgba(25,9,40,.13);
   transform:scale(calc(1 + .15 * var(--hero-p,0)));transform-origin:50% 0;
 }
@@ -330,9 +330,9 @@ hr{border:0;margin:0}
    under the fixed header until the runway is used up. js/main.js turns
    scroll position inside the runway into the active step index.
    --------------------------------------------------------------------- */
-.why-pin{left:0;top:4766px;width:1440px;height:3300px}
+.why-pin{left:0;top:4701.48px;width:1440px;height:3364px}
 .why-pin__inner{
-  position:sticky;top:84px;height:calc(100vh - 84px);min-height:680px;
+  position:sticky;top:84px;height:min(calc(100vh - 84px),680px);
   display:flex;align-items:center;
 }
 
