@@ -91,6 +91,11 @@ hr{border:0;margin:0}
 .ms--32{font-size:32px;width:32px;height:32px}
 .ms--64{font-size:64px;width:64px;height:64px;font-variation-settings:"FILL" 0,"wght" 300,"GRAD" 0,"opsz" 40}
 
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.6,.3,1)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
 /* ---------- shared type ---------- */
 .sec-title{
   font-weight:500;font-size:40px;line-height:1.2;letter-spacing:-1.6px;
@@ -155,7 +160,12 @@ hr{border:0;margin:0}
    HEADER · 2956:17161
    ===================================================================== */
 /* Fixed for the whole scroll, on a plain white band. */
-.hdr-bar{position:fixed;top:0;left:0;width:100%;height:84px;background:#fff;z-index:100}
+.hdr-bar{
+  position:fixed;top:0;left:0;width:100%;height:140px;z-index:100;pointer-events:none;
+  /* solid through the header row (ends at 66px = 47%), then fades to nothing */
+  background:linear-gradient(180deg,#fff 0%,#fff 47%,rgba(255,255,255,0) 100%);
+}
+.hdr-bar .hdr{pointer-events:auto}
 .hdr{position:relative;width:1440px;height:48px;margin:0 auto;top:18px;display:flex;align-items:center;justify-content:space-between;padding:0 21px}
 /* Продукт / Тарифы / Блог are not links yet. */
 .hdr__nav span{font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);white-space:nowrap;cursor:default}
@@ -172,9 +182,9 @@ hr{border:0;margin:0}
 /* --hero-p goes 0 -> 1 over the first screen of scrolling (js/main.js):
    the rounded gradient card grows into a full-bleed background. */
 .hero-bg{
-  left:calc(21px * (1 - var(--hero-p,0)));
+  left:calc(21px - 61px * var(--hero-p,0));
   top:84px;
-  width:calc(1398px + 42px * var(--hero-p,0));
+  width:calc(1398px + 122px * var(--hero-p,0));
   height:calc(1004px + 488px * var(--hero-p,0));
   border-radius:calc(20px * (1 - var(--hero-p,0)));
   background:linear-gradient(0deg,#d0f6f1 0%,#dae2fc 100%);opacity:.6;
@@ -205,6 +215,7 @@ hr{border:0;margin:0}
 /* ...and the dashboard grows 15% along with it. */
 .hero-shot{
   left:167px;top:727px;width:1106px;height:737.982px;border-radius:12px;overflow:hidden;
+  box-shadow:0 22px 54px rgba(25,9,40,.13);
   transform:scale(calc(1 + .15 * var(--hero-p,0)));transform-origin:50% 0;
 }
 .hero-shot video{width:100%;height:100%;object-fit:contain;object-position:top center;display:block}
@@ -227,10 +238,20 @@ hr{border:0;margin:0}
 .stat-line{font-weight:500;font-size:30px;line-height:1.24;color:var(--ink)}
 .stat-line--1{left:256px;top:2115px;width:544px}
 .stat-line--2{left:728px;top:2349px;width:575px}
-.stat-arrow{width:46.495px;height:26.495px}
-.stat-arrow .ms{position:absolute;left:13.25px;top:3.25px}
-.stat-arrow--1{left:808px;top:2191px}
-.stat-arrow--2{left:879px;top:2463px}
+/* Zero-sized anchor: it rides at the end of the text flow but has no width,
+   so the pill growing on hover can never push the last word onto a new line. */
+.stat-pill-anchor{position:relative;display:inline-block;width:0;height:0}
+.stat-pill{
+  position:absolute;left:12px;top:-26px;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:0;height:36px;overflow:hidden;
+  border-radius:99px;background:var(--surface);
+  opacity:0;transform:translateX(-8px);
+  transition:width .32s cubic-bezier(.4,0,.2,1),opacity .22s ease,
+             transform .32s cubic-bezier(.4,0,.2,1);
+}
+.stat-line:hover .stat-pill{width:56px;opacity:1;transform:translateX(0)}
+.stat-pill .ms{color:var(--ink)}
 
 /* =====================================================================
    CASES · 2968:17303 / 2968:17370 / 2968:17409

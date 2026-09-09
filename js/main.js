@@ -176,6 +176,26 @@
   }
 
   /* ---------------------------------------------------------------
+     Fade blocks in the first time they are scrolled into view.
+     --------------------------------------------------------------- */
+  function bindReveal() {
+    var items = document.querySelectorAll('.reveal');
+    if (!items.length) return;
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target); // reveal once, not on every pass
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------------------------------------------------------------
      Platform stages: picking a tab slides the matching card in.
      --------------------------------------------------------------- */
   function bindPlatformCards() {
@@ -297,6 +317,7 @@
     hydrateAssets();
     revealIcons();
     bindHeroScroll();
+    bindReveal();
     bindTabs('.cases-tabs', '.pill', 'is-active', function (i, item) {
       toast('Фильтр: ' + item.textContent.trim());
     });
