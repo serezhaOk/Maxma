@@ -114,13 +114,18 @@ hr{border:0;margin:0}
 }
 .bignum{
   font-weight:500;font-size:79.812px;line-height:1.2;
-  text-transform:uppercase;color:#fff;
-  white-space:nowrap;
+  text-transform:uppercase;color:#fff;white-space:nowrap;
+  text-shadow:2px 2px 0 var(--ink);
+  -webkit-text-stroke:1px var(--ink);
+}
+/* In the bento the numbers carry a gradient fill instead. drop-shadow is used
+   rather than text-shadow because background-clip:text leaves the glyphs
+   transparent and a text shadow would show straight through them. */
+.bento .bignum{
   background:linear-gradient(135deg,#9fd4ef 0%,#7b63cf 55%,#6b4fc4 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  /* drop-shadow follows the glyph alpha, so it works where text-shadow would
-     bleed through the transparent fill */
-  filter:drop-shadow(2px 2px 0 rgba(25,9,40,.22));
+  text-shadow:none;-webkit-text-stroke:0;
+  filter:drop-shadow(2px 2px 0 #000);
 }
 
 /* ---------- buttons ---------- */
@@ -408,7 +413,7 @@ hr{border:0;margin:0}
 .bento__card--years{
   left:-18px;top:0;width:338px;height:573px;
   background:linear-gradient(0deg,#edf9ff 0%,#e1c9ff 100%);
-  border:4px solid #fff;border-radius:22px;
+  border:1px solid rgba(0,0,0,.1);border-radius:22px;
 }
 .bento__card--years .bento__lead{left:20px;top:auto;bottom:297px;width:290px;font-size:32px}
 .bento__card--uptime{left:336px;top:1.008px;width:456px;height:381.669px}
@@ -423,11 +428,17 @@ hr{border:0;margin:0}
 .bento__label{position:absolute;left:31px;top:37.99px;font-weight:500;font-size:20.927px;line-height:1.2;text-transform:uppercase;color:var(--ink);white-space:nowrap}
 .bento__card--uptime .bignum{position:absolute;left:31.115px;top:62.99px}
 .bento__card--uptime .bento__note{left:30.972px;top:280.99px;width:256px}
-.bento__card--sec .ms--64{position:absolute;left:136px;top:113px;color:#fff;z-index:1}
-.bento__card--sec::before{
-  content:"";position:absolute;left:117px;top:94px;width:102px;height:102px;border-radius:50%;
+.bento__shield{
+  position:absolute;left:117px;top:94px;width:102px;height:102px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
   background:linear-gradient(140deg,#a9d9f2 0%,#8f76dd 60%,#7b5cd6 100%);
+  background-size:contain;background-repeat:no-repeat;background-position:center;
 }
+.bento__shield .ms--64{color:#fff}
+/* once shield-icon.* is in assets/img/ the drawing underneath is dropped */
+.bento__shield.is-loaded{background-color:transparent;border-radius:0}
+.bento__shield.is-loaded .ms{display:none}
 .bento__card--2fa .bento__lead{top:23.24px;width:auto;white-space:nowrap}
 .bento__card--expert .bento__lead{top:23px;width:285px}
 .bento__card--expert .bento__note{left:23.11px;top:95.676px;width:316.211px}
