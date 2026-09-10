@@ -308,20 +308,7 @@
     });
   }
 
-  /* ---------------------------------------------------------------
-     Marquee · duplicate the strip so the loop has no visible seam
-     --------------------------------------------------------------- */
-  function bindMarquee() {
-    var track = document.getElementById('marqueeTrack');
-    if (!track) return;
-    var count = track.children.length;
-    // One item pitch is 150px wide + the 40px flex gap.
-    track.style.setProperty('--marquee-run', count * 190 + 'px');
-    track.innerHTML += track.innerHTML; // second copy hides the loop seam
-  }
-
   document.addEventListener('DOMContentLoaded', function () {
-    bindMarquee();
     hydrateAssets();
     revealIcons();
     bindHeroScroll();

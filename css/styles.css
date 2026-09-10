@@ -1,6 +1,6 @@
 /* =====================================================================
    MAXMA — main page concept
-   Figma: rvnkwI3A1eiLfX71NL843O · frame 2916:16729 (1440 × 10088)
+   Figma: rvnkwI3A1eiLfX71NL843O · frame 3026:659 (1440 × 8418)
    Fixed-width 1440 prototype. Every block is placed at its Figma
    coordinates; inner layouts mirror the Figma auto-layout.
    ===================================================================== */
@@ -51,7 +51,7 @@ hr{border:0;margin:0}
 /* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
    (the hero gradient at 1520) paints past the frame edge, and wider screens
    just show white to either side. */
-.stage{position:relative;width:1440px;height:11716px;margin:0 auto;background:#fff}
+.stage{position:relative;width:1440px;height:11307px;margin:0 auto;background:#fff}
 .stage>*{position:absolute}
 
 /* ---------- asset placeholders ----------
@@ -72,7 +72,6 @@ hr{border:0;margin:0}
 }
 .ph--round{border-radius:50%}
 
-.case--hero .ph:not(.is-loaded){background:rgba(255,255,255,.07)}
 
 /* ---------- icons · Google Material Symbols Outlined, wght 300 ---------- */
 .ms{
@@ -230,76 +229,77 @@ hr{border:0;margin:0}
 .hero-shot video{width:100%;height:100%;object-fit:cover;display:block}
 
 /* =====================================================================
-   CLIENTS · 2968:17281 / 2968:17317
+   CLIENT RESULTS · 3054:2809
    ===================================================================== */
-.clients-title{left:414px;top:1737px;width:612px}
-
-.marquee{left:-9px;top:1915px;width:1449px;height:60px;overflow:hidden;opacity:.5}
-.marquee__track{display:flex;align-items:flex-start;gap:40px;width:max-content;animation:marquee 46s linear infinite}
-.marquee:hover .marquee__track{animation-play-state:paused}
-.marquee__item{width:150px;height:60px;flex:none}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--marquee-run,1520px)))}}
-@media (prefers-reduced-motion:reduce){.marquee__track{animation:none}}
-
-/* =====================================================================
-   STATS · 2976:17457
-   ===================================================================== */
-.stat-line{font-weight:500;font-size:30px;line-height:1.24;color:var(--ink)}
-.stat-line--1{left:256px;top:2115px;width:544px}
-.stat-line--2{left:728px;top:2349px;width:575px}
-/* Zero-sized anchor: it rides at the end of the text flow but has no width,
-   so the pill growing on hover can never push the last word onto a new line. */
-.stat-pill-anchor{position:relative;display:inline-block;width:0;height:0}
-.stat-pill{
-  position:absolute;left:12px;top:-26px;
-  display:inline-flex;align-items:center;justify-content:center;
-  width:0;height:36px;overflow:hidden;
-  border-radius:99px;background:var(--surface);
-  opacity:0;transform:translateX(-8px);
-  transition:width .32s cubic-bezier(.4,0,.2,1),opacity .22s ease,
-             transform .32s cubic-bezier(.4,0,.2,1);
+.results{left:283px;top:1764px;width:911px;display:flex;align-items:flex-start;gap:165px}
+.results__label{
+  font-weight:500;font-size:16px;line-height:1.24;white-space:nowrap;
+  background:var(--grad-cta);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  width:171px;
 }
-.stat-line:hover .stat-pill{width:56px;opacity:1;transform:translateX(0)}
-.stat-pill .ms{color:var(--ink)}
+.results__col{width:575px;display:flex;flex-direction:column;gap:40px}
+.results__line{font-weight:500;font-size:20px;line-height:1.24;color:var(--ink-40)}
+.results__line--1{width:544px}
+.results__line b{font-weight:500;color:#190927}
 
 /* =====================================================================
-   CASES · 2968:17303 / 2968:17370 / 2968:17409
+   CLIENTS & CASES · 3054:2808
+   Column of heading / tabs / carousel row / pagination, 60px apart.
+   The row is 1872 wide inside a 1400 window, so the third card peeks.
    ===================================================================== */
+.ccl{left:20px;top:2064px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:60px}
+.ccl__title{width:612px}
+
 .pill-tabs{display:flex;align-items:center;padding:4px;border-radius:30px;background:var(--surface)}
 .pill{height:44px;padding:8px 24px;border-radius:60px;font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
 .pill:hover{opacity:.85}
 .pill.is-active{background:#fff;opacity:1;font-weight:500}
-.cases-tabs{left:367px;top:2657px;width:707px;height:52px}
+.cases-tabs{width:707px;height:52px}
 
-.cases{left:20px;top:2769px;width:1420px;height:515px;overflow:hidden}
-.cases__track{display:flex;align-items:center;gap:16px;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.case{position:relative;height:515px;flex:none;border-radius:24px;overflow:hidden}
-.case--hero{width:810px;background:var(--ink)}
-.case--flat{width:456px;background:var(--surface)}
-.case--ghost{width:430px;background:#fff;opacity:.2;border-radius:30px}
-.case--ghost2{width:430px;background:#f4f5ff;opacity:.3;border-radius:30px}
+.ccl__row{width:100%;height:523px;overflow:hidden}
+.ccl__track{display:flex;align-items:center;gap:16px;width:max-content;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 
-.blob{position:absolute;width:252px;height:588px;border-radius:50%;transform:rotate(30deg);filter:blur(46px);opacity:.55;pointer-events:none}
-.blob--1{left:341px;top:194px;background:radial-gradient(60% 50% at 50% 50%,#850ee0 0%,rgba(133,14,224,0) 100%)}
-.blob--2{left:503px;top:235px;background:radial-gradient(60% 50% at 50% 50%,#3b61ee 0%,rgba(59,97,238,0) 100%)}
-.blob--3{left:648px;top:266px;background:radial-gradient(60% 50% at 50% 50%,#01f6fe 0%,rgba(1,246,254,0) 100%)}
+/* Featured case · 3052:2783 — photo under a 40% black scrim. */
+.ccase{position:relative;width:574px;height:523px;flex:none;border-radius:24px;overflow:hidden;background:var(--ink)}
+.ccase__bg{position:absolute;inset:0;display:block;border-radius:0}
+.ccase__bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)}
+.ccase__logo{position:absolute;left:39px;top:41px;width:181px;height:26px}
+.ccase__logo:not(.is-loaded){background:rgba(255,255,255,.14)}
+.ccase__stat{position:absolute;left:40px;top:275px;width:367px;display:flex;flex-direction:column;gap:10px;color:#fff}
+.ccase__num{
+  font-weight:500;font-size:90px;line-height:.82;letter-spacing:-4.5px;
+  text-transform:uppercase;white-space:nowrap;text-shadow:2px 2px 0 var(--ink);
+}
+.ccase__desc{width:333px;font-size:14px;line-height:1.24}
+.ccase__cta{
+  position:absolute;left:40px;top:433px;height:50px;
+  display:inline-flex;align-items:center;justify-content:center;gap:16px;
+  padding:9px 25px;border-radius:40px;
+  background:var(--surface);border:1px solid var(--mint);
+  font-weight:500;font-size:14px;line-height:18px;color:var(--ink);white-space:nowrap;
+  transition:background .18s;
+}
+.ccase__cta:hover{background:#fff}
+/* The glyph advance is one em; the drawn arrow is 10.495px, so the box is
+   pulled back to the artwork width and the button keeps its 161.5px. */
+.ccase__cta .ms{margin:0 -4.75px}
 
-.case__photo{position:absolute;left:385px;top:40px;width:365px;height:605px;background-position:bottom center}
-.case__meta{position:absolute;left:30px;top:40px;width:750px;display:flex;align-items:center;justify-content:space-between}
-.case__meta--narrow{width:366px}
-.case__logo{width:116.85px;height:25.228px;flex:none}
-.case__logo--sm{width:118px;height:23px}
-.case__scope{font-size:16px;line-height:1.33;color:#fff;opacity:.5;white-space:nowrap}
-.case__scope--ink{color:var(--ink);opacity:1}
-.case__title{position:absolute;left:30px;top:274px;width:508px;font-weight:500;font-size:30px;line-height:1.24;color:#fff}
-.case__cta{position:absolute;left:30px;top:421px}
-.case--hero .case__cta{padding:16px 30px}
-.case__stat{position:absolute;left:30px;top:329px;width:367px;display:flex;flex-direction:column;align-items:flex-start}
-.case__desc{font-size:16px;line-height:1.33;color:var(--ink)}
-.case__desc--abs{position:absolute;left:31px;top:335px;width:370px;line-height:1.45}
-.bignum--abs{position:absolute;left:32.115px;top:227px}
+/* Logo wall · 3054:2805 — 2x2, arrows only on the cells that have a case. */
+.lgrid{width:692px;height:523px;flex:none;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:16px}
+.lcard{position:relative;border-radius:24px;background:var(--surface)}
+.lcard__logo{position:absolute;left:56.5px;top:82px;width:225px;height:90px;opacity:.5}
+.lcard__arrow{
+  position:absolute;left:272px;top:20px;width:46.495px;height:26.495px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:99px;background:#fff;
+}
+.lgrid .lcard:nth-child(3) .lcard__arrow{left:270px}
 
-.cases-nav{left:654px;top:3344px;width:132px;height:42px;display:flex;align-items:center;gap:8px}
+/* Next case, peeking in from the right · 3052:2752 */
+.ccl__peek{width:574px;height:523px;flex:none;border-radius:24px;background:linear-gradient(-90deg,#edf9ff 0%,#e1c9ff 100%)}
+
+.cases-nav{width:132px;height:42px;display:flex;align-items:center;gap:8px}
 .navbtn{width:62px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:0;border-radius:24px;transition:background .18s}
 .navbtn:hover{background:#e6e9f2}
 .navbtn .ms{font-size:20px;width:20px;height:20px}
@@ -308,18 +308,18 @@ hr{border:0;margin:0}
 /* =====================================================================
    PLATFORM · 2916:16777 / 2916:16822 / 2916:16807 / 2916:16814
    ===================================================================== */
-.platform-head{left:281px;top:3526px;width:878px}
+.platform-head{left:281px;top:3117px;width:878px}
 .platform-head .sec-title{width:556px}
 .platform-head .sec-sub{width:608px}
 
-.stage-tabs{left:20px;top:3720px;width:210px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
+.stage-tabs{left:20px;top:3311px;width:210px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
 .stab{height:44px;padding:8px 24px;border-radius:60px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;line-height:24px;letter-spacing:-.14px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
 .stab:hover{opacity:.9}
 .stab.is-active{background:var(--surface);opacity:1;font-weight:500;padding:8px 4px 8px 24px}
 .stab__dot{display:none;width:36px;height:36px;flex:none;border-radius:50%;align-items:center;justify-content:center;background:linear-gradient(135deg,#dfe3fb 0%,#cdf3f2 100%)}
 .stab.is-active .stab__dot{display:flex}
 
-.pcards{left:256px;top:3720px;width:1184px;height:602px;overflow:hidden}
+.pcards{left:256px;top:3311px;width:1184px;height:602px;overflow:hidden}
 .pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
 /* Each segment is one 1046x602 artwork — gradient, copy and button are all
    baked into the image, so the card is just the picture. */
@@ -328,9 +328,9 @@ hr{border:0;margin:0}
 /* =====================================================================
    WHY / BENTO
    ===================================================================== */
-.why-title{left:442px;top:4498px;width:556px}
-.why-sub{left:509px;top:4618px;width:422px}
-.why-bg{left:0;top:4766px;width:1440px;height:4314px;background:linear-gradient(180deg,#fff 0%,var(--surface) 25%)}
+.why-title{left:442px;top:4089px;width:556px}
+.why-sub{left:509px;top:4209px;width:422px}
+.why-bg{left:0;top:4357px;width:1440px;height:4314px;background:linear-gradient(180deg,#fff 0%,var(--surface) 25%)}
 
 /* ---------------------------------------------------------------------
    "Максимум результата" — pinned while the five steps reveal in turn.
@@ -338,7 +338,7 @@ hr{border:0;margin:0}
    under the fixed header until the runway is used up. js/main.js turns
    scroll position inside the runway into the active step index.
    --------------------------------------------------------------------- */
-.why-pin{left:0;top:4701.48px;width:1440px;height:3364px}
+.why-pin{left:0;top:4292.48px;width:1440px;height:3364px}
 .why-pin__inner{
   position:sticky;top:84px;height:min(calc(100vh - 84px),680px);
   display:flex;align-items:center;
@@ -405,10 +405,10 @@ hr{border:0;margin:0}
 }
 .why-step.is-active .why-step__desc{max-height:80px;opacity:1;margin-top:12px}
 
-.bento-head{left:373px;top:8163px;width:694px;gap:24px}
+.bento-head{left:373px;top:7754px;width:694px;gap:24px}
 .bento-head .sec-title{width:694px}
 .bento-head .sec-sub{width:366px}
-.bento{left:156px;top:8387px;width:1144px;height:573.007px}
+.bento{left:156px;top:7978px;width:1144px;height:573.007px}
 .bento__card{position:absolute;background:#fff;border:1px solid var(--hairline);border-radius:24px;overflow:hidden}
 .bento__card--years{
   left:-18px;top:0;width:338px;height:573px;
@@ -454,13 +454,13 @@ hr{border:0;margin:0}
 /* =====================================================================
    BLOG · 2916:16924 / 2916:16927 / 2916:16932 / 2916:16938
    ===================================================================== */
-.blog-head{left:281px;top:9200px;width:878px}
+.blog-head{left:281px;top:8791px;width:878px}
 .blog-head .sec-title{width:672px}
 .blog-head .sec-sub{width:608px}
 
 /* Three rows · Figma 3036:1531. The badge box is 203x75; the gradient pill,
    the name and the tilted chip sit at their own offsets inside it per row. */
-.insights{left:171px;top:9368px;width:1098px;display:flex;flex-direction:column}
+.insights{left:171px;top:8959px;width:1098px;display:flex;flex-direction:column}
 .insight{
   display:flex;align-items:center;justify-content:space-between;
   /* No gap between rows: the padding carries the height instead, so the hover
@@ -505,7 +505,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    LEAD FORM · 2968:17246
    ===================================================================== */
-.lead{left:0;top:9972px;width:1440px;height:792px}
+.lead{left:0;top:9563px;width:1440px;height:792px}
 .lead .zero-code--tilt{left:139px;top:64px}
 
 .lead__form{position:absolute;left:138px;top:125px;width:456px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
@@ -537,7 +537,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    FOOTER · 2916:17020
    ===================================================================== */
-.ftr{left:20px;top:10884px;width:1400px;height:812px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
+.ftr{left:20px;top:10475px;width:1400px;height:812px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
 .ftr__logo{position:absolute;left:140px;top:84px;width:94.48px;height:28px}
 
 .ftr__contacts{position:absolute;left:140px;top:144px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
