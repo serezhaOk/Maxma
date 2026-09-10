@@ -422,7 +422,7 @@ hr{border:0;margin:0}
 .bento__card--expert{left:572px;top:399px;width:574px;height:174px}
 
 .bento__lead{position:absolute;left:23px;top:40px;width:290px;font-weight:500;font-size:24px;line-height:1.24;color:var(--ink)}
-.bento__lead--center{position:absolute;left:24px;top:201px;width:288px;text-align:center}
+.bento__lead--center{position:absolute;left:24px;top:226px;width:288px;text-align:center}
 .bento__note{position:absolute;font-size:14px;line-height:normal;color:var(--ink);opacity:.6}
 .bento__note a{text-decoration:underline;text-underline-offset:2px}
 .bento__label{position:absolute;left:31px;top:37.99px;font-weight:500;font-size:20.927px;line-height:1.2;text-transform:uppercase;color:var(--ink);white-space:nowrap}
