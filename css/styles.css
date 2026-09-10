@@ -306,7 +306,7 @@ hr{border:0;margin:0}
 .stab__dot{display:none;width:36px;height:36px;flex:none;border-radius:50%;align-items:center;justify-content:center;background:linear-gradient(135deg,#dfe3fb 0%,#cdf3f2 100%)}
 .stab.is-active .stab__dot{display:flex}
 
-.pcards{left:256px;top:3311px;width:1184px;height:602px}
+.pcards{left:256px;top:3311px;width:1184px;height:602px;overflow:hidden}
 .pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
 /* Each segment is one 1046x602 artwork — gradient, copy and button are all
    baked into the image, so the card is just the picture. */
