@@ -330,7 +330,7 @@ hr{border:0;margin:0}
    ===================================================================== */
 .why-title{left:442px;top:4498px;width:556px}
 .why-sub{left:509px;top:4618px;width:422px}
-.why-bg{left:0;top:4766px;width:1440px;height:4282px;background:linear-gradient(180deg,#fff 0%,var(--surface) 25%)}
+.why-bg{left:0;top:4766px;width:1440px;height:4314px;background:linear-gradient(180deg,#fff 0%,var(--surface) 25%)}
 
 /* ---------------------------------------------------------------------
    "Максимум результата" — pinned while the five steps reveal in turn.
@@ -450,12 +450,6 @@ hr{border:0;margin:0}
 .minicard__txt{display:flex;flex-direction:column;gap:1.363px;min-width:0}
 .minicard__txt b{font-weight:700;font-size:12.199px;line-height:14.988px;color:var(--ink)}
 .minicard__txt i{font-style:normal;font-weight:500;font-size:9.538px;line-height:12.263px;letter-spacing:.0954px;color:#676767;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* brush divider · 2916:16731 */
-.wave{left:0;top:9048px;width:1440px;height:32px;background:var(--surface);
-  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1610 32' preserveAspectRatio='none'><path d='M0 8 C120 0 240 12 360 6 C480 0 600 14 720 9 C840 4 960 18 1080 11 C1200 4 1320 16 1440 10 C1520 6 1570 12 1610 7 L1610 26 C1500 32 1380 22 1260 27 C1140 32 1020 20 900 26 C780 32 660 20 540 26 C420 32 300 22 180 27 C110 30 50 26 0 29 Z'/></svg>") center/100% 100% no-repeat;
-  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1610 32' preserveAspectRatio='none'><path d='M0 8 C120 0 240 12 360 6 C480 0 600 14 720 9 C840 4 960 18 1080 11 C1200 4 1320 16 1440 10 C1520 6 1570 12 1610 7 L1610 26 C1500 32 1380 22 1260 27 C1140 32 1020 20 900 26 C780 32 660 20 540 26 C420 32 300 22 180 27 C110 30 50 26 0 29 Z'/></svg>") center/100% 100% no-repeat;
-}
 
 /* =====================================================================
    BLOG · 2916:16924 / 2916:16927 / 2916:16932 / 2916:16938
