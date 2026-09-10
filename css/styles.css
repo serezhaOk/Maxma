@@ -51,7 +51,7 @@ hr{border:0;margin:0}
 /* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
    (the hero gradient at 1520) paints past the frame edge, and wider screens
    just show white to either side. */
-.stage{position:relative;width:1440px;height:12308px;margin:0 auto;background:#fff}
+.stage{position:relative;width:1440px;height:11913px;margin:0 auto;background:#fff}
 .stage>*{position:absolute}
 
 /* ---------- asset placeholders ----------
@@ -441,19 +441,50 @@ hr{border:0;margin:0}
 .blog-head .sec-title{width:672px}
 .blog-head .sec-sub{width:608px}
 
-.tile{border:7px solid #fff;border-radius:40px;display:flex;flex-direction:column}
-.tile__inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:10px}
-.tile__ill{width:var(--ill);height:var(--ill-h,var(--ill));flex:none}
-.tile__title{width:368px;font-weight:500;font-size:30px;line-height:36px;letter-spacing:-.3px;text-transform:uppercase;text-align:center;color:var(--ink)}
-.tile__desc{width:368px;font-size:16px;line-height:22px;text-align:center;color:var(--ink);opacity:.6}
-.tile--articles{left:711.195px;top:9507.5px;width:638.57px;height:397.475px;background:#ffebf3;align-items:flex-start;padding:65px 130px}
-.tile--academy{left:91px;top:9581.83px;width:665.776px;height:826.875px;background:#e3eeff;align-items:center;justify-content:center;padding:45px 113px 45px 133px}
-.tile--kb{left:701.07px;top:9879.96px;width:643.417px;height:430.066px;background:#e4f5f8;align-items:center;justify-content:center;gap:24px;padding:10px}
+/* Three rows · Figma 3036:1531. The badge box is 203x75; the gradient pill,
+   the name and the tilted chip sit at their own offsets inside it per row. */
+.insights{left:171px;top:9503px;width:1098px;display:flex;flex-direction:column;gap:32px}
+.insight{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;margin:0 -24px;
+  border-bottom:1px solid var(--hairline);border-radius:12px;
+  color:var(--ink);transition:background .22s ease;
+}
+.insight:hover{background:var(--surface)}
+.insight__left{display:flex;align-items:center;gap:93px}
+.insight__badge{position:relative;width:203px;height:75px;flex:none}
+.insight__pill{position:absolute;top:0;height:52px;border-radius:10px}
+.insight__name{
+  position:absolute;top:10px;transform:translateX(-50%);
+  font-weight:500;font-size:30px;line-height:36px;letter-spacing:-.3px;
+  text-transform:uppercase;text-align:center;white-space:nowrap;
+}
+.insight__chip{
+  position:absolute;display:inline-flex;align-items:center;justify-content:center;
+  height:18.73px;padding:1px 12px 2px;border-radius:120px;
+  background:#fff;border:.5px solid #000;
+  filter:drop-shadow(0 0 .4px rgba(0,0,0,.55));
+  font-weight:500;font-size:12px;line-height:1.33;letter-spacing:-.24px;white-space:nowrap;
+}
+.insight__desc{width:477px;font-weight:500;font-size:18px;line-height:normal}
+.insight__arrow{flex:none;color:var(--ink)}
+
+.insight--academy .insight__pill{left:0;width:203px;background:linear-gradient(0deg,#e2eff8 0%,#b1e0f4 100%)}
+.insight--academy .insight__name{left:101.5px}
+.insight--academy .insight__chip{left:79.3px;top:43.07px;transform:rotate(-1.5deg)}
+
+.insight--articles .insight__pill{left:-1px;width:149px;background:linear-gradient(0deg,#edf1ff 0%,#e1c9ff 100%)}
+.insight--articles .insight__name{left:73px}
+.insight--articles .insight__chip{left:-8px;top:47px;transform:rotate(2.16deg)}
+
+.insight--kb .insight__pill{left:0;width:243px;background:linear-gradient(180deg,#fae4be 0%,#f7f3e9 100%)}
+.insight--kb .insight__name{left:121.5px}
+.insight--kb .insight__chip{left:146px;top:-17px;transform:rotate(2.02deg)}
 
 /* =====================================================================
    LEAD FORM · 2968:17246
    ===================================================================== */
-.lead{left:0;top:10564px;width:1440px;height:792px}
+.lead{left:0;top:10169px;width:1440px;height:792px}
 .lead .zero-code--tilt{left:139px;top:64px}
 
 .lead__form{position:absolute;left:138px;top:125px;width:456px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
@@ -485,7 +516,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    FOOTER · 2916:17020
    ===================================================================== */
-.ftr{left:20px;top:11476px;width:1400px;height:812px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
+.ftr{left:20px;top:11081px;width:1400px;height:812px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
 .ftr__logo{position:absolute;left:140px;top:84px;width:94.48px;height:28px}
 
 .ftr__contacts{position:absolute;left:140px;top:144px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
