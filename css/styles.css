@@ -51,7 +51,7 @@ hr{border:0;margin:0}
 /* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
    (the hero gradient at 1520) paints past the frame edge, and wider screens
    just show white to either side. */
-.stage{position:relative;width:1440px;height:11945px;margin:0 auto;background:#fff}
+.stage{position:relative;width:1440px;height:11707px;margin:0 auto;background:#fff}
 .stage>*{position:absolute}
 
 /* ---------- asset placeholders ----------
@@ -115,9 +115,12 @@ hr{border:0;margin:0}
 .bignum{
   font-weight:500;font-size:79.812px;line-height:1.2;
   text-transform:uppercase;color:#fff;
-  text-shadow:2px 2px 0 var(--ink);white-space:nowrap;
-  /* hsba(271,77%,16%,1) == #190928 == --ink */
-  -webkit-text-stroke:1px var(--ink);
+  white-space:nowrap;
+  background:linear-gradient(135deg,#9fd4ef 0%,#7b63cf 55%,#6b4fc4 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  /* drop-shadow follows the glyph alpha, so it works where text-shadow would
+     bleed through the transparent fill */
+  filter:drop-shadow(2px 2px 0 rgba(25,9,40,.22));
 }
 
 /* ---------- buttons ---------- */
@@ -322,7 +325,7 @@ hr{border:0;margin:0}
    ===================================================================== */
 .why-title{left:442px;top:4498px;width:556px}
 .why-sub{left:509px;top:4618px;width:422px}
-.why-bg{left:0;top:4766px;width:1440px;height:4348px;background:linear-gradient(180deg,#fff 0%,var(--surface) 25%)}
+.why-bg{left:0;top:4766px;width:1440px;height:4232px;background:linear-gradient(180deg,#fff 0%,var(--surface) 25%)}
 
 /* ---------------------------------------------------------------------
    "Максимум результата" — pinned while the five steps reveal in turn.
@@ -397,12 +400,17 @@ hr{border:0;margin:0}
 }
 .why-step.is-active .why-step__desc{max-height:80px;opacity:1;margin-top:12px}
 
-.bento-head{left:281px;top:8163px;width:878px}
-.bento-head .sec-title{width:560px}
-.bento-head .sec-sub{width:268px}
-.bento{left:156px;top:8383px;width:1144px;height:573.007px}
+.bento-head{left:373px;top:8163px;width:694px;gap:24px}
+.bento-head .sec-title{width:694px}
+.bento-head .sec-sub{width:366px}
+.bento{left:156px;top:8387px;width:1144px;height:573.007px}
 .bento__card{position:absolute;background:#fff;border:1px solid var(--hairline);border-radius:24px;overflow:hidden}
-.bento__card--years{left:-18px;top:0;width:338px;height:573px}
+.bento__card--years{
+  left:-18px;top:0;width:338px;height:573px;
+  background:linear-gradient(0deg,#edf9ff 0%,#e1c9ff 100%);
+  border:4px solid #fff;border-radius:22px;
+}
+.bento__card--years .bento__lead{left:20px;top:auto;bottom:297px;width:290px;font-size:32px}
 .bento__card--uptime{left:336px;top:1.008px;width:456px;height:381.669px}
 .bento__card--sec{left:810px;top:0;width:336px;height:383px;display:flex;flex-direction:column;align-items:center}
 .bento__card--2fa{left:336px;top:399px;width:220px;height:174px}
@@ -415,7 +423,11 @@ hr{border:0;margin:0}
 .bento__label{position:absolute;left:31px;top:37.99px;font-weight:500;font-size:20.927px;line-height:1.2;text-transform:uppercase;color:var(--ink);white-space:nowrap}
 .bento__card--uptime .bignum{position:absolute;left:31.115px;top:62.99px}
 .bento__card--uptime .bento__note{left:30.972px;top:280.99px;width:256px}
-.bento__card--sec .ico--64{position:absolute;left:136px;top:113px}
+.bento__card--sec .ms--64{position:absolute;left:136px;top:113px;color:#fff;z-index:1}
+.bento__card--sec::before{
+  content:"";position:absolute;left:117px;top:94px;width:102px;height:102px;border-radius:50%;
+  background:linear-gradient(140deg,#a9d9f2 0%,#8f76dd 60%,#7b5cd6 100%);
+}
 .bento__card--2fa .bento__lead{top:23.24px;width:auto;white-space:nowrap}
 .bento__card--expert .bento__lead{top:23px;width:285px}
 .bento__card--expert .bento__note{left:23.11px;top:95.676px;width:316.211px}
@@ -423,13 +435,13 @@ hr{border:0;margin:0}
 .bignum--free{position:absolute;left:414px;top:35px}
 
 .minicard{position:absolute;left:15px;top:67px;width:188px;height:90px;display:flex;flex-direction:row;align-items:center;padding:6.813px 13.625px;background:#fff;border-radius:13.625px;filter:drop-shadow(0 15.249px 15.249px rgba(0,0,0,.1))}
-.minicard__av{width:29.97px;height:29.97px;flex:none;border-radius:50%;background:#7851e0;margin-right:13.625px}
+.minicard__av{width:29.97px;height:29.97px;flex:none;border-radius:9px;background:linear-gradient(140deg,#7fc4ec 0%,#7851e0 100%);margin-right:13.625px}
 .minicard__txt{display:flex;flex-direction:column;gap:1.363px;min-width:0}
 .minicard__txt b{font-weight:700;font-size:12.199px;line-height:14.988px;color:var(--ink)}
 .minicard__txt i{font-style:normal;font-weight:500;font-size:9.538px;line-height:12.263px;letter-spacing:.0954px;color:#676767;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* brush divider · 2916:16731 */
-.wave{left:0;top:9082px;width:1440px;height:32px;background:var(--surface);
+.wave{left:0;top:8966px;width:1440px;height:32px;background:var(--surface);
   -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1610 32' preserveAspectRatio='none'><path d='M0 8 C120 0 240 12 360 6 C480 0 600 14 720 9 C840 4 960 18 1080 11 C1200 4 1320 16 1440 10 C1520 6 1570 12 1610 7 L1610 26 C1500 32 1380 22 1260 27 C1140 32 1020 20 900 26 C780 32 660 20 540 26 C420 32 300 22 180 27 C110 30 50 26 0 29 Z'/></svg>") center/100% 100% no-repeat;
   mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1610 32' preserveAspectRatio='none'><path d='M0 8 C120 0 240 12 360 6 C480 0 600 14 720 9 C840 4 960 18 1080 11 C1200 4 1320 16 1440 10 C1520 6 1570 12 1610 7 L1610 26 C1500 32 1380 22 1260 27 C1140 32 1020 20 900 26 C780 32 660 20 540 26 C420 32 300 22 180 27 C110 30 50 26 0 29 Z'/></svg>") center/100% 100% no-repeat;
 }
@@ -437,13 +449,13 @@ hr{border:0;margin:0}
 /* =====================================================================
    BLOG · 2916:16924 / 2916:16927 / 2916:16932 / 2916:16938
    ===================================================================== */
-.blog-head{left:281px;top:9335px;width:878px}
+.blog-head{left:281px;top:9191px;width:878px}
 .blog-head .sec-title{width:672px}
 .blog-head .sec-sub{width:608px}
 
 /* Three rows · Figma 3036:1531. The badge box is 203x75; the gradient pill,
    the name and the tilted chip sit at their own offsets inside it per row. */
-.insights{left:171px;top:9503px;width:1098px;display:flex;flex-direction:column}
+.insights{left:171px;top:9359px;width:1098px;display:flex;flex-direction:column}
 .insight{
   display:flex;align-items:center;justify-content:space-between;
   /* No gap between rows: the padding carries the height instead, so the hover
@@ -451,7 +463,7 @@ hr{border:0;margin:0}
      unpainted in between. 36px also clears the chip that overhangs the badge
      box by 17px on the last row. */
   padding:36px 24px;margin:0 -24px;
-  border-bottom:1px solid var(--hairline);border-radius:10px;
+  border-bottom:1px solid var(--hairline);
   color:var(--ink);transition:background .22s ease;
 }
 .insight:hover{background:#f7f8fb}
@@ -488,7 +500,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    LEAD FORM · 2968:17246
    ===================================================================== */
-.lead{left:0;top:10201px;width:1440px;height:792px}
+.lead{left:0;top:9963px;width:1440px;height:792px}
 .lead .zero-code--tilt{left:139px;top:64px}
 
 .lead__form{position:absolute;left:138px;top:125px;width:456px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
@@ -520,7 +532,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    FOOTER · 2916:17020
    ===================================================================== */
-.ftr{left:20px;top:11113px;width:1400px;height:812px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
+.ftr{left:20px;top:10875px;width:1400px;height:812px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
 .ftr__logo{position:absolute;left:140px;top:84px;width:94.48px;height:28px}
 
 .ftr__contacts{position:absolute;left:140px;top:144px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
