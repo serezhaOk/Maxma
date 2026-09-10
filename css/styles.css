@@ -32,7 +32,11 @@
 
 /* ---------- reset ---------- */
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+/* The carousels deliberately run past the 1440 frame into the white
+   margins, so the viewport swallows the horizontal overflow instead of
+   growing a sideways scrollbar. Set on the root, not on .stage: the
+   viewport stays the scroll container and the pinned sections still stick. */
+html{-webkit-text-size-adjust:100%;overflow-x:hidden}
 body{
   margin:0;background:#fff;color:var(--ink);
   font-family:var(--sans);font-weight:400;
@@ -241,7 +245,8 @@ hr{border:0;margin:0}
 .results__col{width:575px;display:flex;flex-direction:column;gap:40px}
 .results__line{font-weight:500;font-size:20px;line-height:1.24;color:var(--ink-40)}
 .results__line--1{width:544px}
-.results__line b{font-weight:500;color:#190927}
+.results__line b{font-weight:500;color:#190927;text-decoration:underline solid transparent;text-underline-offset:4px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s ease}
+.results__line:hover b{text-decoration-color:#190927}
 
 /* =====================================================================
    CLIENTS & CASES · 3054:2808
@@ -257,33 +262,15 @@ hr{border:0;margin:0}
 .pill.is-active{background:#fff;opacity:1;font-weight:500}
 .cases-tabs{width:707px;height:52px}
 
-.ccl__row{width:100%;height:523px;overflow:hidden}
+.ccl__row{width:100%;height:523px}
 .ccl__track{display:flex;align-items:center;gap:16px;width:max-content;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 
-/* Featured case · 3052:2783 — photo under a 40% black scrim. */
-.ccase{position:relative;width:574px;height:523px;flex:none;border-radius:24px;overflow:hidden;background:var(--ink)}
-.ccase__bg{position:absolute;inset:0;display:block;border-radius:0}
-.ccase__bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)}
-.ccase__logo{position:absolute;left:39px;top:41px;width:181px;height:26px}
-.ccase__logo:not(.is-loaded){background:rgba(255,255,255,.14)}
-.ccase__stat{position:absolute;left:40px;top:275px;width:367px;display:flex;flex-direction:column;gap:10px;color:#fff}
-.ccase__num{
-  font-weight:500;font-size:90px;line-height:.82;letter-spacing:-4.5px;
-  text-transform:uppercase;white-space:nowrap;text-shadow:2px 2px 0 var(--ink);
+/* Featured case · 3052:2783 — one exported artwork, card and all. */
+.ccase{
+  width:574px;height:523px;flex:none;border-radius:24px;display:block;
+  background-size:cover;transition:transform .25s ease;
 }
-.ccase__desc{width:333px;font-size:14px;line-height:1.24}
-.ccase__cta{
-  position:absolute;left:40px;top:433px;height:50px;
-  display:inline-flex;align-items:center;justify-content:center;gap:16px;
-  padding:9px 25px;border-radius:40px;
-  background:var(--surface);border:1px solid var(--mint);
-  font-weight:500;font-size:14px;line-height:18px;color:var(--ink);white-space:nowrap;
-  transition:background .18s;
-}
-.ccase__cta:hover{background:#fff}
-/* The glyph advance is one em; the drawn arrow is 10.495px, so the box is
-   pulled back to the artwork width and the button keeps its 161.5px. */
-.ccase__cta .ms{margin:0 -4.75px}
+.ccase:hover{transform:translateY(-3px)}
 
 /* Logo wall · 3054:2805 — 2x2, arrows only on the cells that have a case. */
 .lgrid{width:692px;height:523px;flex:none;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:16px}
@@ -319,7 +306,7 @@ hr{border:0;margin:0}
 .stab__dot{display:none;width:36px;height:36px;flex:none;border-radius:50%;align-items:center;justify-content:center;background:linear-gradient(135deg,#dfe3fb 0%,#cdf3f2 100%)}
 .stab.is-active .stab__dot{display:flex}
 
-.pcards{left:256px;top:3311px;width:1184px;height:602px;overflow:hidden}
+.pcards{left:256px;top:3311px;width:1184px;height:602px}
 .pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
 /* Each segment is one 1046x602 artwork — gradient, copy and button are all
    baked into the image, so the card is just the picture. */
