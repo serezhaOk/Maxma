@@ -1,0 +1,554 @@
+/* =====================================================================
+   MAXMA — main page concept
+   Figma: rvnkwI3A1eiLfX71NL843O · frame 3026:659 (1440 × 8418)
+   Fixed-width 1440 prototype. Every block is placed at its Figma
+   coordinates; inner layouts mirror the Figma auto-layout.
+   ===================================================================== */
+
+/* ---------- Object Sans (PP Object Sans) ---------- */
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Light.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Light.woff") format("woff");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Regular.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Medium.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Medium.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Bold.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Bold.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Black.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Black.woff") format("woff");font-weight:900;font-style:normal;font-display:swap}
+
+/* ---------- tokens ---------- */
+:root{
+  --ink:#190928;
+  --ink-80:rgba(25,9,40,.8);
+  --ink-60:rgba(25,9,40,.6);
+  --ink-40:rgba(25,9,40,.4);
+  --ink-30:rgba(25,9,40,.3);
+  --ink-20:rgba(25,9,40,.2);
+  --mint:#7ceff6;
+  --surface:#f2f3f8;
+  --hairline:rgba(0,0,0,.1);
+  --grad-cta:linear-gradient(90deg,#6e1bc1 0%,#3b61ee 100%);
+  --grad-text:linear-gradient(90deg,#850ee0 0%,#01f6fe 100%);
+  --grad-border:linear-gradient(270deg,#7ceff6 0%,#aa89e8 49.67%,#5822f8 100%);
+  --sans:"Object Sans","Helvetica Neue",Arial,sans-serif;
+  --rubik:"Rubik","Object Sans",Arial,sans-serif;
+}
+
+/* ---------- reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+/* The carousels deliberately run past the 1440 frame into the white
+   margins, so the viewport swallows the horizontal overflow instead of
+   growing a sideways scrollbar. Set on the root, not on .stage: the
+   viewport stays the scroll container and the pinned sections still stick. */
+html{-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:var(--sans);font-weight:400;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+p,h1,h2,h3,ul{margin:0;padding:0}
+ul{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input{font:inherit;color:inherit}
+img,svg{display:block}
+hr{border:0;margin:0}
+
+/* ---------- stage ---------- */
+/* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
+   (the hero gradient at 1520) paints past the frame edge, and wider screens
+   just show white to either side. */
+.stage{position:relative;width:1440px;height:11307px;margin:0 auto;background:#fff}
+.stage>*{position:absolute}
+
+/* ---------- asset placeholders ----------
+   JS swaps in the real file when it exists in assets/img/.
+   Until then the slot keeps its exact designed box. */
+.ph{
+  background:linear-gradient(135deg,#eef0f6 0%,#e6e9f2 100%);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  border-radius:inherit;
+}
+.ph.is-loaded{background-image:var(--src);background-color:transparent}
+.ph.is-video{background:none}
+.ph video{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
+.ph--svg,.ph--logo{background:none}
+.ph--svg.is-loaded,.ph--logo.is-loaded{background-image:var(--src);background-size:contain;background-repeat:no-repeat;background-position:center}
+.ph--svg:not(.is-loaded),.ph--logo:not(.is-loaded){
+  background:rgba(25,9,40,.06);border-radius:4px;
+}
+.ph--round{border-radius:50%}
+
+
+/* ---------- icons · Google Material Symbols Outlined, wght 300 ---------- */
+.ms{
+  font-family:"Material Symbols Outlined";font-weight:normal;font-style:normal;
+  line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;
+  direction:ltr;display:inline-block;flex:none;color:var(--ink);
+  -webkit-font-feature-settings:"liga";font-feature-settings:"liga";
+  -webkit-font-smoothing:antialiased;
+  font-variation-settings:"FILL" 0,"wght" 300,"GRAD" 0,"opsz" 24;
+}
+/* Until the icon font is there the ligature would render as the word
+   "bolt"/"token"/... — keep the glyphs hidden rather than show that. */
+.ms{visibility:hidden}
+.fonts-ready .ms{visibility:visible}
+.ms--20{font-size:20px;width:20px;height:20px;font-variation-settings:"FILL" 0,"wght" 300,"GRAD" 0,"opsz" 20}
+.ms--24{font-size:24px;width:24px;height:24px}
+.ms--32{font-size:32px;width:32px;height:32px}
+.ms--64{font-size:64px;width:64px;height:64px;font-variation-settings:"FILL" 0,"wght" 300,"GRAD" 0,"opsz" 40}
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.6,.3,1)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- shared type ---------- */
+.sec-title{
+  font-weight:500;font-size:40px;line-height:1.2;letter-spacing:-1.6px;
+  text-transform:uppercase;text-align:center;color:var(--ink);
+}
+.sec-title .muted{color:var(--ink-40)}
+.sec-sub{
+  font-weight:400;font-size:16px;line-height:22px;
+  text-align:center;color:var(--ink);opacity:.6;
+}
+.sec-head{display:flex;flex-direction:column;align-items:center;gap:16px}
+.grad{
+  background:var(--grad-text);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.bignum{
+  font-weight:500;font-size:79.812px;line-height:1.2;
+  text-transform:uppercase;color:#fff;white-space:nowrap;
+  text-shadow:2px 2px 0 var(--ink);
+  -webkit-text-stroke:1px var(--ink);
+}
+/* In the bento the numbers carry a gradient fill instead. drop-shadow is used
+   rather than text-shadow because background-clip:text leaves the glyphs
+   transparent and a text shadow would show straight through them. */
+.bento .bignum{
+  background:linear-gradient(135deg,#9fd4ef 0%,#7b63cf 55%,#6b4fc4 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:none;-webkit-text-stroke:0;
+  filter:drop-shadow(2px 2px 0 #000);
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-weight:500;font-size:15px;line-height:24px;letter-spacing:-.15px;
+  white-space:nowrap;transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
+}
+.btn:active{transform:translateY(1px)}
+/* border-image ignores border-radius, so the gradient is a border-box layer
+   with a solid padding-box fill painted over it. */
+.btn--outline{
+  height:44px;padding:8px 24px;border:2px solid transparent;border-radius:40px;font-weight:400;
+  background:linear-gradient(#fff,#fff) padding-box,var(--grad-border) border-box;
+}
+.btn--outline:hover{background:linear-gradient(#f4fdfe,#f4fdfe) padding-box,var(--grad-border) border-box}
+.btn--dark{height:44px;width:138px;padding:8px 24px;border-radius:60px;background:var(--ink);color:#fff;font-weight:400}
+.btn--dark:hover{box-shadow:0 8px 20px rgba(25,9,40,.25)}
+.btn--grad{
+  padding:16.17px 24px;border-radius:99.81px;border:1px solid var(--hairline);
+  background:var(--grad-cta);color:#fff;font-size:16px;letter-spacing:-.16px;
+}
+.btn--grad:hover{box-shadow:0 10px 26px rgba(110,27,193,.35)}
+.btn--white{background:#fff;color:var(--ink);border-radius:42px;padding:8px 24px;height:54px;font-size:14px;line-height:18px;letter-spacing:0}
+.btn--sm{font-size:14px;line-height:18px;letter-spacing:0}
+.btn--pill{height:40px;padding:8px 20px;border-radius:70px;font-family:var(--rubik);font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.16px}
+
+/* =====================================================================
+   HEADER · 2956:17161
+   ===================================================================== */
+/* Fixed for the whole scroll, on a plain white band. */
+/* No backdrop — the header rides straight over the page. */
+.hdr-bar{position:fixed;top:0;left:0;width:100%;height:84px;z-index:100;pointer-events:none}
+.hdr-bar .hdr{pointer-events:auto}
+.hdr{position:relative;width:1440px;height:48px;margin:0 auto;top:18px;display:flex;align-items:center;justify-content:space-between;padding:0 21px}
+/* Продукт / Тарифы / Блог are not links yet. */
+.hdr__nav span{font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);white-space:nowrap;cursor:default}
+.hdr__left{display:flex;align-items:center;gap:30px}
+.hdr__logo{width:129px;height:38px}
+.hdr__nav{display:flex;align-items:center;gap:32px;height:38px;padding:12px 20px;border-radius:4px}
+.hdr__right{display:flex;align-items:center;gap:32px;height:48px}
+.hdr__phone{font-size:15px;line-height:24px;letter-spacing:-.15px;white-space:nowrap}
+.hdr__actions{display:flex;align-items:center;gap:8px;height:48px;padding:12px 0;border-radius:4px}
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+/* --hero-p goes 0 -> 1 over the first screen of scrolling (js/main.js):
+   the rounded gradient card grows into a full-bleed background. */
+.hero-bg{
+  left:calc(21px - 61px * var(--hero-p,0));
+  top:84px;
+  width:calc(1398px + 122px * var(--hero-p,0));
+  height:calc(1004px + 488px * var(--hero-p,0));
+  border-radius:calc(20px * (1 - var(--hero-p,0)));
+  background:linear-gradient(0deg,#d0f6f1 0%,#dae2fc 100%);opacity:.6;
+}
+
+.hero-copy{left:281px;top:259px;width:878px;display:flex;flex-direction:column;align-items:center;gap:48px}
+.hero-copy__head{display:flex;flex-direction:column;align-items:center;gap:27px;width:100%}
+.hero-kicker{font-size:18px;line-height:24px;letter-spacing:-.18px;text-align:center;color:var(--ink);width:100%}
+.hero-title{
+  width:1038.906px;font-weight:500;font-size:57.283px;line-height:1.2;
+  letter-spacing:-2.2913px;text-transform:uppercase;text-align:center;color:var(--ink);
+}
+.hero-cta{width:266px}
+
+.hero-badge{left:1187px;top:112px;width:202px;height:64px;display:flex;align-items:center;gap:14px;padding:14px 0 14px 14px;border-radius:20px}
+.hero-badge__avatars{position:relative;width:34px;height:34px;flex:none}
+.hero-badge__av{position:absolute;inset:0;width:34px;height:34px}
+.hero-badge__av--back{opacity:.5}
+.hero-badge__text{width:140px;hyphens:none;font-size:15px;line-height:18px;letter-spacing:-.3px;color:var(--ink)}
+
+.hero-free{left:1246px;top:171px;width:105px;height:30.54px}
+
+.hero-feat{display:flex;align-items:center;gap:8px}
+.hero-feat span:not(.ms){font-size:15px;line-height:18px;letter-spacing:-.3px;white-space:nowrap}
+.hero-feat--1{left:454px;top:663px;width:201px;height:24px}
+.hero-feat--2{left:698px;top:663px;width:288px;height:24px}
+
+/* ...and the dashboard grows 15% along with it. */
+.hero-shot{
+  /* Box follows the recording's own ratio (1346x780) rather than the 1106x738
+     of the still it replaced — otherwise `contain` left ~97px empty below it. */
+  left:167px;top:727px;width:1106px;aspect-ratio:1346/780;
+  border:6px solid var(--ink);border-radius:12px;overflow:hidden;
+  box-shadow:0 22px 54px rgba(25,9,40,.13);
+  transform:scale(calc(1 + .15 * var(--hero-p,0)));transform-origin:50% 0;
+}
+.hero-shot video{width:100%;height:100%;object-fit:cover;display:block}
+
+/* =====================================================================
+   CLIENT RESULTS · 3054:2809
+   ===================================================================== */
+.results{left:283px;top:1764px;width:911px;display:flex;align-items:flex-start;gap:165px}
+.results__label{
+  font-weight:500;font-size:16px;line-height:1.24;white-space:nowrap;
+  background:var(--grad-cta);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  width:171px;
+}
+.results__col{width:575px;display:flex;flex-direction:column;gap:40px}
+.results__line{font-weight:500;font-size:20px;line-height:1.24;color:var(--ink-40)}
+.results__line--1{width:544px}
+.results__line b{font-weight:500;color:#190927;text-decoration:underline solid transparent;text-underline-offset:4px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s ease}
+.results__line:hover b{text-decoration-color:#190927}
+
+/* =====================================================================
+   CLIENTS & CASES · 3054:2808
+   Column of heading / tabs / carousel row / pagination, 60px apart.
+   The row is 1872 wide inside a 1400 window, so the third card peeks.
+   ===================================================================== */
+.ccl{left:20px;top:2064px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:60px}
+.ccl__title{width:612px}
+
+.pill-tabs{display:flex;align-items:center;padding:4px;border-radius:30px;background:var(--surface)}
+.pill{height:44px;padding:8px 24px;border-radius:60px;font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
+.pill:hover{opacity:.85}
+.pill.is-active{background:#fff;opacity:1;font-weight:500}
+.cases-tabs{width:707px;height:52px}
+
+.ccl__row{width:100%;height:523px}
+.ccl__track{display:flex;align-items:center;gap:16px;width:max-content;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+
+/* Featured case · 3052:2783 — one exported artwork, card and all. */
+.ccase{
+  width:574px;height:523px;flex:none;border-radius:24px;display:block;
+  background-size:cover;transition:transform .25s ease;
+}
+.ccase:hover{transform:translateY(-3px)}
+
+/* Logo wall · 3054:2805 — 2x2, arrows only on the cells that have a case. */
+.lgrid{width:692px;height:523px;flex:none;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:16px}
+.lcard{position:relative;border-radius:24px;background:var(--surface)}
+.lcard__logo{position:absolute;left:56.5px;top:82px;width:225px;height:90px;opacity:.5}
+.lcard__arrow{
+  position:absolute;left:272px;top:20px;width:46.495px;height:26.495px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:99px;background:#fff;
+}
+.lgrid .lcard:nth-child(3) .lcard__arrow{left:270px}
+
+/* Next case, peeking in from the right · 3052:2752 */
+.ccl__peek{width:574px;height:523px;flex:none;border-radius:24px;background:linear-gradient(-90deg,#edf9ff 0%,#e1c9ff 100%)}
+
+.cases-nav{width:132px;height:42px;display:flex;align-items:center;gap:8px}
+.navbtn{width:62px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:0;border-radius:24px;transition:background .18s}
+.navbtn:hover{background:#e6e9f2}
+.navbtn .ms{font-size:20px;width:20px;height:20px}
+.navbtn:disabled{opacity:.35;cursor:default}
+
+/* =====================================================================
+   PLATFORM · 2916:16777 / 2916:16822 / 2916:16807 / 2916:16814
+   ===================================================================== */
+.platform-head{left:281px;top:3117px;width:878px}
+.platform-head .sec-title{width:556px}
+.platform-head .sec-sub{width:608px}
+
+.stage-tabs{left:20px;top:3311px;width:210px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
+.stab{height:44px;padding:8px 24px;border-radius:60px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;line-height:24px;letter-spacing:-.14px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
+.stab:hover{opacity:.9}
+.stab.is-active{background:var(--surface);opacity:1;font-weight:500;padding:8px 4px 8px 24px}
+.stab__dot{display:none;width:36px;height:36px;flex:none;border-radius:50%;align-items:center;justify-content:center;background:linear-gradient(135deg,#dfe3fb 0%,#cdf3f2 100%)}
+.stab.is-active .stab__dot{display:flex}
+
+.pcards{left:256px;top:3311px;width:1184px;height:602px;overflow:hidden}
+.pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+/* Each segment is one 1046x602 artwork — gradient, copy and button are all
+   baked into the image, so the card is just the picture. */
+.pcard{position:relative;flex:none;width:1046px;height:602px;border-radius:24px;overflow:hidden}
+
+/* =====================================================================
+   WHY / BENTO
+   ===================================================================== */
+.why-title{left:442px;top:4089px;width:556px}
+.why-sub{left:509px;top:4209px;width:422px}
+.why-bg{left:0;top:4357px;width:1440px;height:4314px;background:linear-gradient(180deg,#fff 0%,var(--surface) 25%)}
+
+/* ---------------------------------------------------------------------
+   "Максимум результата" — pinned while the five steps reveal in turn.
+   .why-pin is the scroll runway; .why-pin__inner sticks to the viewport
+   under the fixed header until the runway is used up. js/main.js turns
+   scroll position inside the runway into the active step index.
+   --------------------------------------------------------------------- */
+.why-pin{left:0;top:4292.48px;width:1440px;height:3364px}
+.why-pin__inner{
+  position:sticky;top:84px;height:min(calc(100vh - 84px),680px);
+  display:flex;align-items:center;
+}
+
+/* Card stack · results-1…5, one per step.
+   Only the current card and the one behind it are shown, so the tilts never
+   pile up into a thick fan. Scrolling to the next step flies the top card
+   off and promotes the one underneath. */
+.why-stack{position:absolute;left:265.787px;width:474.991px;height:554.968px}
+.why-card{
+  position:absolute;inset:0;
+  background-size:contain;background-position:center;background-repeat:no-repeat;
+  /* drop-shadow, not box-shadow: the artwork carries its own frame and folded
+     corner, so the shadow has to follow the PNG alpha rather than a rectangle */
+  filter:drop-shadow(0 22px 44px rgba(25,9,40,.18));
+  opacity:0;z-index:0;
+  transition:transform .6s cubic-bezier(.4,0,.2,1),opacity .45s ease;
+  will-change:transform,opacity;
+}
+/* each card keeps its own lean, all inside ±2deg */
+.why-card:nth-child(1){--tilt:-1.8deg}
+.why-card:nth-child(2){--tilt:1.4deg}
+.why-card:nth-child(3){--tilt:-1.1deg}
+.why-card:nth-child(4){--tilt:2deg}
+.why-card:nth-child(5){--tilt:-1.5deg}
+
+.why-card.is-next{opacity:1;z-index:1;transform:rotate(var(--tilt)) translateY(14px) scale(.965)}
+.why-card.is-current{opacity:1;z-index:2;transform:rotate(var(--tilt))}
+.why-card.is-gone{opacity:0;z-index:3;transform:translate(-10%,-16%) rotate(calc(var(--tilt) - 8deg)) scale(1.03)}
+
+@media (prefers-reduced-motion:reduce){.why-card{transition:opacity .2s ease}}
+
+.why-list{position:absolute;left:785px;width:338px;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.why-list__rule{width:100%;height:0;border-top:1px solid var(--ink-20)}
+
+.why-step{width:100%;display:flex;flex-direction:column;align-items:flex-start}
+
+/* icon rides in a gradient pill · Figma 3012:20135, 54x32 */
+.why-step__pill{
+  display:flex;align-items:center;justify-content:center;
+  width:54px;height:32px;border-radius:16px;
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .4s ease,opacity .3s ease,margin-bottom .4s ease;
+}
+.why-step.is-active .why-step__pill{max-height:32px;opacity:1;margin-bottom:12px}
+.why-step__pill .ms{color:#fff}
+/* one gradient per step */
+.why-step:nth-of-type(1) .why-step__pill{background:linear-gradient(135deg,#6e1bc1 0%,#3b61ee 100%)}
+.why-step:nth-of-type(2) .why-step__pill{background:linear-gradient(135deg,#3b61ee 0%,#01f6fe 100%)}
+.why-step:nth-of-type(3) .why-step__pill{background:linear-gradient(135deg,#850ee0 0%,#e26cc4 100%)}
+.why-step:nth-of-type(4) .why-step__pill{background:linear-gradient(135deg,#5822f8 0%,#aa89e8 100%)}
+.why-step:nth-of-type(5) .why-step__pill{background:linear-gradient(135deg,#7ceff6 0%,#5822f8 100%)}
+
+.why-step__title{
+  width:100%;font-weight:500;font-size:20px;line-height:1.2;letter-spacing:-.6px;
+  color:var(--ink);opacity:.5;transition:opacity .3s ease;
+}
+.why-step.is-active .why-step__title{opacity:1}
+.why-step__desc{
+  width:100%;font-size:14px;line-height:20px;color:var(--ink);
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease;
+}
+.why-step.is-active .why-step__desc{max-height:80px;opacity:1;margin-top:12px}
+
+.bento-head{left:373px;top:7754px;width:694px;gap:24px}
+.bento-head .sec-title{width:694px}
+.bento-head .sec-sub{width:366px}
+.bento{left:156px;top:7978px;width:1144px;height:573.007px}
+.bento__card{position:absolute;background:#fff;border:1px solid var(--hairline);border-radius:24px;overflow:hidden}
+.bento__card--years{
+  left:-18px;top:0;width:338px;height:573px;
+  background:linear-gradient(0deg,#edf9ff 0%,#e1c9ff 100%);
+  border:1px solid rgba(0,0,0,.1);border-radius:22px;
+}
+.bento__card--years .bento__lead{left:20px;top:auto;bottom:297px;width:290px;font-size:32px}
+.bento__card--uptime{left:336px;top:1.008px;width:456px;height:381.669px}
+.bento__card--sec{left:810px;top:0;width:336px;height:383px;display:flex;flex-direction:column;align-items:center}
+.bento__card--2fa{left:336px;top:399px;width:220px;height:174px}
+.bento__card--expert{left:572px;top:399px;width:574px;height:174px}
+
+.bento__lead{position:absolute;left:23px;top:40px;width:290px;font-weight:500;font-size:24px;line-height:1.24;color:var(--ink)}
+.bento__lead--center{position:absolute;left:24px;top:226px;width:288px;text-align:center}
+.bento__note{position:absolute;font-size:14px;line-height:20px;color:var(--ink);opacity:.6}
+.bento__note a{text-decoration:underline;text-underline-offset:2px}
+.bento__label{position:absolute;left:31px;top:37.99px;font-weight:500;font-size:20.927px;line-height:1.2;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.bento__card--uptime .bignum{position:absolute;left:31.115px;top:62.99px}
+.bento__card--uptime .bento__note{left:30.972px;top:280.99px;width:256px}
+.bento__shield{
+  position:absolute;left:117px;top:94px;width:102px;height:102px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:linear-gradient(140deg,#a9d9f2 0%,#8f76dd 60%,#7b5cd6 100%);
+  background-size:contain;background-repeat:no-repeat;background-position:center;
+}
+.bento__shield .ms--64{color:#fff}
+/* once shield-icon.* is in assets/img/ the drawing underneath is dropped */
+.bento__shield.is-loaded{background-color:transparent;border-radius:0}
+.bento__shield.is-loaded .ms{display:none}
+.bento__card--2fa .bento__lead{top:23.24px;width:auto;white-space:nowrap}
+.bento__card--expert .bento__lead{top:50%;transform:translateY(-50%);width:285px}
+.bento__plate{position:absolute;left:391.744px;top:7.057px;width:163.141px;height:158.106px;background:#fff;opacity:.2;border-radius:8.056px}
+.bignum--free{position:absolute;left:414px;top:35px}
+
+.minicard{position:absolute;left:15px;top:67px;width:188px;height:90px;display:flex;flex-direction:row;align-items:center;padding:6.813px 13.625px;background:#fff;border-radius:13.625px;filter:drop-shadow(0 15.249px 15.249px rgba(0,0,0,.1))}
+.minicard__av{width:29.97px;height:29.97px;flex:none;border-radius:9px;background:linear-gradient(140deg,#7fc4ec 0%,#7851e0 100%);margin-right:13.625px}
+.minicard__txt{display:flex;flex-direction:column;gap:1.363px;min-width:0}
+.minicard__txt b{font-weight:700;font-size:12.199px;line-height:14.988px;color:var(--ink)}
+.minicard__txt i{font-style:normal;font-weight:500;font-size:9.538px;line-height:12.263px;letter-spacing:.0954px;color:#676767;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* =====================================================================
+   BLOG · 2916:16924 / 2916:16927 / 2916:16932 / 2916:16938
+   ===================================================================== */
+.blog-head{left:281px;top:8791px;width:878px}
+.blog-head .sec-title{width:672px}
+.blog-head .sec-sub{width:608px}
+
+/* Three rows · Figma 3036:1531. The badge box is 203x75; the gradient pill,
+   the name and the tilted chip sit at their own offsets inside it per row. */
+.insights{left:171px;top:8959px;width:1098px;display:flex;flex-direction:column}
+.insight{
+  display:flex;align-items:center;justify-content:space-between;
+  /* No gap between rows: the padding carries the height instead, so the hover
+     fill reaches from the rule above to the row's own rule with nothing
+     unpainted in between. 36px also clears the chip that overhangs the badge
+     box by 17px on the last row. */
+  padding:36px 24px;margin:0 -24px;
+  border-bottom:1px solid var(--hairline);
+  color:var(--ink);transition:background .22s ease;
+}
+.insight:hover{background:#f7f8fb}
+.insight__left{display:flex;align-items:center;gap:93px}
+.insight__badge{position:relative;width:203px;height:75px;flex:none}
+.insight__pill{position:absolute;top:0;height:52px;border-radius:10px}
+.insight__name{
+  position:absolute;top:10px;transform:translateX(-50%);
+  font-weight:500;font-size:30px;line-height:36px;letter-spacing:-.3px;
+  text-transform:uppercase;text-align:center;white-space:nowrap;
+}
+.insight__chip{
+  position:absolute;display:inline-flex;align-items:center;justify-content:center;
+  height:18.73px;padding:1px 12px 2px;border-radius:120px;
+  background:#fff;border:.5px solid #000;
+  filter:drop-shadow(0 0 .4px rgba(0,0,0,.55));
+  font-weight:500;font-size:12px;line-height:1.33;letter-spacing:-.24px;white-space:nowrap;
+}
+.insight__desc{width:477px;font-weight:500;font-size:18px;line-height:normal}
+.insight__arrow{flex:none;color:var(--ink)}
+
+.insight--academy .insight__pill{left:0;width:203px;background:linear-gradient(0deg,#e2eff8 0%,#b1e0f4 100%)}
+.insight--academy .insight__name{left:101.5px}
+.insight--academy .insight__chip{left:79.3px;top:43.07px;transform:rotate(-1.5deg)}
+
+.insight--articles .insight__pill{left:-1px;width:149px;background:linear-gradient(0deg,#edf1ff 0%,#e1c9ff 100%)}
+.insight--articles .insight__name{left:73px}
+.insight--articles .insight__chip{left:-8px;top:47px;transform:rotate(2.16deg)}
+
+.insight--kb .insight__pill{left:0;width:243px;background:linear-gradient(180deg,#fae4be 0%,#f7f3e9 100%)}
+.insight--kb .insight__name{left:121.5px}
+.insight--kb .insight__chip{left:146px;top:-17px;transform:rotate(2.02deg)}
+
+/* =====================================================================
+   LEAD FORM · 2968:17246
+   ===================================================================== */
+.lead{left:0;top:9563px;width:1440px;height:792px}
+
+.lead__form{position:absolute;left:138px;top:125px;width:456px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.lead__head{display:flex;flex-direction:column;gap:16px}
+.lead__title{font-weight:500;font-size:40px;line-height:1.2;letter-spacing:-1.6px;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.lead__sub{font-size:16px;line-height:22px;color:var(--ink);opacity:.6;white-space:nowrap}
+.lead__fields{display:flex;flex-direction:column;gap:16px;width:100%}
+.field{display:flex;align-items:center;width:100%;height:48px;padding:12px 0;border-bottom:1px solid var(--ink-20)}
+.field input{width:100%;border:0;outline:0;background:none;font-size:16px;line-height:24px;letter-spacing:-.16px;color:var(--ink)}
+.field input::placeholder{color:var(--ink);opacity:.3}
+.field:focus-within{border-bottom-color:var(--ink)}
+.field.is-error{border-bottom-color:#e0304a}
+.lead__submit{width:100%}
+.lead__agreement{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.lead__legal{width:100%;font-size:14px;line-height:16px;color:var(--ink);opacity:.5}
+
+.check{display:flex;align-items:center;gap:12px;width:100%;cursor:pointer;user-select:none}
+.check input{position:absolute;opacity:0;width:0;height:0}
+.check__box{width:16px;height:16px;flex:none;border:1.5px solid var(--ink-40);border-radius:2px;transition:background .15s,border-color .15s}
+.check input:checked+.check__box{background:var(--ink);border-color:var(--ink)}
+.check input:focus-visible+.check__box{outline:2px solid var(--mint);outline-offset:2px}
+.check__label{font-size:14px;line-height:16px;color:var(--ink);opacity:.5;white-space:nowrap}
+.check--light .check__box{width:20px;height:20px;border-radius:4px;border-color:#fff;background:var(--ink);opacity:.5}
+.check--light input:checked+.check__box{background:#fff;opacity:1}
+.check--light .check__label{font-family:var(--rubik);font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.16px;color:#fff;opacity:.5;white-space:normal;width:289px}
+
+.lead__visual{position:absolute;right:20px;top:0;width:692px;height:792px;border:1px solid var(--hairline);border-radius:24px}
+
+/* =====================================================================
+   FOOTER · 2916:17020
+   ===================================================================== */
+.ftr{left:20px;top:10475px;width:1400px;height:812px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
+.ftr__logo{position:absolute;left:140px;top:84px;width:94.48px;height:28px}
+
+.ftr__contacts{position:absolute;left:140px;top:144px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.ftr__contact{font-weight:700;font-size:16px;line-height:11px;color:#fff;transition:opacity .18s}
+.ftr__contact:hover{opacity:.7}
+.ftr__social{display:flex;align-items:center;gap:19px;height:32px}
+.ftr__soc{width:var(--sw);height:var(--sh);opacity:.9;transition:opacity .18s}
+.ftr__soc:hover{opacity:1}
+.ftr .ph--svg:not(.is-loaded){background:rgba(255,255,255,.12)}
+
+.ftr__sub{position:absolute;left:708px;top:84px;width:490px;display:flex;flex-direction:column;gap:16px}
+.ftr__subhead{display:flex;flex-direction:column;gap:16px;width:415px}
+.ftr__subtitle{font-weight:700;font-size:32px;line-height:.98;letter-spacing:-1.28px;color:#fff}
+.ftr__subdesc{width:348px;font-family:var(--rubik);font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.16px;color:#fff;opacity:.5}
+.ftr__subform{display:flex;align-items:center;justify-content:space-between;width:100%;height:64px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.ftr__subform input{flex:1;min-width:0;border:0;outline:0;background:none;font-family:var(--rubik);font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.16px;color:#fff}
+.ftr__subform input::placeholder{color:#a29fb2;opacity:1}
+.ftr__subform .btn{width:143px;height:40px}
+
+.ftr__body{position:absolute;left:118px;top:322px;width:1164px;display:flex;flex-direction:column;gap:60px}
+.ftr__rule{width:100%;border-top:1px solid rgba(255,255,255,.15)}
+.ftr__cols{display:flex;align-items:center;justify-content:space-between;width:100%}
+.ftr__col{width:235px;display:flex;flex-direction:column;gap:24px}
+.ftr__coltitle{font-weight:500;font-size:14px;line-height:1.5;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.ftr__col li a{font-family:var(--rubik);font-weight:500;font-size:16px;line-height:20px;letter-spacing:-.16px;color:#fff;transition:opacity .18s}
+.ftr__col li a:hover{opacity:.65}
+.ftr__col li+li{margin-top:10px}
+.ftr__legal{display:flex;align-items:center;gap:94px;font-family:var(--rubik);font-weight:400;font-size:16px;line-height:20px;letter-spacing:-.16px;color:rgba(255,255,255,.4);white-space:nowrap}
+.ftr__addr{display:flex;gap:35px}
+.ftr__addr p:first-child{width:220px}
+
+/* =====================================================================
+   TOAST
+   ===================================================================== */
+.toast{
+  position:fixed;left:50%;bottom:40px;transform:translate(-50%,20px);
+  padding:14px 24px;border-radius:99px;background:var(--ink);color:#fff;
+  font-size:15px;line-height:24px;letter-spacing:-.15px;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:200;
+}
+.toast.is-on{opacity:1;transform:translate(-50%,0)}
