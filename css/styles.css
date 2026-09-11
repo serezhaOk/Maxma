@@ -217,7 +217,7 @@ hr{border:0;margin:0}
 .zero-code--sm{left:1246px;top:171px}
 
 .hero-feat{display:flex;align-items:center;gap:8px}
-.hero-feat span{font-size:15px;line-height:18px;letter-spacing:-.3px;white-space:nowrap}
+.hero-feat span:not(.ms){font-size:15px;line-height:18px;letter-spacing:-.3px;white-space:nowrap}
 .hero-feat--1{left:454px;top:663px;width:201px;height:24px}
 .hero-feat--2{left:698px;top:663px;width:288px;height:24px}
 
@@ -310,7 +310,7 @@ hr{border:0;margin:0}
 .pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
 /* Each segment is one 1046x602 artwork — gradient, copy and button are all
    baked into the image, so the card is just the picture. */
-.pcard{position:relative;flex:none;width:1046px;height:602px;border-radius:24px;overflow:hidden;border:1px solid var(--hairline)}
+.pcard{position:relative;flex:none;width:1046px;height:602px;border-radius:24px;overflow:hidden}
 
 /* =====================================================================
    WHY / BENTO
