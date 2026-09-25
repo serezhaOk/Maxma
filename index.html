@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>MAXMA — Конструктор лояльности и CRM-маркетинга</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!-- ============ HEADER · 14:130 — fixed for the whole scroll ============ -->
+<div class="hdr-bar">
+  <header class="hdr" data-node="14:130">
+    <div class="hdr__left">
+      <a class="hdr__logo ph ph--svg" href="#" data-asset="logo-maxma" aria-label="MAXMA"></a>
+      <nav class="hdr__nav" data-node="29:542">
+        <button class="hdr__link hdr__link--btn" id="productToggle" type="button" aria-expanded="false" aria-controls="productMenu">Продукт</button>
+        <span class="hdr__link">Тарифы</span>
+        <span class="hdr__link">Блог</span>
+      </nav>
+    </div>
+    <div class="hdr__right">
+      <a class="hdr__phone" href="tel:+74999384980">+7 (499) 938 49 80</a>
+      <div class="hdr__actions">
+        <a class="btn btn--outline" href="#lead">Связаться с нами</a>
+        <a class="btn btn--dark" href="#lead">Демо</a>
+      </div>
+    </div>
+  </header>
+  <!-- Product mega menu · 29:556 -->
+  <div class="pmenu" id="productMenu" data-node="29:556" aria-labelledby="productToggle">
+    <div class="pmenu__col">
+      <p class="pmenu__label">Коммуникации</p>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-communications.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Коммуникации</span>
+            <span class="pmenu__desc">Email, SMS, Telegram, MAX и Push<br>в одном окне</span>
+          </span>
+        </a>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-integration.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Интеграция</span>
+            <span class="pmenu__desc">Брошенная корзина, реактивация, напоминания</span>
+          </span>
+        </a>
+    </div>
+    <div class="pmenu__col">
+      <p class="pmenu__label">Лояльность</p>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-loyalty.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Программа лояльности</span>
+            <span class="pmenu__desc">Бонусы, уровни и правила удержания</span>
+          </span>
+        </a>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-growth.png" alt="" width="48" height="39">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Рост клиентской базы</span>
+            <span class="pmenu__desc">Выпуск карт, активация и учёт</span>
+          </span>
+        </a>
+    </div>
+    <div class="pmenu__col">
+      <p class="pmenu__label">Данные и аналитика</p>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-cdp.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">CDP — клиентская база</span>
+            <span class="pmenu__desc">Единый профиль из онлайна<br>и офлайна</span>
+          </span>
+        </a>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-analytics.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Аналитика</span>
+            <span class="pmenu__desc">RFM, когорты, LTV и отчёты</span>
+          </span>
+        </a>
+    </div>
+    <div class="pmenu__promo" data-node="29:599">
+      <span class="pmenu__blob pmenu__blob--violet" aria-hidden="true"><span><img src="assets/img/menu-blob-violet.svg" alt=""></span></span>
+      <span class="pmenu__blob pmenu__blob--cyan" aria-hidden="true"><span><img src="assets/img/menu-blob-cyan.svg" alt=""></span></span>
+      <p class="pmenu__promo-title">Не знаете,<br>с чего начать?</p>
+      <p class="pmenu__promo-desc">Соберём конфигурацию под вашу<br>сеть и запустим за 30 дней</p>
+      <a class="btn btn--grad pmenu__promo-btn" href="#lead">Спросить нас</a>
+    </div>
+  </div>
+</div>
+<div class="menu-dim" id="menuDim"></div>
+
+<div class="page">
+<div class="stage" id="stage">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero-bg" data-node="14:129"></div>
+
+  <section class="hero-copy" data-node="14:144">
+    <div class="hero-copy__head">
+      <p class="hero-kicker" data-node="14:146">Конструктор лояльности и CRM-маркетинга</p>
+      <h1 class="hero-title" data-node="14:147">Превращаем разового покупателя в постоянного</h1>
+    </div>
+    <a class="btn btn--grad hero-cta" href="#lead" data-node="14:148">Оставить заявку</a>
+  </section>
+
+  <!-- Monitor · 14:150. The dashboard on its screen is the looping recording. -->
+  <div class="hero-mon" data-node="14:150">
+    <div class="hero-mon__body ph" data-asset="hero-monitor" data-node="14:151"></div>
+    <div class="hero-mon__screen ph" data-asset="hero-dashboard" data-node="14:152"></div>
+    <span class="hero-mon__cam" data-node="14:153"></span>
+    <span class="hero-mon__fade" data-node="14:154"></span>
+    <span class="sticker sticker--megaphone" data-node="19:1359"><span class="ph" data-asset="sticker-megaphone"></span></span>
+    <span class="sticker sticker--heart" data-node="19:1360"><span class="ph" data-asset="sticker-heart"></span></span>
+    <span class="sticker sticker--dialogs" data-node="19:1362"><span class="ph" data-asset="sticker-dialogs"></span></span>
+  </div>
+
+  <!-- ============ CLIENT RESULTS · 20:1364 ============ -->
+  <div class="results" data-node="20:1364">
+    <p class="results__line reveal" data-node="20:1365">Компании с MAXMA достигают <b>+21% повторных покупок</b> и в среднем <b>рост выручки на&nbsp;12.7%</b></p>
+    <p class="results__line reveal" data-node="20:1366">Клиенты отмечают рост <b>эффективности CRM маркетинга на&nbsp;25%</b> при <b>снижении расходов до&nbsp;250%</b></p>
+  </div>
+
+  <!-- ============ CLIENTS &amp; CASES · 14:168 ============ -->
+  <section class="ccl" data-node="14:168">
+    <h2 class="sec-title ccl__title" data-node="14:169">Нам доверяют бренды, <span class="grad">которые вы знаете</span></h2>
+
+    <div class="pill-tabs cases-tabs" data-node="14:170" role="tablist">
+      <button class="pill is-active" role="tab" aria-selected="true">Одежда и аксессуары</button>
+      <button class="pill" role="tab" aria-selected="false">Здоровье</button>
+      <button class="pill" role="tab" aria-selected="false">HoReCa и продукты питания</button>
+      <button class="pill" role="tab" aria-selected="false">Косметика</button>
+      <button class="pill" role="tab" aria-selected="false">Все кейсы</button>
+    </div>
+
+    <div class="ccl__row" data-node="14:181">
+      <div class="ccl__track" id="casesTrack">
+
+        <a class="ccase ph" href="#" data-asset="case-study-1" data-node="29:456" aria-label="Кейс ARNY PRAHT: +35% прибыли от интернет-продаж"></a>
+
+        <div class="lgrid" data-node="14:212">
+          <a class="lcard" href="#" data-node="14:213">
+            <span class="lcard__logo ph" data-asset="client-04"></span>
+            <img class="lcard__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24">
+          </a>
+          <a class="lcard" href="#" data-node="14:217">
+            <span class="lcard__logo ph" data-asset="client-05"></span>
+            <img class="lcard__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24">
+          </a>
+          <a class="lcard" href="#" data-node="14:232">
+            <span class="lcard__logo ph ph--logo" data-asset="client-03"></span>
+            <img class="lcard__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24">
+          </a>
+          <a class="lcard" href="#" data-node="14:237">
+            <span class="lcard__logo ph ph--logo" data-asset="client-03"></span>
+            <img class="lcard__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24">
+          </a>
+          <a class="lcard" href="#" data-node="14:242">
+            <span class="lcard__logo ph ph--logo" data-asset="client-03"></span>
+            <img class="lcard__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24">
+          </a>
+          <a class="lcard" href="#" data-node="14:247">
+            <span class="lcard__logo ph ph--logo" data-asset="client-07"></span>
+            <img class="lcard__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24">
+          </a>
+        </div>
+
+        <a class="ccase ph" href="#" data-asset="case-study-2" data-node="14:252" aria-label="Кейс SuperStep: +220 000 клиентов в базе за год"></a>
+
+        <div class="ccl__peek" data-node="14:274"></div>
+      </div>
+    </div>
+
+    <div class="cases-nav" data-node="14:276">
+      <button class="navbtn navbtn--prev" id="casesPrev" aria-label="Назад"><svg width="62" height="42" viewBox="0 0 62 42" aria-hidden="true"><path d="M34 27L28 21L34 15" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></button>
+      <button class="navbtn" id="casesNext" aria-label="Вперёд"><svg width="62" height="42" viewBox="0 0 62 42" aria-hidden="true"><path d="M28 27L34 21L28 15" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ============ PLATFORM · 14:282 ============ -->
+  <div class="sec-head platform-head" id="platform" data-node="14:283">
+    <h2 class="sec-title">Одна платформа для <span class="grad">системного маркетинга</span></h2>
+  </div>
+
+  <div class="stage-tabs" data-node="14:287" role="tablist">
+    <button class="stab is-active" role="tab" aria-selected="true" data-slide="0">Сбор данных</button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="1">Запуск коммуникации</button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="2">Удержание</button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="3">Развитие Е-commerce</button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="4">Привлечение клиентов</button>
+    <button class="stab" role="tab" aria-selected="false" data-slide="5">Аналитика</button>
+  </div>
+
+  <div class="pcards" id="pcards">
+    <div class="pcards__track" id="pcardsTrack">
+      <article class="pcard ph" data-asset="platform-1" data-slide="0"></article>
+      <article class="pcard ph" data-asset="platform-2" data-slide="1"></article>
+      <article class="pcard ph" data-asset="platform-3" data-slide="2"></article>
+      <article class="pcard ph" data-asset="platform-1" data-slide="3"></article>
+      <article class="pcard ph" data-asset="platform-2" data-slide="4"></article>
+      <article class="pcard ph" data-asset="platform-3" data-slide="5"></article>
+    </div>
+  </div>
+
+  <!-- ============ WHY · 37:1776 ============
+       Steps switch on their own: the gradient bar fills in 4s, then the
+       next step opens. Right-hand pictures: why-1 … why-5 in assets/img. -->
+  <h2 class="sec-title why-title" data-node="37:1747">Максимум результата. <span class="grad">Минимум сложности.</span></h2>
+
+  <ol class="why-list" id="whyList" data-node="37:1748">
+      <li class="why-item is-active" data-i="0">
+        <button class="why-item__head" type="button" aria-expanded="true">
+          <span class="why-item__title">Прозрачный старт</span>
+        </button>
+        <p class="why-item__desc">Без скрытых условий, сложных тарифов и неожиданных доплат.</p>
+        <span class="why-item__bar" aria-hidden="true"></span>
+      </li>
+      <li class="why-item" data-i="1">
+        <button class="why-item__head" type="button" aria-expanded="false">
+          <span class="why-item__title">Интеграция за 30 дней</span>
+        </button>
+        <p class="why-item__desc">Готовые решения для интеграции сайта, касс и мобильного приложения.</p>
+        <span class="why-item__bar" aria-hidden="true"></span>
+      </li>
+      <li class="why-item" data-i="2">
+        <button class="why-item__head" type="button" aria-expanded="false">
+          <span class="why-item__title">Поддержка на каждом этапе</span>
+        </button>
+        <p class="why-item__desc">Личный аккаунт-маркетолог поможет получить максимум от платформы.</p>
+        <span class="why-item__bar" aria-hidden="true"></span>
+      </li>
+      <li class="why-item" data-i="3">
+        <button class="why-item__head" type="button" aria-expanded="false">
+          <span class="why-item__title">От идеи до запуска — за минуты</span>
+        </button>
+        <p class="why-item__desc">Сегменты и кампании — без разработчиков и сложных настроек.</p>
+        <span class="why-item__bar" aria-hidden="true"></span>
+      </li>
+      <li class="why-item" data-i="4">
+        <button class="why-item__head" type="button" aria-expanded="false">
+          <span class="why-item__title">Результат в цифрах</span>
+        </button>
+        <p class="why-item__desc">Получайте видимый рост метрик уже в первый месяц после запуска.</p>
+        <span class="why-item__bar" aria-hidden="true"></span>
+      </li>
+  </ol>
+
+  <div class="why-card" id="whyCard" data-node="37:1771">
+      <div class="why-shot ph is-active" data-asset="why-1" data-i="0"></div>
+      <div class="why-shot ph" data-asset="why-2" data-i="1"></div>
+      <div class="why-shot ph" data-asset="why-3" data-i="2"></div>
+      <div class="why-shot ph" data-asset="why-4" data-i="3"></div>
+      <div class="why-shot ph" data-asset="why-5" data-i="4"></div>
+  </div>
+
+  <!-- ============ TRUST · 14:358 ============ -->
+  <section class="trust" data-node="29:1154">
+    <h2 class="sec-title trust__title" data-node="14:359">Платформа <span class="grad">Которой доверяют</span></h2>
+    <div class="trust__row" data-node="14:360">
+      <div class="trust__uptime ph" data-asset="trust-uptime" data-node="29:1157" role="img" aria-label="Работаем стабильно 99,9% Uptime"></div>
+      <div class="trust__col" data-node="14:365">
+        <div class="trust__card trust__card--years" data-node="14:366">
+          <p class="trust__lead trust__lead--years">10 лет на рынке клиентского маркетинга</p>
+          <span class="trust__logos ph" data-asset="trust-logos" data-node="29:1164"></span>
+          <span class="trust__chip" data-node="14:379">+500 брендов</span>
+        </div>
+        <div class="trust__card trust__card--ru" data-node="14:381">
+          <p class="trust__lead trust__lead--ru">Российское ПО</p>
+          <p class="trust__note">Данные защищены по 152-ФЗ</p>
+        </div>
+      </div>
+      <div class="trust__support ph" data-asset="trust-support" data-node="29:1180" role="img" aria-label="Рядом за 5 минут — среднее время ответа поддержки"></div>
+    </div>
+  </section>
+
+  <!-- ============ MORE THAN A PLATFORM · 20:1457 ============ -->
+  <div class="more-bg" data-node="14:421"></div>
+  <h2 class="sec-title more-title" id="blog" data-node="14:425"><span class="grad">Больше</span>, чем просто платформа</h2>
+  <p class="more-sub" data-node="14:427">Учитесь на реальных кейсах, находите идеи для новых механик и быстрее воплощайте их в MAXMA</p>
+
+  <div class="more-list" data-node="15:687">
+    <a class="more-row" href="#" data-node="15:684">
+      <span class="more-row__pic ph" data-asset="more-articles" data-node="14:490"></span>
+      <span class="more-row__text">
+        <span class="more-row__head"><span class="more-row__name">Статьи</span><img class="more-row__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24"></span>
+        <span class="more-row__desc">Разборы механик и кейсов вживую</span>
+      </span>
+    </a>
+    <a class="more-row" href="#" data-node="15:685">
+      <span class="more-row__pic ph" data-asset="more-academy" data-node="14:489"></span>
+      <span class="more-row__text">
+        <span class="more-row__head"><span class="more-row__name">Академия</span><img class="more-row__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24"></span>
+        <span class="more-row__desc">Обучение CRM-маркетингу с нуля</span>
+      </span>
+    </a>
+    <a class="more-row" href="#" data-node="15:686">
+      <span class="more-row__pic ph" data-asset="more-kb" data-node="14:488"></span>
+      <span class="more-row__text">
+        <span class="more-row__head"><span class="more-row__name">База знаний</span><img class="more-row__arrow" src="assets/img/arrow-outward.svg" alt="" width="24" height="24"></span>
+        <span class="more-row__desc">Гайды и ответы по платформе</span>
+      </span>
+    </a>
+  </div>
+
+  <span class="more-sticker more-sticker--1 ph" data-asset="sticker-articles" data-node="20:1462"></span>
+  <span class="more-sticker more-sticker--2 ph" data-asset="sticker-academy" data-node="20:1461"></span>
+  <span class="more-sticker more-sticker--3 ph" data-asset="sticker-kb" data-node="20:1460"></span>
+
+  <!-- ============ LEAD FORM · 14:423 ============ -->
+  <section class="lead" id="lead" data-node="14:423">
+
+    <form class="lead__form" id="leadForm" novalidate data-node="14:394">
+      <div class="lead__head">
+        <p class="lead__title">Оставить заявку</p>
+        <p class="lead__sub">Покажем, как MAXMA решает ваши задачи</p>
+      </div>
+      <div class="lead__fields">
+        <label class="field"><input type="text" name="name" placeholder="Ваше имя" autocomplete="name"></label>
+        <label class="field"><input type="tel" name="phone" placeholder="Контактный телефон" autocomplete="tel"></label>
+        <label class="field"><input type="email" name="email" placeholder="Ваш email" autocomplete="email"></label>
+        <label class="field"><input type="text" name="company" placeholder="Компания" autocomplete="organization"></label>
+      </div>
+      <button class="btn btn--grad lead__submit" type="submit">Заказать звонок</button>
+      <div class="lead__agreement">
+        <label class="check"><input type="checkbox" name="ads"><span class="check__box"></span><span class="check__label">Соглашаюсь на получение рекламы</span></label>
+        <p class="lead__legal">Оставляя заявку, вы соглашаетесь на обработку персональных данных</p>
+      </div>
+    </form>
+
+    <div class="lead__visual ph" data-node="14:414" data-asset="lead-visual"></div>
+  </section>
+
+  <!-- ============ FOOTER · 27:243 ============ -->
+  <footer class="ftr" data-node="27:243">
+    <span class="ftr__logo ph ph--svg" data-asset="logo-maxma-white"></span>
+
+    <div class="ftr__contacts" data-node="27:263">
+      <a class="ftr__contact" href="tel:+74999384980">+7 (499) 938 49 80</a>
+      <a class="ftr__contact" href="mailto:hello@maxma.com">hello@maxma.com</a>
+      <div class="ftr__social">
+        <a class="ftr__soc ftr__soc--vc" href="#" aria-label="vc.ru"><img src="assets/img/soc-vc.svg" alt="" width="23.8125" height="22.1849"></a>
+        <img class="ftr__soc" src="assets/img/soc-yt-tg.svg" alt="YouTube, Telegram" width="84" height="32">
+      </div>
+    </div>
+
+    <div class="ftr__sub" data-node="27:284">
+      <div class="ftr__subhead">
+        <p class="ftr__subtitle">Подписаться на рассылку</p>
+        <p class="ftr__subdesc"><span>Получайте обновления платформы, журнал</span><span>и события. Без спама</span></p>
+      </div>
+      <form class="ftr__subform" id="subForm" novalidate>
+        <input type="email" name="email" placeholder="Ваш e-mail" autocomplete="email">
+        <button class="btn btn--white btn--pill" type="submit">Подписаться</button>
+      </form>
+      <label class="check check--light"><input type="checkbox" name="consent"><span class="check__box"></span><span class="check__label">Соглашаюсь на передачу данных</span></label>
+    </div>
+
+    <div class="ftr__body" data-node="27:245">
+      <hr class="ftr__rule">
+      <div class="ftr__cols" data-node="27:247">
+        <div class="ftr__col">
+          <p class="ftr__coltitle">Продукт</p>
+          <ul><li><a href="#">Лояльность</a></li><li><a href="#">CDP</a></li><li><a href="#">Коммуникации</a></li><li><a href="#">Аналитика</a></li><li><a href="#">Тарифы</a></li></ul>
+        </div>
+        <div class="ftr__col">
+          <p class="ftr__coltitle">Материалы</p>
+          <ul><li><a href="#">Вебинары</a></li><li><a href="#">Курсы</a></li><li><a href="#">База знаний</a></li><li><a href="#">ROI-калькулятор</a></li><li><a href="#">Обновления</a></li></ul>
+        </div>
+        <div class="ftr__col">
+          <p class="ftr__coltitle">Компания</p>
+          <ul><li><a href="#">О компании</a></li><li><a href="#">Для партнёров</a></li><li><a href="#">Блог</a></li><li><a href="#">Контакты</a></li></ul>
+        </div>
+        <div class="ftr__legal" data-node="29:329">
+          <p><span>© 2017-2023 MAXMA ООО "Доставка покупателей"</span><span>ИНН: 5041206183 КПП: 504101001 ОГРН: 1175053011451</span></p>
+          <div class="ftr__addr">
+            <p><span>Москва</span><span>Малая Семёновская, 3А стр 1</span></p>
+            <p><span>Амстердам</span><span>Veeteeltstraat 58, 1097WZ</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

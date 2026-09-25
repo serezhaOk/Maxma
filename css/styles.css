@@ -1,0 +1,485 @@
+/* =====================================================================
+   MAXMA — main page
+   Figma: J5O8dq0z1hB7ba68lMvQYn · frame «Главная» 14:128 (1440 × 8208)
+   Fixed-width 1440 prototype. Every block is placed at its Figma
+   coordinates; inner layouts mirror the Figma auto-layout. Everything
+   from the client results down sits 60px lower than in the mockup —
+   extra air under the hero monitor.
+   ===================================================================== */
+
+/* ---------- Object Sans (PP Object Sans) ---------- */
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Light.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Light.woff") format("woff");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Regular.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Medium.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Medium.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Bold.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Bold.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Object Sans";src:url("../assets/fonts/ObjectSans-Black.woff2") format("woff2"),url("../assets/fonts/ObjectSans-Black.woff") format("woff");font-weight:900;font-style:normal;font-display:swap}
+
+/* ---------- tokens ---------- */
+:root{
+  --ink:#190928;
+  --ink-80:rgba(25,9,40,.8);
+  --ink-60:rgba(25,9,40,.6);
+  --ink-40:rgba(25,9,40,.4);
+  --ink-30:rgba(25,9,40,.3);
+  --ink-20:rgba(25,9,40,.2);
+  --mint:#7ceff6;
+  --surface:#f2f3f8;
+  --hairline:rgba(0,0,0,.1);
+  --grad-cta:linear-gradient(90deg,#6e1bc1 0%,#3b61ee 100%);
+  --grad-text:linear-gradient(90deg,#850ee0 0%,#00ffbf 100%);
+  --grad-border:linear-gradient(270deg,#7ceff6 0%,#aa89e8 49.67%,#5822f8 100%);
+  --sans:"Object Sans","Helvetica Neue",Arial,sans-serif;
+  --rubik:"Rubik","Object Sans",Arial,sans-serif;
+}
+
+/* ---------- reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:var(--sans);font-weight:400;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+p,h1,h2,h3,ul{margin:0;padding:0}
+ul{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input{font:inherit;color:inherit}
+img,svg{display:block}
+hr{border:0;margin:0}
+
+/* ---------- stage ---------- */
+/* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
+   (the hero gradient at 1520) paints past the frame edge, and wider screens
+   just show white to either side. */
+/* The carousels deliberately run past the 1440 frame into the white
+   margins. .page clips that overflow itself, so the document never gets
+   wider than the window and can't be nudged sideways (overflow:hidden on
+   the root still lets focus, find-in-page or a trackpad swipe scroll it).
+   clip, unlike hidden, doesn't make .page a scroll container. */
+.page{width:100%;overflow-x:clip}
+.stage{position:relative;width:1440px;height:8268px;margin:0 auto;background:#fff}
+.stage>*{position:absolute}
+
+/* ---------- asset placeholders ----------
+   JS swaps in the real file when it exists in assets/img/.
+   Until then the slot keeps its exact designed box. */
+.ph{
+  background:linear-gradient(135deg,#eef0f6 0%,#e6e9f2 100%);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  border-radius:inherit;
+}
+.ph.is-loaded{background-image:var(--src);background-color:transparent}
+.ph.is-video{background:none}
+.ph video{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
+.ph--svg,.ph--logo{background:none}
+.ph--svg.is-loaded,.ph--logo.is-loaded{background-image:var(--src);background-size:contain;background-repeat:no-repeat;background-position:center}
+.ph--svg:not(.is-loaded),.ph--logo:not(.is-loaded){
+  background:rgba(25,9,40,.06);border-radius:4px;
+}
+.ph--round{border-radius:50%}
+
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.6,.3,1)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- shared type ---------- */
+.sec-title{
+  font-weight:500;font-size:40px;line-height:1.2;letter-spacing:-1.6px;
+  text-transform:uppercase;text-align:center;color:var(--ink);
+}
+/* Figma sits big caps a few px lower in a fixed line-height than the browser
+   does with Object Sans' metrics; nudge the glyphs without moving the box. */
+.sec-title,.lead__title{transform:translateY(3px)}
+.sec-sub{
+  font-weight:400;font-size:16px;line-height:22px;
+  text-align:center;color:var(--ink);opacity:.6;
+}
+.sec-head{display:flex;flex-direction:column;align-items:center;gap:16px}
+.grad{
+  background:var(--grad-text);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  /* text-clipped backgrounds only paint the content box: the vertical pad
+     keeps the breve of Й and other tall caps inside it (inline padding
+     doesn't touch the line box) */
+  padding:.2em 0;
+}
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-weight:500;font-size:15px;line-height:24px;letter-spacing:-.15px;
+  white-space:nowrap;transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
+}
+.btn:active{transform:translateY(1px)}
+/* border-image ignores border-radius, so the gradient is a border-box layer
+   with a solid padding-box fill painted over it. */
+.btn--outline{
+  height:44px;padding:8px 24px;border:2px solid transparent;border-radius:40px;font-weight:400;
+  background:linear-gradient(#fff,#fff) padding-box,var(--grad-border) border-box;
+}
+.btn--outline:hover{background:linear-gradient(#f4fdfe,#f4fdfe) padding-box,var(--grad-border) border-box}
+.btn--dark{height:44px;width:138px;padding:8px 24px;border-radius:60px;background:var(--ink);color:#fff;font-weight:400}
+.btn--dark:hover{box-shadow:0 8px 20px rgba(25,9,40,.25)}
+.btn--grad{
+  padding:16.17px 24px;border-radius:99.81px;border:1px solid var(--hairline);
+  background:var(--grad-cta);color:#fff;font-size:16px;letter-spacing:-.16px;
+}
+.btn--grad:hover{box-shadow:0 10px 26px rgba(110,27,193,.35)}
+.btn--white{background:#fff;color:var(--ink)}
+.btn--pill{height:40px;padding:8px 20px;border-radius:70px;font-family:var(--rubik);font-weight:450;font-size:16px;line-height:24px;letter-spacing:-.16px}
+
+/* =====================================================================
+   HEADER · 14:130
+   ===================================================================== */
+/* Fixed for the whole scroll, no backdrop — it rides straight over the page. */
+.hdr-bar{position:fixed;top:0;left:0;width:100%;height:84px;z-index:100;pointer-events:none}
+.hdr-bar .hdr{pointer-events:auto}
+.hdr{position:relative;width:1440px;height:48px;margin:0 auto;top:18px;display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 21px}
+.hdr__left{display:flex;align-items:center;gap:30px}
+.hdr__logo{width:124px;height:36.978px}
+.hdr__nav{display:flex;align-items:center;height:38px;padding:12px 0;border-radius:4px}
+/* Pills sit edge to edge · 29:542. Тарифы and Блог are not links yet. */
+.hdr__link{display:flex;align-items:center;justify-content:center;padding:7px 25px;border-radius:50px;font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);white-space:nowrap;cursor:default;transition:background .18s,box-shadow .18s}
+.hdr__link--btn{cursor:pointer}
+/* the .5px hairline is inset so opening doesn't nudge the row */
+.hdr__link--btn[aria-expanded="true"]{background:#fff;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08)}
+.hdr__right{display:flex;align-items:center;gap:32px;height:48px}
+.hdr__phone{font-size:15px;line-height:24px;letter-spacing:-.15px;white-space:nowrap}
+.hdr__actions{display:flex;align-items:center;gap:8px;height:48px;padding:12px 0;border-radius:4px}
+
+/* =====================================================================
+   PRODUCT MENU · 29:556
+   Hangs under the header; the page behind is dimmed the way the mockup
+   does it (content at 50% over #fcfcfd, then 18% black) — folded into
+   one overlay colour.
+   ===================================================================== */
+.menu-dim{position:fixed;inset:0;z-index:99;background:rgba(175,175,176,.59);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility 0s linear .2s}
+.menu-open .menu-dim{opacity:1;visibility:visible;transition:opacity .2s ease}
+
+.pmenu{
+  position:absolute;top:84px;left:calc(50% - 700px);width:1400px;
+  display:flex;align-items:flex-start;gap:32px;padding:32px;
+  background:#fff;border:1px solid rgba(25,9,40,.08);border-radius:20px;overflow:hidden;
+  box-shadow:0 18px 48px -8px rgba(36,18,61,.1);
+  pointer-events:none;opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s ease,transform .22s cubic-bezier(.2,.6,.3,1),visibility 0s linear .22s;
+}
+.menu-open .pmenu{pointer-events:auto;opacity:1;visibility:visible;transform:none;transition:opacity .18s ease,transform .22s cubic-bezier(.2,.6,.3,1)}
+@media (prefers-reduced-motion:reduce){.pmenu{transform:none}}
+
+.pmenu__col{width:304px;flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.pmenu__label{width:100%;font-weight:500;font-size:11px;line-height:13px;letter-spacing:.55px;text-transform:uppercase;color:rgba(25,9,40,.56)}
+.pmenu__item{display:flex;align-items:flex-start;gap:12px;width:100%;color:var(--ink)}
+.pmenu__icon{flex:none;width:48px;transition:transform .2s ease}
+.pmenu__item:hover .pmenu__icon{transform:rotate(-4deg) scale(1.05)}
+.pmenu__text{width:236px;height:70px;display:flex;flex-direction:column;gap:8px}
+.pmenu__title{font-weight:500;font-size:16px;line-height:22px;letter-spacing:-.32px}
+.pmenu__desc{font-size:13px;line-height:16px;opacity:.6}
+
+.pmenu__promo{position:relative;width:328px;height:221px;flex:none;background:#f5f3f8;border:.5px solid rgba(0,0,0,.08);border-radius:16px;overflow:hidden}
+.pmenu__promo>*{position:absolute}
+/* blurred blobs · 29:600 / 29:601 — box, turn and bleed as in Figma */
+.pmenu__blob{display:flex;align-items:center;justify-content:center;pointer-events:none}
+.pmenu__blob>span{position:relative;flex:none}
+.pmenu__blob img{position:absolute;display:block;max-width:none;width:auto;height:auto}
+.pmenu__blob--violet{left:90.13px;top:-15.97px;width:483.582px;height:618.678px}
+.pmenu__blob--violet>span{width:218.911px;height:588px;transform:rotate(30deg)}
+.pmenu__blob--violet img{inset:-20.44% -54.91%;width:calc(100% + 109.82%);height:calc(100% + 40.88%)}
+.pmenu__blob--cyan{left:52.13px;top:154.1px;width:383.568px;height:252.843px}
+.pmenu__blob--cyan>span{width:132.618px;height:359.95px;transform:rotate(68.99deg)}
+.pmenu__blob--cyan img{inset:-33.39% -90.64%;width:calc(100% + 181.28%);height:calc(100% + 66.78%)}
+.pmenu__promo-title{left:23.5px;top:23.5px;width:280px;font-weight:500;font-size:24px;line-height:29px;letter-spacing:-.48px;color:var(--ink)}
+.pmenu__promo-desc{left:23.5px;top:91.5px;width:280px;font-size:13px;line-height:16px;color:var(--ink);opacity:.6}
+.pmenu__promo-btn{left:23.5px;top:148.5px;padding:13px 20px;font-size:14px;line-height:20px;letter-spacing:-.14px}
+
+/* =====================================================================
+   HERO · 14:129 / 14:144 / 14:150
+   ===================================================================== */
+/* --hero-p goes 0 -> 1 over the first screen of scrolling (js/main.js):
+   the rounded gradient card grows into a full-bleed background. */
+.hero-bg{
+  left:calc(21px - 61px * var(--hero-p,0));
+  top:84px;
+  width:calc(1398px + 122px * var(--hero-p,0));
+  height:calc(1004px + 488px * var(--hero-p,0));
+  border-radius:calc(20px * (1 - var(--hero-p,0)));
+  background:linear-gradient(0deg,#fff 0%,#c6d0e9 100%);opacity:.6;
+}
+
+.hero-copy{left:281px;top:239px;width:878px;display:flex;flex-direction:column;align-items:center;gap:48px}
+.hero-copy__head{display:flex;flex-direction:column;align-items:center;gap:27px;width:100%}
+.hero-kicker{font-size:18px;line-height:24px;letter-spacing:-.18px;text-align:center;color:var(--ink);width:100%;transform:translateY(2px)}
+.hero-title{
+  width:1038.906px;font-weight:500;font-size:57.283px;line-height:1.2;
+  letter-spacing:-2.2913px;text-transform:uppercase;text-align:center;color:var(--ink);
+  transform:translateY(5px); /* same baseline nudge as .sec-title */
+}
+.hero-cta{width:266px}
+
+/* Monitor group · 14:150. Children sit at their Figma offsets from the
+   monitor's own box (146, 643); the whole group grows 15% with --hero-p. */
+.hero-mon{
+  left:146px;top:643px;width:1148px;height:934px;
+  transform:scale(calc(1 + .15 * var(--hero-p,0)));transform-origin:50% 0;
+}
+.hero-mon>*{position:absolute}
+.hero-mon__body{inset:0;background-color:transparent;background-size:100% 100%}
+.hero-mon__screen{
+  left:28px;top:27px;width:1094px;height:616.126px;
+  border:1px solid rgba(25,9,40,.1);border-radius:1.002px;overflow:hidden;
+  box-shadow:0 49.458px 65.284px rgba(0,0,0,.03);
+}
+/* The recording is a touch taller than the screen: pin it to the top and
+   let the bottom crop, like the still in the mockup. */
+.hero-mon__screen video{object-fit:cover;object-position:50% 0}
+.hero-mon__cam{left:548px;top:4px;width:52px;height:18px;background:#eaebed}
+.hero-mon__fade{left:1px;top:706px;width:1147px;height:228px;background:linear-gradient(-.314deg,#fff 22.66%,rgba(255,255,255,0) 98.659%)}
+
+/* Stickers · the box is the rotated bounding box from Figma, the art is
+   centred in it and turned back by the layer rotation. */
+.sticker{display:flex;align-items:center;justify-content:center}
+.sticker .ph{flex:none;width:52px;height:46px;background-color:transparent;background-size:100% 100%}
+.sticker--megaphone{left:-2.411px;top:1.63px;width:62.822px;height:58.747px}
+.sticker--megaphone .ph{transform:rotate(-16.3deg)}
+.sticker--heart{left:1094.3px;top:74.71px;width:59.408px;height:54.581px}
+.sticker--heart .ph{transform:rotate(10.33deg)}
+.sticker--dialogs{left:110px;top:653px;width:61px;height:53px}
+.sticker--dialogs .ph{width:61px;height:53px}
+
+/* =====================================================================
+   CLIENT RESULTS · 20:1364
+   ===================================================================== */
+.results{left:366px;top:1797px;width:709px;display:flex;flex-direction:column;gap:24px}
+.results__line{font-weight:500;font-size:26px;line-height:1.26;color:var(--ink-40)}
+.results__line b{font-weight:500;color:#190927;text-decoration:underline solid transparent;text-underline-offset:5px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s ease}
+.results__line:hover b{text-decoration-color:#190927}
+
+/* =====================================================================
+   CLIENTS & CASES · 14:168
+   Column of heading / tabs / carousel row / pagination, 50px apart.
+   The row is wider than the 1400 window, so the next case peeks in.
+   ===================================================================== */
+.ccl{left:20px;top:2146px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:50px}
+.ccl__title{width:612px}
+
+.pill-tabs{display:flex;align-items:center;padding:4px;border-radius:30px;background:var(--surface)}
+.pill{height:44px;padding:8px 24px;border-radius:60px;font-size:15px;line-height:24px;letter-spacing:-.15px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
+.pill:hover{opacity:.85}
+.pill.is-active{background:#fff;opacity:1;font-weight:500}
+
+.ccl__row{width:100%;height:523px}
+.ccl__track{display:flex;align-items:center;gap:16px;width:max-content;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+
+/* Case cards · 29:456, 14:252 — one exported artwork each, card and all. */
+.ccase{
+  width:574px;height:523px;flex:none;border-radius:24px;display:block;overflow:hidden;
+  background-size:cover;transition:transform .25s ease;
+}
+.ccase:hover{transform:translateY(-3px)}
+
+/* Logo wall · 14:212 — 2 columns x 3 rows. */
+.lgrid{width:692px;height:523px;flex:none;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:16px}
+.lcard{position:relative;display:block;border-radius:24px;background:var(--surface)}
+.lcard__logo{position:absolute;left:calc(50% + .5px);top:50%;width:225px;height:90px;transform:translate(-50%,-50%);background-size:100% 100%}
+.lcard__arrow{position:absolute;right:20px;top:20px;width:24px;height:24px;transition:transform .2s ease}
+.lcard:hover .lcard__arrow{transform:translate(2px,-2px)}
+
+/* Next case, peeking in from the right · 14:274 */
+.ccl__peek{width:574px;height:523px;flex:none;border-radius:22px;background:linear-gradient(180deg,#fae4be 0%,#f7f3e9 100%)}
+
+.cases-nav{width:132px;height:42px;display:flex;align-items:center;gap:8px}
+.navbtn{width:62px;height:42px;display:block;background:var(--surface);border-radius:21px;color:var(--ink);transition:background .18s,opacity .18s}
+.navbtn svg{display:block}
+.navbtn:hover{background:#e6e9f2}
+.navbtn:disabled{opacity:.3;cursor:default;background:var(--surface)}
+
+/* =====================================================================
+   PLATFORM · 14:282
+   ===================================================================== */
+.platform-head{left:281px;top:3169px;width:878px}
+.platform-head .sec-title{width:608px}
+
+.stage-tabs{left:20px;top:3325px;width:210px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
+.stab{height:44px;padding:8px 24px;border-radius:60px;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:24px;letter-spacing:-.14px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
+.stab:hover{opacity:.9}
+/* the .5px hairline is inset so it doesn't widen the pill */
+.stab.is-active{background:var(--surface);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);opacity:1;font-weight:500}
+
+.pcards{left:246px;top:3325px;width:1194px;height:602px;overflow:hidden}
+.pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+/* Each segment is one 1046x602 artwork — gradient, copy, button and device
+   are all baked in, so the card is just the picture. Three artworks cycle
+   through the six tabs. */
+.pcard{position:relative;flex:none;width:1046px;height:602px;border-radius:24px;overflow:hidden}
+
+/* =====================================================================
+   WHY · «Максимум результата» · 37:1776
+   Doesn't hold the scroll. The active step's gradient bar fills over 4s
+   (js/main.js), then the next step opens; the picture on the right
+   follows the step.
+   ===================================================================== */
+.why-title{left:433px;top:4075px;width:574px}
+
+/* 472px tall with 26px titles, centred on the 540px card */
+.why-list{left:138px;top:4265px;width:504px;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.why-item{position:relative;padding:24px 0;border-bottom:1px solid rgba(0,0,0,.1);color:var(--ink)}
+.why-item__head{display:block;width:100%;text-align:left;font-size:26px;line-height:normal;cursor:pointer}
+.why-item__title{font-weight:500;opacity:.3;transition:opacity .3s ease}
+.why-item:not(.is-active) .why-item__head:hover .why-item__title{opacity:.55}
+.why-item.is-active .why-item__title{opacity:1}
+/* description opens under the active step: 16px gap + a fixed two-line
+   (44px) box, so one-line copy doesn't make the list jump between steps */
+.why-item__desc{width:100%;height:0;font-size:15px;line-height:22px;opacity:0;overflow:hidden;transition:height .45s cubic-bezier(.4,0,.2,1),margin-top .45s cubic-bezier(.4,0,.2,1),opacity .3s ease}
+.why-item.is-active .why-item__desc{height:44px;margin-top:16px;opacity:.6;transition:height .45s cubic-bezier(.4,0,.2,1),margin-top .45s cubic-bezier(.4,0,.2,1),opacity .35s ease .15s}
+/* progress · Vector 994: 3px, round caps, centred on the step's rule */
+.why-item__bar{position:absolute;left:0;bottom:-2.5px;width:0;height:3px;border-radius:1.5px;background:linear-gradient(90deg,#850ee0 0%,#00ffbf 100%);pointer-events:none}
+.why-item.is-active .why-item__bar{animation:why-fill 4s linear forwards}
+.why-list.is-paused .why-item__bar{animation-play-state:paused}
+@keyframes why-fill{from{width:0}to{width:100%}}
+
+.why-card{left:728px;top:4231px;width:574px;height:540px;border-radius:22px;overflow:hidden;background:linear-gradient(0deg,#e2eff8 0%,#b1e0f4 100%)}
+/* why-1 stays underneath as the base; later steps fade in over it once
+   their picture exists */
+.why-shot{position:absolute;inset:0;background-size:cover;background-color:transparent;opacity:0;transition:opacity .5s ease}
+.why-shot:not(.is-loaded){background:none}
+.why-shot[data-i="0"],.why-shot.is-active.is-loaded{opacity:1}
+
+/* =====================================================================
+   TRUST · 14:358
+   ===================================================================== */
+.trust{left:20px;top:4931px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:60px}
+.trust__title{width:456px}
+.trust__row{display:flex;align-items:center;gap:16px;width:100%}
+
+/* 14:361 and 14:384 are photo collages — exported whole, copy included. */
+.trust__uptime{width:456px;height:540px;flex:none;border-radius:24px;overflow:hidden}
+/* the export carries the 1px stroke outside the 456x540 box */
+.trust__support{width:458px;height:542px;margin:-1px;flex:none;border-radius:25px;overflow:hidden}
+
+.trust__col{width:456px;flex:none;display:flex;flex-direction:column;gap:16px}
+.trust__card{position:relative;width:456px;background:var(--surface);border:1px solid rgba(25,9,40,.08);border-radius:24px;overflow:hidden;color:var(--ink)}
+.trust__card--years{height:364px}
+.trust__card--ru{height:160px}
+.trust__card>*{position:absolute}
+.trust__lead{font-weight:500;font-size:26px;line-height:normal}
+.trust__lead--years{left:31px;top:49px;width:374px}
+.trust__lead--ru{left:31px;top:47px;width:334px}
+.trust__note{left:30px;top:86px;font-size:17px;line-height:19px;white-space:nowrap}
+/* the logo stack's 4px outer strokes are part of the export, hence the -4px */
+.trust__logos{left:32px;top:258px;width:235.5px;height:72px;background-color:transparent;background-size:100% 100%}
+.trust__chip{left:290px;top:274px;padding:10px 12px;border-radius:100px;background:var(--surface);font-size:17px;line-height:19px;white-space:nowrap}
+
+/* =====================================================================
+   MORE THAN A PLATFORM · 20:1457
+   ===================================================================== */
+.more-bg{left:20px;top:5747px;width:1400px;height:785px;background:var(--surface);border:1px solid rgba(25,9,40,.08);border-radius:24px}
+.more-title{left:138px;top:5827px;width:410px;text-align:left}
+/* Figma runs the gradient across the whole 410px text box, not just the word */
+.more-title .grad{background-size:410px 100%}
+.more-sub{left:138px;top:5987px;width:338px;font-size:16px;line-height:22px;color:var(--ink)}
+
+.more-list{left:610px;top:5827px;width:756px;display:flex;flex-direction:column;gap:32px}
+.more-row{display:flex;align-items:center;gap:24px;width:100%;color:var(--ink)}
+.more-row__pic{width:338px;height:187px;flex:none;border-radius:16px;overflow:hidden;transition:transform .3s ease}
+.more-row:hover .more-row__pic{transform:scale(1.015)}
+.more-row__text{width:394px;display:flex;flex-direction:column;gap:12px}
+.more-row__head{display:flex;align-items:flex-start;justify-content:space-between;width:100%}
+.more-row__name{font-weight:500;font-size:26px;line-height:normal;white-space:nowrap}
+.more-row__arrow{width:24px;height:24px;flex:none;transition:transform .2s ease}
+.more-row:hover .more-row__arrow{transform:translate(2px,-2px)}
+.more-row__desc{font-size:17px;line-height:19px;opacity:.6}
+
+/* stickers ride on the top-left corner of each picture */
+.more-sticker{left:618px;width:50.886px;height:50px;background-color:transparent;background-size:100% 100%;pointer-events:none}
+.more-sticker--1{top:5834px}
+.more-sticker--2{top:6053px}
+.more-sticker--3{top:6270px}
+
+/* =====================================================================
+   LEAD FORM · 14:423
+   ===================================================================== */
+.lead{left:0;top:6652px;width:1440px;height:794px}
+
+.lead__form{position:absolute;left:138px;top:125.83px;width:456px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.lead__head{display:flex;flex-direction:column;gap:16px}
+.lead__title{font-weight:500;font-size:40px;line-height:1.2;letter-spacing:-1.6px;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.lead__sub{font-size:16px;line-height:22px;color:var(--ink);opacity:.6;white-space:nowrap}
+.lead__fields{display:flex;flex-direction:column;gap:16px;width:100%}
+.field{display:flex;align-items:center;width:100%;height:48px;padding:11px 15px;border:1px solid var(--ink-20);border-radius:8px;transition:border-color .15s}
+.field input{width:100%;border:0;outline:0;background:none;font-size:16px;line-height:24px;letter-spacing:-.16px;color:var(--ink)}
+.field input::placeholder{color:var(--ink);opacity:.3}
+.field:focus-within{border-color:var(--ink)}
+.field.is-error{border-color:#e0304a}
+.lead__submit{width:100%}
+.lead__agreement{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.lead__legal{width:100%;font-size:14px;line-height:16px;color:var(--ink);opacity:.5}
+
+.check{display:flex;align-items:center;gap:12px;width:100%;cursor:pointer;user-select:none}
+.check input{position:absolute;opacity:0;width:0;height:0}
+.check__box{width:16px;height:16px;flex:none;border:1.5px solid var(--ink-40);border-radius:2px;transition:background .15s,border-color .15s}
+.check input:checked+.check__box{background:var(--ink);border-color:var(--ink)}
+.check input:focus-visible+.check__box{outline:2px solid var(--mint);outline-offset:2px}
+.check__label{font-size:14px;line-height:16px;color:var(--ink);opacity:.5;white-space:nowrap}
+.check--light .check__box{width:20px;height:20px;border-radius:4px;border-color:#fff;background:var(--ink);opacity:.5}
+.check--light input:checked+.check__box{background:#fff;opacity:1}
+.check--light .check__label{font-weight:500;font-size:16px;line-height:14px;letter-spacing:-.16px;color:#fff;opacity:.4;white-space:normal;width:289px}
+
+/* 14:414 — the monitor collage is exported whole, stickers included. */
+.lead__visual{position:absolute;left:728px;top:0;width:692px;height:794px;border-radius:20px;overflow:hidden}
+
+/* =====================================================================
+   FOOTER · 27:243
+   ===================================================================== */
+.ftr{left:20px;top:7566px;width:1400px;height:694px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
+.ftr__logo{position:absolute;left:118px;top:84px;width:94.48px;height:28px}
+
+.ftr__contacts{position:absolute;left:118px;top:144px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.ftr__contact{font-weight:500;font-size:16px;line-height:20px;letter-spacing:-.16px;color:#fff;white-space:nowrap;transition:opacity .18s}
+.ftr__contact:hover{opacity:.7}
+.ftr__social{display:flex;align-items:center;gap:19px;height:32px}
+.ftr__soc{display:block;flex:none;transition:opacity .18s}
+.ftr__soc--vc{position:relative;width:32px;height:32px}
+.ftr__soc--vc img{position:absolute;left:3px;top:5px}
+.ftr__soc:hover{opacity:.7}
+.ftr .ph--svg:not(.is-loaded){background:rgba(255,255,255,.12)}
+
+.ftr__sub{position:absolute;left:823px;top:84px;width:517px;display:flex;flex-direction:column;gap:16px}
+.ftr__subhead{display:flex;flex-direction:column;gap:16px;width:415px}
+.ftr__subtitle{font-weight:500;font-size:26px;line-height:normal;color:#fff}
+.ftr__subdesc{width:348px;font-size:16px;line-height:14px;letter-spacing:-.16px;color:#fff;opacity:.4}
+/* 14px lines 10px apart, as set in Figma */
+.ftr__subdesc span,.ftr__legal span{display:block}
+.ftr__subdesc span+span,.ftr__legal span+span{margin-top:10px}
+.ftr__subform{display:flex;align-items:center;justify-content:space-between;width:100%;height:64px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.ftr__subform input{flex:1;min-width:0;border:0;outline:0;background:none;font-weight:500;font-size:16px;line-height:14px;letter-spacing:-.16px;color:#fff}
+.ftr__subform input::placeholder{color:#fff;opacity:.4}
+.ftr__subform .btn{width:143px;height:40px}
+
+.ftr__body{position:absolute;left:118px;top:355px;width:1222px;display:flex;flex-direction:column;gap:60px}
+.ftr__rule{width:100%;border-top:1px solid rgba(255,255,255,.1)}
+.ftr__cols{display:flex;align-items:flex-start;width:100%}
+.ftr__col{width:235px;flex:none;display:flex;flex-direction:column;gap:24px}
+/* Figma trims the caption to its cap height (10px box), so the list starts
+   24px below the capitals, not below the line box. */
+.ftr__coltitle{height:10px;font-weight:500;font-size:14px;line-height:10px;text-transform:uppercase;color:rgba(255,255,255,.4);text-box:trim-both cap alphabetic}
+.ftr__col li a{font-weight:500;font-size:16px;line-height:20px;letter-spacing:-.16px;color:#fff;white-space:nowrap;transition:opacity .18s}
+.ftr__col li a:hover{opacity:.65}
+.ftr__col li+li{margin-top:10px}
+.ftr__legal{flex:1;min-width:0;display:flex;flex-direction:column;gap:32px;font-size:16px;line-height:14px;letter-spacing:-.16px;color:#fff;opacity:.4}
+.ftr__addr{display:flex;gap:48px}
+.ftr__addr p{flex:none;width:244px}
+.ftr__addr p+p{width:280px}
+
+/* =====================================================================
+   TOAST
+   ===================================================================== */
+.toast{
+  position:fixed;left:50%;bottom:40px;transform:translate(-50%,20px);
+  padding:14px 24px;border-radius:99px;background:var(--ink);color:#fff;
+  font-size:15px;line-height:24px;letter-spacing:-.15px;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:200;
+}
+.toast.is-on{opacity:1;transform:translate(-50%,0)}
