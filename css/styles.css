@@ -36,11 +36,7 @@
 
 /* ---------- reset ---------- */
 *,*::before,*::after{box-sizing:border-box}
-/* The carousels deliberately run past the 1440 frame into the white
-   margins, so the viewport swallows the horizontal overflow instead of
-   growing a sideways scrollbar. Set on the root, not on .stage: the
-   viewport stays the scroll container and the pinned sections still stick. */
-html{-webkit-text-size-adjust:100%;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:#fff;color:var(--ink);
   font-family:var(--sans);font-weight:400;
@@ -59,6 +55,12 @@ hr{border:0;margin:0}
 /* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
    (the hero gradient at 1520) paints past the frame edge, and wider screens
    just show white to either side. */
+/* The carousels deliberately run past the 1440 frame into the white
+   margins. .page clips that overflow itself, so the document never gets
+   wider than the window and can't be nudged sideways (overflow:hidden on
+   the root still lets focus, find-in-page or a trackpad swipe scroll it).
+   clip, unlike hidden, doesn't make .page a scroll container. */
+.page{width:100%;overflow-x:clip}
 .stage{position:relative;width:1440px;height:7436px;margin:0 auto;background:#fff}
 .stage>*{position:absolute}
 

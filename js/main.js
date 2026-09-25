@@ -78,6 +78,18 @@
   }
 
   /* ---------------------------------------------------------------
+     Fit to the window. The layout is a fixed 1440 frame; on a narrower
+     window (a laptop, a browser with a sidebar) it would hang off the
+     right edge, so scale the whole page down to the window width and
+     keep it centred. Wider windows get it 1:1, centred by .stage.
+     --------------------------------------------------------------- */
+  var FRAME = 1440;
+  function fitToWindow() {
+    var scale = Math.min(1, window.innerWidth / FRAME);
+    document.documentElement.style.zoom = scale < 1 ? String(scale) : '';
+  }
+
+  /* ---------------------------------------------------------------
      First screen: as you scroll it, the gradient card grows into a
      full-bleed background and the dashboard scales up by 15%.
      --------------------------------------------------------------- */
@@ -195,7 +207,7 @@
     var run = 0;
     cards.forEach(function (card) {
       offsets.push(run);
-      run += card.getBoundingClientRect().width + GAP;
+      run += card.offsetWidth + GAP; // layout px, unaffected by the fit zoom
     });
 
     var index = 0;
@@ -298,6 +310,9 @@
       });
     });
   }
+
+  fitToWindow();
+  window.addEventListener('resize', fitToWindow);
 
   document.addEventListener('DOMContentLoaded', function () {
     hydrateAssets();
