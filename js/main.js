@@ -78,17 +78,6 @@
   }
 
   /* ---------------------------------------------------------------
-     Icon font. The ligatures would otherwise show as the words
-     "bolt", "token", ... if Google Fonts is unreachable.
-     --------------------------------------------------------------- */
-  function revealIcons() {
-    if (!document.fonts) return;
-    document.fonts.load('300 24px "Material Symbols Outlined"', 'bolt').then(function (faces) {
-      if (faces && faces.length) document.documentElement.classList.add('fonts-ready');
-    }).catch(function () {});
-  }
-
-  /* ---------------------------------------------------------------
      First screen: as you scroll it, the gradient card grows into a
      full-bleed background and the dashboard scales up by 15%.
      --------------------------------------------------------------- */
@@ -201,53 +190,10 @@
   function bindPlatformCards() {
     var track = document.getElementById('pcardsTrack');
     if (!track) return;
-    var STEP = 1046 + 16; // card width + gap
     bindTabs('.stage-tabs', '.stab', 'is-active', function (i) {
-      track.style.transform = 'translateX(' + -(i * STEP) + 'px)';
+      var card = track.children[i];
+      if (card) track.style.transform = 'translateX(' + -card.offsetLeft + 'px)';
     });
-  }
-
-  /* ---------------------------------------------------------------
-     "Максимум результата": the section stays pinned while scrolling
-     walks through the five steps one at a time.
-     --------------------------------------------------------------- */
-  function bindWhyPin() {
-    var pin = document.getElementById('whyPin');
-    if (!pin) return;
-    var steps = Array.prototype.slice.call(pin.querySelectorAll('.why-step'));
-    var cards = Array.prototype.slice.call(pin.querySelectorAll('.why-card'));
-    if (!steps.length) return;
-    var ticking = false, current = -1;
-
-    function apply() {
-      ticking = false;
-      var inner = pin.firstElementChild;
-      var top = pin.getBoundingClientRect().top + window.pageYOffset;
-      // Distance actually spent scrolling while the inner block is stuck.
-      var travel = pin.offsetHeight - inner.offsetHeight;
-      if (travel <= 0) return;
-      var p = (window.pageYOffset + 84 - top) / travel;
-      var i = Math.floor(Math.min(1, Math.max(0, p)) * steps.length);
-      if (i >= steps.length) i = steps.length - 1;
-      if (i === current) return;
-      current = i;
-      steps.forEach(function (step, k) { step.classList.toggle('is-active', k === i); });
-      // Keep the card stack in step: everything before has flown off, the
-      // active one is on top, and only the one right behind it shows.
-      cards.forEach(function (card, k) {
-        card.classList.toggle('is-gone', k < i);
-        card.classList.toggle('is-current', k === i);
-        card.classList.toggle('is-next', k === i + 1);
-      });
-    }
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(apply);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    apply();
   }
 
   /* ---------------------------------------------------------------
@@ -310,7 +256,6 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     hydrateAssets();
-    revealIcons();
     bindHeroScroll();
     bindReveal();
     bindTabs('.cases-tabs', '.pill', 'is-active', function (i, item) {
@@ -318,7 +263,6 @@
     });
     bindPlatformCards();
     bindCases();
-    bindWhyPin();
     bindLeadForm();
     bindSubForm();
     bindAnchors();
