@@ -254,6 +254,53 @@
   }
 
   /* ---------------------------------------------------------------
+     "Максимум результата" · 37:1776
+     The active step's bar fills over 4s (CSS animation); when it ends
+     the next step opens, looping back to the first. It only runs while
+     the block is on screen, and a click jumps to that step and restarts
+     its bar.
+     --------------------------------------------------------------- */
+  function bindWhy() {
+    var list = document.getElementById('whyList');
+    var card = document.getElementById('whyCard');
+    if (!list) return;
+    var items = Array.prototype.slice.call(list.querySelectorAll('.why-item'));
+    var shots = card ? Array.prototype.slice.call(card.querySelectorAll('.why-shot')) : [];
+    var current = 0;
+
+    function show(i) {
+      current = i;
+      items.forEach(function (item, k) {
+        var on = k === i;
+        item.classList.toggle('is-active', on);
+        item.querySelector('.why-item__head').setAttribute('aria-expanded', on ? 'true' : 'false');
+        // restart the bar even when the same step is picked again
+        var bar = item.querySelector('.why-item__bar');
+        bar.style.animation = 'none';
+        void bar.offsetWidth;
+        bar.style.animation = '';
+      });
+      shots.forEach(function (shot, k) { shot.classList.toggle('is-active', k === i); });
+    }
+
+    items.forEach(function (item, k) {
+      item.querySelector('.why-item__head').addEventListener('click', function () { show(k); });
+      item.querySelector('.why-item__bar').addEventListener('animationend', function () {
+        if (k === current) show((current + 1) % items.length);
+      });
+    });
+
+    list.classList.add('is-paused');
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        list.classList.toggle('is-paused', !entries[0].isIntersecting);
+      }, { threshold: 0.35 }).observe(list);
+    } else {
+      list.classList.remove('is-paused');
+    }
+  }
+
+  /* ---------------------------------------------------------------
      Forms — prototype only, nothing is sent anywhere
      --------------------------------------------------------------- */
   function bindLeadForm() {
@@ -324,6 +371,7 @@
     });
     bindPlatformCards();
     bindCases();
+    bindWhy();
     bindLeadForm();
     bindSubForm();
     bindAnchors();
