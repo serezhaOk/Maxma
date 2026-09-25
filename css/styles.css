@@ -5,6 +5,8 @@
    coordinates; inner layouts mirror the Figma auto-layout. The
    «Максимум результата» block is left out for now, so everything from
    «Платформа, которой доверяют» down sits 832px higher than in Figma.
+   Everything from the client results down is a further 60px lower than
+   the mockup — extra air under the hero monitor.
    ===================================================================== */
 
 /* ---------- Object Sans (PP Object Sans) ---------- */
@@ -57,7 +59,7 @@ hr{border:0;margin:0}
 /* Layout sits on a 1440 grid and the frame does not clip: full-bleed art
    (the hero gradient at 1520) paints past the frame edge, and wider screens
    just show white to either side. */
-.stage{position:relative;width:1440px;height:7376px;margin:0 auto;background:#fff}
+.stage{position:relative;width:1440px;height:7436px;margin:0 auto;background:#fff}
 .stage>*{position:absolute}
 
 /* ---------- asset placeholders ----------
@@ -250,7 +252,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    CLIENT RESULTS · 20:1364
    ===================================================================== */
-.results{left:366px;top:1737px;width:709px;display:flex;flex-direction:column;gap:24px}
+.results{left:366px;top:1797px;width:709px;display:flex;flex-direction:column;gap:24px}
 .results__line{font-weight:500;font-size:26px;line-height:1.26;color:var(--ink-40)}
 .results__line b{font-weight:500;color:#190927;text-decoration:underline solid transparent;text-underline-offset:5px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s ease}
 .results__line:hover b{text-decoration-color:#190927}
@@ -260,7 +262,7 @@ hr{border:0;margin:0}
    Column of heading / tabs / carousel row / pagination, 50px apart.
    The row is wider than the 1400 window, so the next case peeks in.
    ===================================================================== */
-.ccl{left:20px;top:2086px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:50px}
+.ccl{left:20px;top:2146px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:50px}
 .ccl__title{width:612px}
 
 .pill-tabs{display:flex;align-items:center;padding:4px;border-radius:30px;background:var(--surface)}
@@ -297,16 +299,16 @@ hr{border:0;margin:0}
 /* =====================================================================
    PLATFORM · 14:282
    ===================================================================== */
-.platform-head{left:281px;top:3109px;width:878px}
+.platform-head{left:281px;top:3169px;width:878px}
 .platform-head .sec-title{width:608px}
 
-.stage-tabs{left:20px;top:3265px;width:210px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
+.stage-tabs{left:20px;top:3325px;width:210px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
 .stab{height:44px;padding:8px 24px;border-radius:60px;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:24px;letter-spacing:-.14px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
 .stab:hover{opacity:.9}
 /* the .5px hairline is inset so it doesn't widen the pill */
 .stab.is-active{background:var(--surface);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);opacity:1;font-weight:500}
 
-.pcards{left:246px;top:3265px;width:1194px;height:602px;overflow:hidden}
+.pcards{left:246px;top:3325px;width:1194px;height:602px;overflow:hidden}
 .pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
 /* Each segment is one 1046x602 artwork — gradient, copy, button and device
    are all baked in, so the card is just the picture. Three artworks cycle
@@ -316,7 +318,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    TRUST · 14:358
    ===================================================================== */
-.trust{left:20px;top:4015px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:60px}
+.trust{left:20px;top:4075px;width:1400px;display:flex;flex-direction:column;align-items:center;gap:60px}
 .trust__title{width:456px}
 .trust__row{display:flex;align-items:center;gap:16px;width:100%}
 
@@ -341,13 +343,13 @@ hr{border:0;margin:0}
 /* =====================================================================
    MORE THAN A PLATFORM · 20:1457
    ===================================================================== */
-.more-bg{left:20px;top:4831px;width:1400px;height:785px;background:var(--surface);border:1px solid rgba(25,9,40,.08);border-radius:24px}
-.more-title{left:138px;top:4911px;width:410px;text-align:left}
+.more-bg{left:20px;top:4891px;width:1400px;height:785px;background:var(--surface);border:1px solid rgba(25,9,40,.08);border-radius:24px}
+.more-title{left:138px;top:4971px;width:410px;text-align:left}
 /* Figma runs the gradient across the whole 410px text box, not just the word */
 .more-title .grad{background-size:410px 100%}
-.more-sub{left:138px;top:5071px;width:338px;font-size:16px;line-height:22px;color:var(--ink)}
+.more-sub{left:138px;top:5131px;width:338px;font-size:16px;line-height:22px;color:var(--ink)}
 
-.more-list{left:610px;top:4911px;width:756px;display:flex;flex-direction:column;gap:32px}
+.more-list{left:610px;top:4971px;width:756px;display:flex;flex-direction:column;gap:32px}
 .more-row{display:flex;align-items:center;gap:24px;width:100%;color:var(--ink)}
 .more-row__pic{width:338px;height:187px;flex:none;border-radius:16px;overflow:hidden;transition:transform .3s ease}
 .more-row:hover .more-row__pic{transform:scale(1.015)}
@@ -360,14 +362,14 @@ hr{border:0;margin:0}
 
 /* stickers ride on the top-left corner of each picture */
 .more-sticker{left:618px;width:50.886px;height:50px;background-color:transparent;background-size:100% 100%;pointer-events:none}
-.more-sticker--1{top:4918px}
-.more-sticker--2{top:5137px}
-.more-sticker--3{top:5354px}
+.more-sticker--1{top:4978px}
+.more-sticker--2{top:5197px}
+.more-sticker--3{top:5414px}
 
 /* =====================================================================
    LEAD FORM · 14:423
    ===================================================================== */
-.lead{left:0;top:5736px;width:1440px;height:794px}
+.lead{left:0;top:5796px;width:1440px;height:794px}
 
 .lead__form{position:absolute;left:138px;top:125.83px;width:456px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
 .lead__head{display:flex;flex-direction:column;gap:16px}
@@ -399,7 +401,7 @@ hr{border:0;margin:0}
 /* =====================================================================
    FOOTER · 27:243
    ===================================================================== */
-.ftr{left:20px;top:6650px;width:1400px;height:694px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
+.ftr{left:20px;top:6710px;width:1400px;height:694px;background:var(--ink);border-radius:24px;overflow:hidden;color:#fff}
 .ftr__logo{position:absolute;left:118px;top:84px;width:94.48px;height:28px}
 
 .ftr__contacts{position:absolute;left:118px;top:144px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
