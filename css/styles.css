@@ -323,13 +323,12 @@ hr{border:0;margin:0}
    ===================================================================== */
 .why-title{left:433px;top:4075px;width:574px}
 
-.why-list{left:138px;top:4275.5px;width:504px;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+/* 472px tall with 26px titles, centred on the 540px card */
+.why-list{left:138px;top:4265px;width:504px;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
 .why-item{position:relative;padding:24px 0;border-bottom:1px solid rgba(0,0,0,.1);color:var(--ink)}
-.why-item__head{display:flex;align-items:center;gap:16px;width:546px;text-align:left;font-size:22px;line-height:normal;cursor:pointer}
-.why-item__num{width:30px;flex:none;font-weight:400;opacity:.3;transition:opacity .3s ease}
-.why-item__title{flex:1;min-width:0;font-weight:500;opacity:.3;transition:opacity .3s ease}
+.why-item__head{display:block;width:100%;text-align:left;font-size:26px;line-height:normal;cursor:pointer}
+.why-item__title{font-weight:500;opacity:.3;transition:opacity .3s ease}
 .why-item:not(.is-active) .why-item__head:hover .why-item__title{opacity:.55}
-.why-item.is-active .why-item__num{opacity:.2}
 .why-item.is-active .why-item__title{opacity:1}
 /* description opens under the active step: 16px gap + a fixed two-line
    (44px) box, so one-line copy doesn't make the list jump between steps */
