@@ -102,6 +102,51 @@
   }
 
   /* ---------------------------------------------------------------
+     Product mega menu · 29:556
+     Opens on hover or click of «Продукт», stays open while the pointer
+     is over the pill or the panel, closes on leave, Esc, a click on the
+     dimmed page, or when a link inside is followed.
+     --------------------------------------------------------------- */
+  function bindProductMenu() {
+    var toggle = document.getElementById('productToggle');
+    var menu = document.getElementById('productMenu');
+    var dim = document.getElementById('menuDim');
+    if (!toggle || !menu) return;
+    var root = document.documentElement;
+    var closeTimer;
+
+    function setOpen(open) {
+      clearTimeout(closeTimer);
+      root.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function isOpen() { return root.classList.contains('menu-open'); }
+    // A short grace period so crossing the gap between pill and panel
+    // doesn't flicker the menu shut.
+    function closeSoon() {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () { setOpen(false); }, 160);
+    }
+
+    // Hover has already opened it by the time a mouse click lands, so a
+    // mouse click only keeps it open; keyboard (detail 0) toggles.
+    toggle.addEventListener('click', function (e) {
+      setOpen(e.detail === 0 ? !isOpen() : true);
+    });
+    [toggle, menu].forEach(function (el) {
+      el.addEventListener('mouseenter', function () { setOpen(true); });
+      el.addEventListener('mouseleave', closeSoon);
+    });
+    if (dim) dim.addEventListener('click', function () { setOpen(false); });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); }
+    });
+  }
+
+  /* ---------------------------------------------------------------
      Toast
      --------------------------------------------------------------- */
   var toastEl = document.getElementById('toast');
@@ -257,6 +302,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     hydrateAssets();
     bindHeroScroll();
+    bindProductMenu();
     bindReveal();
     bindTabs('.cases-tabs', '.pill', 'is-active', function (i, item) {
       toast('Фильтр: ' + item.textContent.trim());

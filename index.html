@@ -15,10 +15,10 @@
   <header class="hdr" data-node="14:130">
     <div class="hdr__left">
       <a class="hdr__logo ph ph--svg" href="#" data-asset="logo-maxma" aria-label="MAXMA"></a>
-      <nav class="hdr__nav">
-        <span>Продукт</span>
-        <span>Тарифы</span>
-        <span>Блог</span>
+      <nav class="hdr__nav" data-node="29:542">
+        <button class="hdr__link hdr__link--btn" id="productToggle" type="button" aria-expanded="false" aria-controls="productMenu">Продукт</button>
+        <span class="hdr__link">Тарифы</span>
+        <span class="hdr__link">Блог</span>
       </nav>
     </div>
     <div class="hdr__right">
@@ -29,7 +29,69 @@
       </div>
     </div>
   </header>
+  <!-- Product mega menu · 29:556 -->
+  <div class="pmenu" id="productMenu" data-node="29:556" aria-labelledby="productToggle">
+    <div class="pmenu__col">
+      <p class="pmenu__label">Коммуникации</p>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-communications.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Коммуникации</span>
+            <span class="pmenu__desc">Email, SMS, Telegram, MAX и Push<br>в одном окне</span>
+          </span>
+        </a>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-integration.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Интеграция</span>
+            <span class="pmenu__desc">Брошенная корзина, реактивация, напоминания</span>
+          </span>
+        </a>
+    </div>
+    <div class="pmenu__col">
+      <p class="pmenu__label">Лояльность</p>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-loyalty.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Программа лояльности</span>
+            <span class="pmenu__desc">Бонусы, уровни и правила удержания</span>
+          </span>
+        </a>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-growth.png" alt="" width="48" height="39">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Рост клиентской базы</span>
+            <span class="pmenu__desc">Выпуск карт, активация и учёт</span>
+          </span>
+        </a>
+    </div>
+    <div class="pmenu__col">
+      <p class="pmenu__label">Данные и аналитика</p>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-cdp.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">CDP — клиентская база</span>
+            <span class="pmenu__desc">Единый профиль из онлайна<br>и офлайна</span>
+          </span>
+        </a>
+        <a class="pmenu__item" href="#">
+          <img class="pmenu__icon" src="assets/img/menu-analytics.png" alt="" width="48" height="42">
+          <span class="pmenu__text">
+            <span class="pmenu__title">Аналитика</span>
+            <span class="pmenu__desc">RFM, когорты, LTV и отчёты</span>
+          </span>
+        </a>
+    </div>
+    <div class="pmenu__promo" data-node="29:599">
+      <span class="pmenu__blob pmenu__blob--violet" aria-hidden="true"><span><img src="assets/img/menu-blob-violet.svg" alt=""></span></span>
+      <span class="pmenu__blob pmenu__blob--cyan" aria-hidden="true"><span><img src="assets/img/menu-blob-cyan.svg" alt=""></span></span>
+      <p class="pmenu__promo-title">Не знаете,<br>с чего начать?</p>
+      <p class="pmenu__promo-desc">Соберём конфигурацию под вашу<br>сеть и запустим за 30 дней</p>
+      <a class="btn btn--grad pmenu__promo-btn" href="#lead">Спросить нас</a>
+    </div>
+  </div>
 </div>
+<div class="menu-dim" id="menuDim"></div>
 
 <div class="stage" id="stage">
 
