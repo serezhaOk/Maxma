@@ -201,12 +201,12 @@ hr{border:0;margin:0}
 /* --hero-p goes 0 -> 1 over the first screen of scrolling (js/main.js):
    the rounded gradient card grows into a full-bleed background. */
 .hero-bg{
-  left:calc(21px - 61px * var(--hero-p,0));
-  top:84px;
-  width:calc(1398px + 122px * var(--hero-p,0));
+  left:calc(11px - 51px * var(--hero-p,0));
+  top:80px;
+  width:calc(1418px + 102px * var(--hero-p,0));
   height:calc(1004px + 488px * var(--hero-p,0));
-  border-radius:calc(20px * (1 - var(--hero-p,0)));
-  background:linear-gradient(0deg,#fff 0%,#c6d0e9 100%);opacity:.6;
+  border-radius:calc(40px * (1 - var(--hero-p,0)));
+  background:linear-gradient(0deg,#fff 0%,#d5def9 100%);opacity:.7;
 }
 
 .hero-copy{left:281px;top:239px;width:878px;display:flex;flex-direction:column;align-items:center;gap:48px}
@@ -302,18 +302,22 @@ hr{border:0;margin:0}
 .platform-head{left:281px;top:3169px;width:878px}
 .platform-head .sec-title{width:608px}
 
-.stage-tabs{left:20px;top:3325px;width:210px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
+.stage-tabs{left:20px;top:3325px;width:219px;height:292px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:4px 0;border-radius:30px;background:#fff}
 .stab{height:44px;padding:8px 24px;border-radius:60px;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:24px;letter-spacing:-.14px;color:var(--ink);opacity:.6;white-space:nowrap;transition:background .2s,opacity .2s}
 .stab:hover{opacity:.9}
 /* the .5px hairline is inset so it doesn't widen the pill */
-.stab.is-active{background:var(--surface);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);opacity:1;font-weight:500}
+.stab.is-active{background:#e8dfff;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);opacity:1;font-weight:500}
 
-.pcards{left:246px;top:3325px;width:1194px;height:602px;overflow:hidden}
+.pcards{left:255px;top:3325px;width:1185px;height:590px;overflow:hidden}
 .pcards__track{display:flex;align-items:flex-start;gap:16px;transition:transform .55s cubic-bezier(.4,0,.2,1)}
-/* Each segment is one 1046x602 artwork — gradient, copy, button and device
-   are all baked in, so the card is just the picture. Three artworks cycle
-   through the six tabs. */
-.pcard{position:relative;flex:none;width:1046px;height:602px;border-radius:24px;overflow:hidden}
+/* Each segment is one artwork — gradient, copy, button and device are all
+   baked in, so the card is just the picture: platform-1 (14:300, 1056 wide)
+   and platform-2 (14:314, 1046 wide) alternate through the six tabs. */
+.pcard{position:relative;flex:none;width:1046px;height:590px;border-radius:24px;overflow:hidden}
+.pcard--wide{width:1056px}
+/* the «Подробнее о модуле» pill is part of the picture; this is its hit area */
+.pcard__more{position:absolute;left:40px;top:377px;width:183.45px;height:56.33px;border-radius:40px;transition:box-shadow .18s}
+.pcard__more:hover{box-shadow:0 8px 20px rgba(25,9,40,.12)}
 
 /* =====================================================================
    WHY · «Максимум результата» · 37:1776
@@ -323,10 +327,14 @@ hr{border:0;margin:0}
    ===================================================================== */
 .why-title{left:433px;top:4075px;width:574px}
 
-/* 472px tall with 26px titles, centred on the 540px card */
-.why-list{left:138px;top:4265px;width:504px;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+/* Step lists · 37:1748, and the two on communications.html. The active
+   step's bar fills, then the next one opens; the card beside the list
+   (data-steps names it) shows that step's picture. */
+.steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+/* centred on the 540px card (4231 … 4771) */
+.why-list{left:138px;top:4501px;width:504px;transform:translateY(-50%)}
 .why-item{position:relative;padding:24px 0;border-bottom:1px solid rgba(0,0,0,.1);color:var(--ink)}
-.why-item__head{display:block;width:100%;text-align:left;font-size:26px;line-height:normal;cursor:pointer}
+.why-item__head{display:block;width:100%;text-align:left;font-size:22px;line-height:normal;cursor:pointer}
 .why-item__title{font-weight:500;opacity:.3;transition:opacity .3s ease}
 .why-item:not(.is-active) .why-item__head:hover .why-item__title{opacity:.55}
 .why-item.is-active .why-item__title{opacity:1}
@@ -337,12 +345,13 @@ hr{border:0;margin:0}
 /* progress · Vector 994: 3px, round caps, centred on the step's rule */
 .why-item__bar{position:absolute;left:0;bottom:-2.5px;width:0;height:3px;border-radius:1.5px;background:linear-gradient(90deg,#850ee0 0%,#00ffbf 100%);pointer-events:none}
 .why-item.is-active .why-item__bar{animation:why-fill 4s linear forwards}
-.why-list.is-paused .why-item__bar{animation-play-state:paused}
+.steps.is-paused .why-item__bar{animation-play-state:paused}
 @keyframes why-fill{from{width:0}to{width:100%}}
 
-.why-card{left:728px;top:4231px;width:574px;height:540px;border-radius:22px;overflow:hidden;background:linear-gradient(0deg,#e2eff8 0%,#b1e0f4 100%)}
-/* why-1 stays underneath as the base; later steps fade in over it once
-   their picture exists */
+.steps-card{overflow:hidden;border-radius:22px;background:linear-gradient(22.54deg,#85f0e7 31.01%,#f1f8ff 73.75%)}
+.why-card{left:728px;top:4231px;width:574px;height:540px}
+/* the first picture stays underneath as the base; later steps fade in over
+   it once their picture exists */
 .why-shot{position:absolute;inset:0;background-size:cover;background-color:transparent;opacity:0;transition:opacity .5s ease}
 .why-shot:not(.is-loaded){background:none}
 .why-shot[data-i="0"],.why-shot.is-active.is-loaded{opacity:1}
@@ -370,7 +379,14 @@ hr{border:0;margin:0}
 .trust__note{left:30px;top:86px;font-size:17px;line-height:19px;white-space:nowrap}
 /* the logo stack's 4px outer strokes are part of the export, hence the -4px */
 .trust__logos{left:32px;top:258px;width:235.5px;height:72px;background-color:transparent;background-size:100% 100%}
-.trust__chip{left:290px;top:274px;padding:10px 12px;border-radius:100px;background:var(--surface);font-size:17px;line-height:19px;white-space:nowrap}
+/* Tilted chips · 29:1175, 59:524 — the box is the rotated bounding box from
+   Figma, the pill is centred in it and turned by the layer rotation. */
+.trust__chip{display:flex;align-items:center;justify-content:center}
+.trust__chip>span{flex:none;padding:8px 16px;border:4px solid #fff;border-radius:60px;font-weight:500;font-size:15px;line-height:19px;letter-spacing:.3px;white-space:nowrap}
+.trust__chip--brands{left:288.96px;top:268.99px;width:147.088px;height:45.029px}
+.trust__chip--brands>span{background:#c2e5f5;transform:rotate(4deg)}
+.trust__chip--law{left:217.93px;top:80.06px;width:91.225px;height:41.123px}
+.trust__chip--law>span{background:#ceabeb;transform:rotate(-4deg)}
 
 /* =====================================================================
    MORE THAN A PLATFORM · 20:1457

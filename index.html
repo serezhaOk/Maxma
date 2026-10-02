@@ -14,7 +14,7 @@
 <div class="hdr-bar">
   <header class="hdr" data-node="14:130">
     <div class="hdr__left">
-      <a class="hdr__logo ph ph--svg" href="#" data-asset="logo-maxma" aria-label="MAXMA"></a>
+      <a class="hdr__logo ph ph--svg" href="index.html" data-asset="logo-maxma" aria-label="MAXMA"></a>
       <nav class="hdr__nav" data-node="29:542">
         <button class="hdr__link hdr__link--btn" id="productToggle" type="button" aria-expanded="false" aria-controls="productMenu">Продукт</button>
         <span class="hdr__link">Тарифы</span>
@@ -33,7 +33,7 @@
   <div class="pmenu" id="productMenu" data-node="29:556" aria-labelledby="productToggle">
     <div class="pmenu__col">
       <p class="pmenu__label">Коммуникации</p>
-        <a class="pmenu__item" href="#">
+        <a class="pmenu__item" href="communications.html">
           <img class="pmenu__icon" src="assets/img/menu-communications.png" alt="" width="48" height="42">
           <span class="pmenu__text">
             <span class="pmenu__title">Коммуникации</span>
@@ -196,12 +196,12 @@
 
   <div class="pcards" id="pcards">
     <div class="pcards__track" id="pcardsTrack">
-      <article class="pcard ph" data-asset="platform-1" data-slide="0"></article>
-      <article class="pcard ph" data-asset="platform-2" data-slide="1"></article>
-      <article class="pcard ph" data-asset="platform-3" data-slide="2"></article>
-      <article class="pcard ph" data-asset="platform-1" data-slide="3"></article>
-      <article class="pcard ph" data-asset="platform-2" data-slide="4"></article>
-      <article class="pcard ph" data-asset="platform-3" data-slide="5"></article>
+      <article class="pcard pcard--wide ph" data-asset="platform-1" data-slide="0" data-node="14:300"></article>
+      <article class="pcard ph" data-asset="platform-2" data-slide="1" data-node="14:314"><a class="pcard__more" href="communications.html" aria-label="Подробнее о модуле «Коммуникации»"></a></article>
+      <article class="pcard pcard--wide ph" data-asset="platform-1" data-slide="2"></article>
+      <article class="pcard ph" data-asset="platform-2" data-slide="3"><a class="pcard__more" href="communications.html" aria-label="Подробнее о модуле «Коммуникации»"></a></article>
+      <article class="pcard pcard--wide ph" data-asset="platform-1" data-slide="4"></article>
+      <article class="pcard ph" data-asset="platform-2" data-slide="5"><a class="pcard__more" href="communications.html" aria-label="Подробнее о модуле «Коммуникации»"></a></article>
     </div>
   </div>
 
@@ -210,45 +210,45 @@
        next step opens. Right-hand pictures: why-1 … why-5 in assets/img. -->
   <h2 class="sec-title why-title" data-node="37:1747">Максимум результата. <span class="grad">Минимум сложности.</span></h2>
 
-  <ol class="why-list" id="whyList" data-node="37:1748">
+  <ol class="steps why-list" data-steps="whyCard" data-node="37:1748">
       <li class="why-item is-active" data-i="0">
         <button class="why-item__head" type="button" aria-expanded="true">
           <span class="why-item__title">Прозрачный старт</span>
         </button>
-        <p class="why-item__desc">Без скрытых условий, сложных тарифов и неожиданных доплат.</p>
+        <p class="why-item__desc">Готовые решения для интеграции сайта, касс и мобильного приложения</p>
         <span class="why-item__bar" aria-hidden="true"></span>
       </li>
       <li class="why-item" data-i="1">
         <button class="why-item__head" type="button" aria-expanded="false">
           <span class="why-item__title">Интеграция за 30 дней</span>
         </button>
-        <p class="why-item__desc">Готовые решения для интеграции сайта, касс и мобильного приложения.</p>
+        <p class="why-item__desc">Подключим сайт, кассы и приложение и проведём до первых кампаний</p>
         <span class="why-item__bar" aria-hidden="true"></span>
       </li>
       <li class="why-item" data-i="2">
         <button class="why-item__head" type="button" aria-expanded="false">
           <span class="why-item__title">Поддержка на каждом этапе</span>
         </button>
-        <p class="why-item__desc">Личный аккаунт-маркетолог поможет получить максимум от платформы.</p>
+        <p class="why-item__desc">Личный аккаунт-маркетолог поможет получить максимум от платформы</p>
         <span class="why-item__bar" aria-hidden="true"></span>
       </li>
       <li class="why-item" data-i="3">
         <button class="why-item__head" type="button" aria-expanded="false">
-          <span class="why-item__title">От идеи до запуска — за минуты</span>
+          <span class="why-item__title">Запуск кампаний за минуты</span>
         </button>
-        <p class="why-item__desc">Сегменты и кампании — без разработчиков и сложных настроек.</p>
+        <p class="why-item__desc">Сегменты и кампании — без разработчиков и сложных настроек</p>
         <span class="why-item__bar" aria-hidden="true"></span>
       </li>
       <li class="why-item" data-i="4">
         <button class="why-item__head" type="button" aria-expanded="false">
-          <span class="why-item__title">Результат в цифрах</span>
+          <span class="why-item__title">Растите с нами</span>
         </button>
-        <p class="why-item__desc">Получайте видимый рост метрик уже в первый месяц после запуска.</p>
+        <p class="why-item__desc">Платформа масштабируется вместе с сетью — от одной точки до федеральной</p>
         <span class="why-item__bar" aria-hidden="true"></span>
       </li>
   </ol>
 
-  <div class="why-card" id="whyCard" data-node="37:1771">
+  <div class="steps-card why-card" id="whyCard" data-node="37:1771">
       <div class="why-shot ph is-active" data-asset="why-1" data-i="0"></div>
       <div class="why-shot ph" data-asset="why-2" data-i="1"></div>
       <div class="why-shot ph" data-asset="why-3" data-i="2"></div>
@@ -265,11 +265,12 @@
         <div class="trust__card trust__card--years" data-node="14:366">
           <p class="trust__lead trust__lead--years">10 лет на рынке клиентского маркетинга</p>
           <span class="trust__logos ph" data-asset="trust-logos" data-node="29:1164"></span>
-          <span class="trust__chip" data-node="14:379">+500 брендов</span>
+          <span class="trust__chip trust__chip--brands" data-node="29:1175"><span>+500 брендов</span></span>
         </div>
         <div class="trust__card trust__card--ru" data-node="14:381">
           <p class="trust__lead trust__lead--ru">Российское ПО</p>
-          <p class="trust__note">Данные защищены по 152-ФЗ</p>
+          <p class="trust__note">Данные защищены</p>
+          <span class="trust__chip trust__chip--law" data-node="59:524"><span>152-ФЗ</span></span>
         </div>
       </div>
       <div class="trust__support ph" data-asset="trust-support" data-node="29:1180" role="img" aria-label="Рядом за 5 минут — среднее время ответа поддержки"></div>
@@ -363,7 +364,7 @@
       <div class="ftr__cols" data-node="27:247">
         <div class="ftr__col">
           <p class="ftr__coltitle">Продукт</p>
-          <ul><li><a href="#">Лояльность</a></li><li><a href="#">CDP</a></li><li><a href="#">Коммуникации</a></li><li><a href="#">Аналитика</a></li><li><a href="#">Тарифы</a></li></ul>
+          <ul><li><a href="#">Лояльность</a></li><li><a href="#">CDP</a></li><li><a href="communications.html">Коммуникации</a></li><li><a href="#">Аналитика</a></li><li><a href="#">Тарифы</a></li></ul>
         </div>
         <div class="ftr__col">
           <p class="ftr__coltitle">Материалы</p>

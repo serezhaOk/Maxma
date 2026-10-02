@@ -254,16 +254,15 @@
   }
 
   /* ---------------------------------------------------------------
-     "Максимум результата" · 37:1776
+     Step lists: "Максимум результата" · 37:1776 on the main page, the
+     trigger and segment lists on communications.html.
      The active step's bar fills over 4s (CSS animation); when it ends
-     the next step opens, looping back to the first. It only runs while
-     the block is on screen, and a click jumps to that step and restarts
-     its bar.
+     the next step opens, looping back to the first. A list only runs
+     while it is on screen, and a click jumps to that step and restarts
+     its bar. data-steps names the card whose pictures follow the list.
      --------------------------------------------------------------- */
-  function bindWhy() {
-    var list = document.getElementById('whyList');
-    var card = document.getElementById('whyCard');
-    if (!list) return;
+  function bindSteps(list) {
+    var card = document.getElementById(list.getAttribute('data-steps'));
     var items = Array.prototype.slice.call(list.querySelectorAll('.why-item'));
     var shots = card ? Array.prototype.slice.call(card.querySelectorAll('.why-shot')) : [];
     var current = 0;
@@ -371,7 +370,7 @@
     });
     bindPlatformCards();
     bindCases();
-    bindWhy();
+    document.querySelectorAll('.steps[data-steps]').forEach(bindSteps);
     bindLeadForm();
     bindSubForm();
     bindAnchors();
