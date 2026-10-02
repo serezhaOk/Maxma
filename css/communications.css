@@ -1,0 +1,124 @@
+/* =====================================================================
+   MAXMA — «Рассылки» (module page), loaded after styles.css
+   Figma: J5O8dq0z1hB7ba68lMvQYn · frame «Рассылки — UI / 1440» 20:1467
+   Same fixed 1440 stage as the main page: every block sits at its Figma
+   y inside the frame. The mockup frame (6506 tall) crops the footer; the
+   stage runs on to show it whole.
+   ===================================================================== */
+
+.stage--comm{height:6840px}
+
+/* =====================================================================
+   HERO · 75:1906
+   ===================================================================== */
+.chero{left:0;top:80px;width:1440px;height:795px}
+.chero>*{position:absolute}
+/* the green card runs on under the metrics, fading into the page */
+.chero__bg{left:20px;top:0;width:1400px;height:1148px;border-radius:24px;background:linear-gradient(180deg,#e1efe1 0%,#fff 100%)}
+.chero__icon{left:80px;top:194px;width:71px;height:62px}
+
+.chero__copy{left:80px;top:288px;width:640px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.chero__head{display:flex;flex-direction:column;gap:16px;color:var(--ink)}
+.chero__title{
+  font-weight:500;font-size:57.283px;line-height:1.2;letter-spacing:-2.2913px;
+  text-transform:uppercase;white-space:nowrap;
+  transform:translateY(5px); /* same baseline nudge as .hero-title */
+}
+.chero__sub{width:650px;font-size:16px;line-height:22px;opacity:.6}
+.chero__cta{width:266px;height:56px;padding:0;border:0;border-radius:100px}
+
+/* laptop · image 646, cropped by its box at the card edge; the mailing
+   list sits on its screen */
+.chero__laptop{left:687px;top:103px;width:733px;height:678px;overflow:hidden;pointer-events:none}
+.chero__laptop img{position:absolute;left:0;top:-.01%;width:152.11%;height:100.02%;max-width:none}
+.chero__screen{
+  left:801px;top:128px;width:619px;height:577px;overflow:hidden;
+  border-radius:10px 0 0 1.249px;
+  box-shadow:0 61.764px 81.528px rgba(0,0,0,.03);
+}
+.chero__screen img{position:absolute;left:-.2%;top:-.17%;width:149.29%;height:100.17%;max-width:none}
+
+/* =====================================================================
+   METRICS · 20:1492
+   ===================================================================== */
+.cmetrics{left:0;top:1035px;width:1440px;display:flex;flex-direction:column;align-items:center;gap:44px}
+.cmetrics__title{width:516px}
+.cmetrics__row{display:flex;align-items:stretch;gap:16px;width:100%;padding:0 20px}
+.cmetric{
+  flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:12px;
+  padding:32px 24px;border:1px solid rgba(25,9,40,.08);border-radius:22px;
+  background:var(--surface);color:var(--ink);text-align:center;
+}
+.cmetric__value{width:279px;font-weight:500;font-size:64px;line-height:77px;letter-spacing:-1.28px}
+.cmetric__label{width:250px;font-size:16px;line-height:22px;opacity:.6}
+
+/* =====================================================================
+   ALL CHANNELS · 59:571
+   ===================================================================== */
+.cchannels{left:0;top:1534px;width:1440px;padding:0 20px;display:flex;flex-direction:column;align-items:center;gap:80px}
+.cchannels__head{display:flex;flex-direction:column;align-items:center;gap:16px}
+.cchannels__title{width:456px}
+.cchannels__row{display:flex;align-items:center;gap:16px;width:100%}
+.ccard{width:456px;height:540px;flex:none;border-radius:24px;overflow:hidden}
+
+/* =====================================================================
+   TRIGGERS · 59:835  /  SEGMENTS · 62:4709
+   Text column + picture card; the lists are the shared .steps.
+   ===================================================================== */
+.csteps{left:138px;width:1164px;height:540px;display:flex;align-items:center;gap:84px}
+.csteps--trig{top:2462.05px}
+.csteps--seg{top:3162.05px}
+.csteps__col{width:506px;height:540px;flex:none;display:flex;flex-direction:column;justify-content:space-between;padding:24px 0}
+.csteps__col--seg{width:574px}
+.csteps__title{width:100%;text-align:left}
+.csteps__head{display:flex;flex-direction:column;gap:16px;color:var(--ink)}
+.csteps__sub{width:426px;font-size:15px;line-height:22px;opacity:.6}
+.csteps__list--seg{width:539px}
+/* one-line descriptions here: the open step keeps a single 22px line, so
+   the lists sit where the mockup has them (247px into the column) */
+.csteps .why-item.is-active .why-item__desc{height:22px}
+.csteps__card{position:relative;flex:1 1 0;min-width:0;height:540px;background:var(--surface)}
+
+/* =====================================================================
+   CASES · 59:938 — the main page's carousel, without the filter tabs
+   ===================================================================== */
+.ccl--comm{top:3862.05px}
+.ccl--comm .ccl__title{width:672px}
+
+/* =====================================================================
+   BETTER TOGETHER · 60:1196
+   ===================================================================== */
+.cbundle{left:20px;top:4783.05px;width:1400px;height:672px;border-radius:22px;overflow:hidden;background:linear-gradient(0deg,#e2eff8 0%,#b1e0f4 100%)}
+.cbundle>*{position:absolute}
+.cbundle__monitor{left:700px;top:93px;width:700px;height:706px;overflow:hidden}
+.cbundle__monitor img{position:absolute;left:-17.33%;top:-13.64%;width:156.24%;height:116.26%;max-width:none}
+.cbundle__screen{left:715px;top:109px;width:685px;height:464px;border-radius:1.005px;overflow:hidden}
+.cbundle__screen img{position:absolute;left:-.06%;top:0;width:113.4%;height:100%;max-width:none}
+.cbundle__cdp{left:856px;top:114px;width:544px;height:454px;overflow:hidden;background:#f8f9fa}
+.cbundle__cdp img{position:absolute;left:-.74%;top:-.04%;width:104.97%;height:90.55%;max-width:none}
+
+.cbundle__copy{left:118px;top:50%;width:416px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-start;gap:24px;color:var(--ink)}
+.cbundle__title{width:100%;text-align:left}
+.cbundle__icons{display:flex;align-items:center;gap:15px}
+.cbundle__icons span{font-weight:500;font-size:40px;line-height:1.2;letter-spacing:-1.6px}
+.cbundle__text{font-size:16px;line-height:22px}
+.cbundle__btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:16px;height:50px;padding:8px 24px;
+  border-radius:40px;background:#fff;font-weight:500;font-size:14px;line-height:18px;white-space:nowrap;
+  transition:box-shadow .18s ease;
+}
+.cbundle__btn img{width:10.495px;height:10.495px;transition:transform .2s ease}
+.cbundle__btn:hover{box-shadow:0 8px 20px rgba(25,9,40,.1)}
+.cbundle__btn:hover img{transform:translate(2px,-2px)}
+
+/* =====================================================================
+   LEAD FORM · 59:1054 — the main page's form, centred, 70px under the
+   CDP block (72:802 stacks block, form and footer 70px apart)
+   ===================================================================== */
+.clead{left:0;top:5525.05px;width:1440px;display:flex;justify-content:center}
+.clead .lead__form{position:static;width:456px}
+
+/* =====================================================================
+   FOOTER · 59:1115
+   ===================================================================== */
+.ftr--comm{top:6137.39px}
