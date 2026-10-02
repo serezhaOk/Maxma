@@ -2,21 +2,19 @@
    MAXMA — «Рассылки» (module page), loaded after styles.css
    Figma: J5O8dq0z1hB7ba68lMvQYn · frame «Рассылки — UI / 1440» 20:1467
    Same fixed 1440 stage as the main page: every block sits at its Figma
-   y inside the frame. The mockup frame crops the footer; the stage runs
-   on to show it whole.
+   y inside the frame. The mockup frame (6506 tall) crops the footer; the
+   stage runs on to show it whole.
    ===================================================================== */
 
-.stage--comm{height:7004px}
+.stage--comm{height:6840px}
 
 /* =====================================================================
-   HERO · 20:1480
+   HERO · 75:1906
    ===================================================================== */
 .chero{left:0;top:80px;width:1440px;height:795px}
 .chero>*{position:absolute}
 /* the green card runs on under the metrics, fading into the page */
 .chero__bg{left:20px;top:0;width:1400px;height:1148px;border-radius:24px;background:linear-gradient(180deg,#e1efe1 0%,#fff 100%)}
-.chero__glare{left:20px;top:0;width:1420px;height:886px;border-radius:24px;overflow:hidden;mix-blend-mode:overlay;pointer-events:none}
-.chero__glare img{position:absolute;left:-.5%;top:-14.8%;width:126.11%;height:114.8%;max-width:none}
 .chero__icon{left:80px;top:194px;width:71px;height:62px}
 
 .chero__copy{left:80px;top:288px;width:640px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
@@ -29,15 +27,16 @@
 .chero__sub{width:650px;font-size:16px;line-height:22px;opacity:.6}
 .chero__cta{width:266px;height:56px;padding:0;border:0;border-radius:100px}
 
-/* laptop · image 614, cropped by its box; the dashboard sits on its screen */
-.chero__laptop{left:620px;top:7px;width:800px;height:879px;overflow:hidden;pointer-events:none}
-.chero__laptop img{position:absolute;left:-20.54%;top:0;width:168.68%;height:100%;max-width:none}
+/* laptop · image 646, cropped by its box at the card edge; the mailing
+   list sits on its screen */
+.chero__laptop{left:687px;top:103px;width:733px;height:678px;overflow:hidden;pointer-events:none}
+.chero__laptop img{position:absolute;left:0;top:-.01%;width:152.11%;height:100.02%;max-width:none}
 .chero__screen{
-  left:781px;top:168px;width:639px;height:461px;overflow:hidden;
-  border:1px solid rgba(25,9,40,.1);border-radius:11px 0 0 1px;
-  box-shadow:0 49.458px 65.284px rgba(0,0,0,.03);
+  left:801px;top:128px;width:619px;height:577px;overflow:hidden;
+  border-radius:10px 0 0 1.249px;
+  box-shadow:0 61.764px 81.528px rgba(0,0,0,.03);
 }
-.chero__screen img{position:absolute;left:-.1%;top:-.68%;width:128.71%;height:119.1%;max-width:none}
+.chero__screen img{position:absolute;left:-.2%;top:-.17%;width:149.29%;height:100.17%;max-width:none}
 
 /* =====================================================================
    METRICS · 20:1492
@@ -75,8 +74,10 @@
 .csteps__head{display:flex;flex-direction:column;gap:16px;color:var(--ink)}
 .csteps__sub{width:426px;font-size:15px;line-height:22px;opacity:.6}
 .csteps__list--seg{width:539px}
-.csteps__card{position:relative;flex:1 1 0;min-width:0;height:540px}
-.csteps__card--seg{background:linear-gradient(0deg,#edf1ff 0%,#e1c9ff 100%)}
+/* one-line descriptions here: the open step keeps a single 22px line, so
+   the lists sit where the mockup has them (247px into the column) */
+.csteps .why-item.is-active .why-item__desc{height:22px}
+.csteps__card{position:relative;flex:1 1 0;min-width:0;height:540px;background:var(--surface)}
 
 /* =====================================================================
    CASES · 59:938 — the main page's carousel, without the filter tabs
@@ -111,23 +112,13 @@
 .cbundle__btn:hover img{transform:translate(2px,-2px)}
 
 /* =====================================================================
-   LEAD FORM · 59:1054
-   Two equal columns: what happens next, and the main page's form.
-   The mockup sets the left column in white / #d5d5d5 on the white page
-   (copied over from a dark block), so the heading doesn't show; here it
-   is in the page ink at the same sizes.
+   LEAD FORM · 59:1054 — the main page's form, centred, 70px under the
+   CDP block (72:802 stacks block, form and footer 70px apart)
    ===================================================================== */
-.clead{left:0;top:5615.05px;width:1440px;height:526.34px;padding:0 138px;display:flex;align-items:center;gap:60px}
-.clead .lead__form{position:static;flex:1 1 0;min-width:0;width:auto}
-
-.clead__next{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:20px;color:var(--ink)}
-.clead__next-title{font-weight:500;font-size:30px;line-height:1.3}
-.clead__steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:20px}
-.clead__steps li{display:flex;align-items:flex-start;gap:14px;font-size:16px;line-height:1.4}
-.clead__steps li>span:last-child{flex:1;min-width:0;padding-top:4px;opacity:.6}
-.clead__num{width:30px;height:30px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:100px;background:var(--surface);font-weight:500;font-size:14px;line-height:1.3}
+.clead{left:0;top:5525.05px;width:1440px;display:flex;justify-content:center}
+.clead .lead__form{position:static;width:456px}
 
 /* =====================================================================
    FOOTER · 59:1115
    ===================================================================== */
-.ftr--comm{top:6301.39px}
+.ftr--comm{top:6137.39px}
